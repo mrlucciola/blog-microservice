@@ -16,8 +16,6 @@ const app = express();
 app.use(bodyParser.json());
 
 // set up Posts routes and data
-// @todo abstract out into separate file
-const posts: { [key: string]: Post } = {};
 class Post {
   id: string;
   title: string;
@@ -27,6 +25,12 @@ class Post {
     this.title = title;
   }
 }
+// @todo abstract out into separate file
+const posts: { [key: string]: Post } = {
+  asdf: new Post("asdf", "test post 1 asdf"),
+  cc9012j8: new Post("cc9012j8", "test post 2 cc9012j8"),
+};
+
 // send all posts (@todo add pagination)
 app.get("/posts", (req, res) => {
   res.send(posts);
