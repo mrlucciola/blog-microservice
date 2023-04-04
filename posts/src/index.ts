@@ -1,4 +1,5 @@
 // modules
+import bodyParser from "body-parser";
 import { randomBytes } from "crypto";
 import express from "express";
 // import cors from "cors";
@@ -9,10 +10,13 @@ const PORT = process.env.PORT || 8080;
 
 // init
 const app = express();
-// middlewares
+
+// add middlewares
 // app.use(cors());
 // app.use(express.json());
+app.use(bodyParser.json());
 
+// set up Posts routes and data
 // @todo abstract out into separate file
 const posts: { [key: string]: Post } = {};
 class Post {
@@ -28,6 +32,7 @@ class Post {
 app.get("/posts", (req, res) => {
   res.send(posts);
 });
+// create new post
 app.post("/posts", (req, res) => {
   const id = randomBytes(4).toString("hex");
   const { title } = req.body;
@@ -37,7 +42,7 @@ app.post("/posts", (req, res) => {
 });
 
 // base
-app.get("/", (req: any, res: any) => {
+app.get("/", (_, res) => {
   res.send("Hello World!");
 });
 // start server
