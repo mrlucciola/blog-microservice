@@ -1,0 +1,14 @@
+GET http://localhost:8081/posts/asdf/comments HTTP/1.1
+###
+GET http://localhost:8081/posts/cc9012j8/comments HTTP/1.1
+###
+GET http://localhost:8081/posts/1/comments HTTP/1.1
+###
+
+POST http://localhost:8081/posts/asdf/comments HTTP/1.1
+content-type: application/json
+
+{
+    "text": "scrappy dappy doo"
+}
+###
