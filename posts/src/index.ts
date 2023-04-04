@@ -1,9 +1,8 @@
 // modules
+import express from "express";
 import bodyParser from "body-parser";
 import { randomBytes } from "crypto";
-import express from "express";
 // import cors from "cors";
-// import { join } from "path";
 
 // constants
 const PORT = process.env.PORT || 8080;
@@ -45,6 +44,7 @@ app.post("/posts", (req, res) => {
 app.get("/", (_, res) => {
   res.send("Hello World!");
 });
+
 // start server
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);
