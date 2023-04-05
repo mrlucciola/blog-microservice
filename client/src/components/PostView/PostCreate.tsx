@@ -23,7 +23,7 @@ const PostCreate: React.FC = () => {
       <TextField
         fullWidth
         variant="filled"
-        label="Title"
+        label="Post Title"
         onChange={(e) => setPostTitle(e.target.value)}
         value={postTitle}
       />

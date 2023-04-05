@@ -1,15 +1,79 @@
+import { useState } from "react";
+import { observer } from "mobx-react-lite";
 // mui
-import { Box, Typography } from "@mui/material";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Collapse,
+  IconButton,
+  Paper,
+  Typography,
+  useTheme,
+} from "@mui/material";
+import ExpandMoreOutlined from "@mui/icons-material/ExpandMoreOutlined";
+// components
+import CommentCreate from "../comments/CommentCreate";
 // interfaces
 import { PostProps } from "./PostList";
+import CommentList from "../comments/CommentList";
+import { useAppState } from "../../mobx/context/hooks";
 
-const PostItem: React.FC<PostProps> = ({ id, title }) => {
+const ExpandMore: React.FC<{
+  isExpanded: boolean;
+  handleExpandClick: (_: boolean) => void;
+}> = ({ isExpanded, handleExpandClick }) => {
+  const theme = useTheme();
+
   return (
-    <Box>
-      <Typography>{id}</Typography>
-      <Typography>{title}</Typography>
-    </Box>
+    <IconButton
+      sx={{
+        background: "whitesmoke",
+        marginLeft: "auto",
+        transform: !isExpanded ? "rotate(0deg)" : "rotate(180deg)",
+        transition: theme.transitions.create("transform", {
+          duration: theme.transitions.duration.shortest,
+        }),
+      }}
+      aria-expanded={isExpanded}
+      aria-label="Show more"
+      onClick={() => handleExpandClick(isExpanded)}
+    >
+      <ExpandMoreOutlined />
+    </IconButton>
   );
 };
 
-export default PostItem;
+const PostItem: React.FC<PostProps> = ({ id, title }) => {
+  // state
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const commentsCt = useAppState((s) =>
+    s.comments.commentsByPost[id] ? s.comments.commentsByPost[id].length : 0
+  );
+  // event handlers
+  const handleExpandClick = (isExpanded: boolean) => {
+    setIsExpanded(!isExpanded);
+  };
+
+  return (
+    <Card component={Paper} elevation={2}>
+      <CardHeader title={title} subheader={id} />
+      <CardActions>
+        <Typography>{commentsCt} comments</Typography>
+        <ExpandMore
+          isExpanded={isExpanded}
+          handleExpandClick={handleExpandClick}
+        />
+      </CardActions>
+      <Collapse in={isExpanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          {commentsCt > 0 && <CommentList postId={id} />}
+        </CardContent>
+        <CommentCreate postId={id} />
+      </Collapse>
+    </Card>
+  );
+};
+
+export default observer(PostItem);

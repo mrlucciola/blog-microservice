@@ -4,10 +4,22 @@ import { makeAutoObservable } from "mobx";
 // stores
 import { RootStore } from "./rootStore";
 // models
-import { PostListProps, PostProps } from "../../components/PostView/PostList";
+import { Comment, CommentsByPost } from "../../components/comments/interfaces";
+import { PostIdKey } from "../../components/PostView/interfaces";
+
+const fetchCommments = async (store: CommentsStore, postId: PostIdKey) => {
+  try {
+    const res = await axios.get<Comment[]>(
+      `http://localhost:8081/posts/${postId}/comments`
+    );
+    if (res.data) store.setCommentsByPost(postId, res.data);
+  } catch (err) {
+    throw new Error(`Error requesting comments for post ${postId}:\n${err}`);
+  }
+};
 
 /// Main
-export class MainStore {
+export class CommentsStore {
   // ctor
   constructor(_rootStore: RootStore) {
     // this.other = rootStore.other
@@ -16,7 +28,7 @@ export class MainStore {
 
   /////////////////////////////////////////////////////////
   ////////////////////// OBSERVABLES //////////////////////
-  posts: PostProps[] = [];
+  commentsByPost = {} as CommentsByPost;
   ////////////////////// OBSERVABLES //////////////////////
   /////////////////////////////////////////////////////////
 
@@ -27,20 +39,18 @@ export class MainStore {
 
   /////////////////////////////////////////////////////////
   //////////////////////// ACTIONS ////////////////////////
-  setPosts = (newPostsArr: PostProps[]) => {
-    this.posts = newPostsArr;
+
+  // comments
+  setCommentsByPost = (postId: PostIdKey, comments: Comment[]) => {
+    this.commentsByPost[postId] = comments;
   };
-  postsPush = (newPost: PostProps) => {
-    this.posts.push(newPost);
+  commentsByPostPush = (postId: PostIdKey, comment: Comment) => {
+    this.commentsByPost[postId].push(comment);
   };
-  postsFilterOne = (postToRemove: PostProps) => {
-    this.posts = this.posts.filter((post) => {
-      return post.id !== postToRemove.id;
-    });
-  };
-  postsFetch = async () => {
-    const res = await axios.get<PostListProps>("http://localhost:8080/posts");
-    if (res.data) this.setPosts(Object.values(res.data));
+  /** Fetch the comments for multiple posts in a single query */
+  commentsByPostFetch = (postIds: PostIdKey[]) => {
+    // let this run async
+    postIds.forEach((postId) => fetchCommments(this, postId));
   };
   //////////////////////// ACTIONS ////////////////////////
   /////////////////////////////////////////////////////////

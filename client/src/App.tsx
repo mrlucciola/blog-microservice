@@ -7,7 +7,7 @@ import { useAppState } from "./mobx/context/hooks";
 
 const App: React.FC = () => {
   // state
-  const fetchPosts = useAppState((s) => s.main.fetchPosts);
+  const fetchPosts = useAppState((s) => s.main.postsFetch);
   // effects
   useEffect(() => {
     fetchPosts();
