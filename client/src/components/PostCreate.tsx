@@ -1,7 +1,7 @@
 import { useState } from "react";
+import axios from "axios";
 // mui
 import { Box, Button, TextField } from "@mui/material";
-import axios from "axios";
 
 const PostCreate: React.FC = () => {
   const [postTitle, setPostTitle] = useState<string>("");

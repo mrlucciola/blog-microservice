@@ -16,7 +16,6 @@ export interface PostListProps {
 const PostList: React.FC = () => {
   // state
   const posts = useAppState((s) => s.main.posts);
-  console.log("da posts", posts);
 
   // build
   const postElems = posts.map(({ id, title }, idx) => {
