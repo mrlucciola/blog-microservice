@@ -4,7 +4,7 @@ import { makeAutoObservable } from "mobx";
 // stores
 import { RootStore } from "./rootStore";
 // models
-import { PostListProps, PostProps } from "../../components/PostList";
+import { PostListProps, PostProps } from "../../components/PostView/PostList";
 
 /// Main
 export class MainStore {

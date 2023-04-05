@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 // components
-import PostCreate from "./components/PostCreate";
-import PostList from "./components/PostList";
+import PostCreate from "./components/PostView/PostCreate";
+import PostList from "./components/PostView/PostList";
 // state
 import { useAppState } from "./mobx/context/hooks";
 

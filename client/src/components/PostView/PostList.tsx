@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { Stack } from "@mui/material";
 // components
 import PostItem from "./PostItem";
-import { useAppState } from "../mobx/context/hooks";
+import { useAppState } from "../../mobx/context/hooks";
 
 export interface PostProps {
   id: string;
