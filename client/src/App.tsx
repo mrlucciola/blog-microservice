@@ -1,10 +1,10 @@
 // components
-import CreatePost from "./components/CreatePost";
+import PostCreate from "./components/PostCreate";
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <CreatePost />
+      <PostCreate />
     </div>
   );
 };
