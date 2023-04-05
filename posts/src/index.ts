@@ -1,9 +1,8 @@
-// modules
 import express from "express";
 import bodyParser from "body-parser";
+import cors from "cors";
 // local
 import postsRoutes from "./posts";
-// import cors from "cors";
 
 // constants
 const PORT = process.env.PORT || 8080;
@@ -12,9 +11,8 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 
 // add middlewares
-// app.use(cors());
-// app.use(express.json());
 app.use(bodyParser.json());
+app.use(cors());
 
 // base
 app.get("/", (_, res) => {
