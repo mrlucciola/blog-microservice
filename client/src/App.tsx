@@ -1,7 +1,9 @@
 // components
 import CreatePost from "./components/CreatePost";
+// state
+import { AppContext } from "./context";
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div className="App">
       <CreatePost />
@@ -9,4 +11,8 @@ const App = () => {
   );
 };
 
-export default App;
+export default (
+  <AppContext.Provider value={{}}>
+    <App />
+  </AppContext.Provider>
+);

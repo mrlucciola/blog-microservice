@@ -1,18 +1,29 @@
-import { FC } from "react";
+import { useState } from "react";
+// mui
+import { Box, Button, TextField } from "@mui/material";
 
-const CreatePost: FC = () => {
+const CreatePost: React.FC = () => {
+  const [postTitle, setPostTitle] = useState<string>();
+
   return (
-    <div>
-      <form action="">
-        <div>
-          <label htmlFor="new-post" className="form-group">
-            Title
-          </label>
-          <input type="text" className="form-control" />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <Box sx={{ width: 300 }}>
+      <TextField
+        fullWidth
+        variant="filled"
+        label="Title"
+        onChange={(e) => setPostTitle(e.target.value)}
+        value={postTitle}
+      />
+      <Button
+        fullWidth
+        variant="contained"
+        onClick={(e) => {
+          console.log(e);
+        }}
+      >
+        Submit
+      </Button>
+    </Box>
   );
 };
 
