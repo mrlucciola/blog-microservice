@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 // style
 import "./index.css";
-import { AppContext } from "./context";
+import StoreProvider from "./mobx/context/provider";
 // import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
@@ -12,9 +12,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   // <StrictMode>
-  <AppContext.Provider value={{}}>
+  <StoreProvider>
     <App />
-  </AppContext.Provider>
+  </StoreProvider>
   // </StrictMode>
 );
 

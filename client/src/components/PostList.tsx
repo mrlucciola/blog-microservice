@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { observer } from "mobx-react-lite";
 // mui
 import { Stack } from "@mui/material";
 // components
 import PostItem from "./PostItem";
+import { useAppState } from "../mobx/context/hooks";
 
 export interface PostProps {
   id: string;
@@ -15,15 +15,9 @@ export interface PostListProps {
 
 const PostList: React.FC = () => {
   // state
-  const [posts, setPosts] = useState<PostProps[]>([]);
-  const updatePostsState = async () => {
-    const res = await axios.get<PostListProps>("http://localhost:8080/posts");
-    if (res.data) setPosts(Object.values(res.data));
-  };
-  // effect
-  useEffect(() => {
-    updatePostsState();
-  }, []);
+  const posts = useAppState((s) => s.main.posts);
+  console.log("da posts", posts);
+
   // build
   const postElems = posts.map(({ id, title }, idx) => {
     return <PostItem id={id} title={title} key={idx} />;
@@ -31,4 +25,4 @@ const PostList: React.FC = () => {
   return <Stack>{postElems}</Stack>;
 };
 
-export default PostList;
+export default observer(PostList);

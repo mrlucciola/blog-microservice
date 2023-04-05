@@ -12,7 +12,7 @@ const PostCreate: React.FC = () => {
 
     console.log("submitting:", postPayload);
     try {
-      const res = await axios.post("http://localhost:8080/posts", postPayload);
+      await axios.post("http://localhost:8080/posts", postPayload);
     } catch (err) {
       throw new Error(`Error submitting new post:\n${err}`);
     }
