@@ -1,25 +1,21 @@
-import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 // components
 import App from "./App";
 // style
 import "./index.css";
+import { AppContext } from "./context";
 // import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-const isStrict = false;
-
 root.render(
-  isStrict ? (
-    <StrictMode>
-      <App />
-    </StrictMode>
-  ) : (
+  // <StrictMode>
+  <AppContext.Provider value={{}}>
     <App />
-  )
+  </AppContext.Provider>
+  // </StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
