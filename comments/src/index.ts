@@ -16,7 +16,7 @@ app.use(cors());
 
 // base
 app.get("/", (_, res) => {
-  res.send("Hello World!");
+  res.send("Hello from comments service!");
 });
 // app.use("/posts", postsRouter);
 app.use("/posts", commentsRouter);

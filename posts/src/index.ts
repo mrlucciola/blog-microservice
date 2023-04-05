@@ -16,7 +16,7 @@ app.use(cors());
 
 // base
 app.get("/", (_, res) => {
-  res.send("Hello World!");
+  res.send("Hello from posts service!");
 });
 app.use("/posts", postsRoutes);
 
