@@ -1,7 +1,7 @@
 // modules
 import express from "express";
 import bodyParser from "body-parser";
-import commentsRouter, { Comment, comments } from "./comments";
+import commentsRouter from "./comments";
 // import cors from "cors";
 
 // constants
