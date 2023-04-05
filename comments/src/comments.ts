@@ -48,14 +48,19 @@ router
         body: { text },
       } = req;
       const commentId = randomBytes(4).toString("hex");
-      if (!comments[postId]) {
-        // res.status(401).send("Resource not found")
-        res.status(203).send([]);
-      }
-      if (!text) res.status(404).send("Please add text.")
+      if (!comments[postId]) res.status(203).send({});
 
-      comments[postId]?.push(new Comment(commentId, text, postId));
-      res.status(201).send(comments[postId]);
+      if (!text) {
+        res.status(400).send("Please add text.");
+        return;
+      } else if (!postId) {
+        res.status(400).send("Please add post id.");
+        return;
+      } else {
+        const newComment = new Comment(commentId, text, postId);
+        comments[postId]?.push(newComment);
+        res.status(201).send(newComment);
+      }
     }
   );
 
