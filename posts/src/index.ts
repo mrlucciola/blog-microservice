@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 // local
 import postsRoutes from "./posts";
-import { POSTS_PORT } from "./constants";
+import { PORT_POSTS } from "./constants";
 
 // init
 const app = express();
@@ -19,6 +19,6 @@ app.get("/", (_, res) => {
 app.use("/posts", postsRoutes);
 
 // start server
-app.listen(POSTS_PORT, () => {
-  console.log(`"Posts" Server listening at http://localhost:${POSTS_PORT}`);
+app.listen(PORT_POSTS, () => {
+  console.log(`"Posts" Server listening at http://localhost:${PORT_POSTS}`);
 });

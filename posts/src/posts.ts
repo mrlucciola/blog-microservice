@@ -1,7 +1,7 @@
 import { Request, Router } from "express";
 import { randomBytes } from "crypto";
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { EVENT_BUS_PORT } from "./constants";
+import { PORT_EVENT_BUS } from "./constants";
 import { Post, ReqEventPostCreated } from "./interfaces";
 
 // init
@@ -39,7 +39,7 @@ router
         any,
         AxiosResponse<null, any>,
         ReqEventPostCreated
-      >(`http://localhost:${EVENT_BUS_PORT}/events`, postReq);
+      >(`http://localhost:${PORT_EVENT_BUS}/events`, postReq);
     } catch (error) {
       const err = error as AxiosError;
       console.log("errorlx", err);
