@@ -4,6 +4,7 @@ import PostCreate from "./components/PostView/PostCreate";
 import PostList from "./components/PostView/PostList";
 // state
 import { useAppState } from "./mobx/context/hooks";
+import { Divider, Stack } from "@mui/material";
 
 const App: React.FC = () => {
   // state
@@ -14,10 +15,10 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="App">
+    <Stack className="App" divider={<Divider sx={{padding:'10px 0'}} />}>
       <PostCreate />
       <PostList />
-    </div>
+    </Stack>
   );
 };
 

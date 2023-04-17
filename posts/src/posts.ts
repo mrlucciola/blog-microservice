@@ -1,17 +1,12 @@
 import { Request, Router } from "express";
 import { randomBytes } from "crypto";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import { EVENT_BUS_PORT } from "./constants";
+import { Post, ReqEventPostCreated } from "./interfaces";
 
 // init
 const router = Router();
-class Post {
-  id: string;
-  title: string;
 
-  constructor(id: string, title: string) {
-    this.id = id;
-    this.title = title;
-  }
-}
 // seed
 const posts: { [key: string]: Post } = {
   asdf: new Post("asdf", "test post 1 asdf"),
@@ -25,15 +20,47 @@ router
     res.send(posts);
   })
   // create new post
-  .post((req: Request<{}, {}, { title: string }>, res, _next) => {
+  .post(async (req: Request<{}, {}, { title: string }>, res, _next) => {
     const id = randomBytes(4).toString("hex");
     const { title } = req.body;
 
-    if (!title) res.status(404).send("Please include title.");
-    else {
-      posts[id] = new Post(id, title);
-
-      res.status(201).send(posts[id]);
+    // validation
+    if (!title) {
+      res.status(404).send("Please include title.");
+      return;
     }
+
+    // get data from db
+    posts[id] = new Post(id, title);
+    let postReq = new ReqEventPostCreated("PostCreated", posts[id]);
+
+    try {
+      const eventRes = await axios.post<
+        any,
+        AxiosResponse<null, any>,
+        ReqEventPostCreated
+      >(`http://localhost:${EVENT_BUS_PORT}/events`, postReq);
+    } catch (error) {
+      const err = error as AxiosError;
+      console.log("errorlx", err);
+      if (err.code === "ECONNREFUSED") {
+        return res
+          .status(404)
+          .send({
+            msg: `Error sending to events service: ${err.code}`,
+            err: err,
+          });
+        ("");
+      }
+      // if (eventRes.status >= 400) {
+      //   return res
+      //     .status(404)
+      //     .send(
+      //       `Error sending to events (${eventRes.status}): ${eventRes.statusText}`
+      //     );
+      // }
+    }
+
+    res.status(201).send(posts[id]);
   });
 export default router;

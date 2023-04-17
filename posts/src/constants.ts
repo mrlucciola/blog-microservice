@@ -28,4 +28,4 @@ class EnvConst<T extends number | string> {
 
 // constants
 export const POSTS_PORT = 8080;
-export const EVENT_BUS_PORT = 4005;
+export const EVENT_BUS_PORT = 8085;

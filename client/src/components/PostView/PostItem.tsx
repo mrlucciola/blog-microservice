@@ -7,6 +7,7 @@ import {
   CardContent,
   CardHeader,
   Collapse,
+  Unstable_Grid2 as Grid,
   IconButton,
   Paper,
   Typography,
@@ -57,22 +58,24 @@ const PostItem: React.FC<PostProps> = ({ id, title }) => {
   };
 
   return (
-    <Card component={Paper} elevation={2}>
-      <CardHeader title={title} subheader={id} />
-      <CardActions>
-        <Typography>{commentsCt} comments</Typography>
-        <ExpandMore
-          isExpanded={isExpanded}
-          handleExpandClick={handleExpandClick}
-        />
-      </CardActions>
-      <Collapse in={isExpanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          {commentsCt > 0 && <CommentList postId={id} />}
-        </CardContent>
-        <CommentCreate postId={id} />
-      </Collapse>
-    </Card>
+    <Grid xs={12} md={6} xl={4}>
+      <Card component={Paper} elevation={2}>
+        <CardHeader title={title} subheader={id} />
+        <CardActions>
+          <Typography>{commentsCt} comments</Typography>
+          <ExpandMore
+            isExpanded={isExpanded}
+            handleExpandClick={handleExpandClick}
+          />
+        </CardActions>
+        <Collapse in={isExpanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            {commentsCt > 0 && <CommentList postId={id} />}
+          </CardContent>
+          <CommentCreate postId={id} />
+        </Collapse>
+      </Card>
+    </Grid>
   );
 };
 
