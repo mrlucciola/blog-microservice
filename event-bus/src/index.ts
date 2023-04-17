@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request } from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
 import { PORT_EVENT_BUS } from "./constants";
@@ -16,17 +16,24 @@ app.get("/", (_, res) => {
 });
 
 // additional routes
-app.post("/events", (req, res, _next) => {
-  const event = req.body;
-  console.log("incoming event:", event);
+app.post(
+  "/events",
+  (
+    req: Request<{}, {}, { type: string; data: { id: string; title: string } }>,
+    res,
+    _next
+  ) => {
+    const event = req.body;
+    console.log("incoming event:", event);
 
-  // send requests
-  // axios.post("http://localhost:8080", event);
-  // axios.post("http://localhost:8081", event);
-  // axios.post("http://localhost:8082", event);
+    // send requests
+    axios.post("http://localhost:8080/events", event);
+    // axios.post("http://localhost:8081", event);
+    // axios.post("http://localhost:8082", event);
 
-  res.send({ status: "OK" });
-});
+    res.send({ status: "OK" });
+  }
+);
 
 // start server
 app.listen(PORT_EVENT_BUS, () => {
