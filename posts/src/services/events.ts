@@ -4,9 +4,10 @@ import { Router } from "express";
 const router = Router();
 
 // listening at /events/
-router.route("/").post(async (req, res, _next) => {
-  console.log("incoming event", req.body);
-  return;
+router.route("/").post((req, res, _next) => {
+  console.log("receiving event for post", req.body.type);
+
+  return res.send("OK");
 });
 
 export default router;
