@@ -1,7 +1,7 @@
 import express, { Request } from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
-import { PORT_EVENT_BUS } from "./constants";
+import { PORT_COMMENTS, PORT_EVENT_BUS, PORT_POSTS } from "./constants";
 
 // const asdf = EVENT_
 // init
@@ -27,8 +27,8 @@ app.post(
     console.log("incoming event:", event);
 
     // send requests
-    axios.post("http://localhost:8080/events", event);
-    // axios.post("http://localhost:8081", event);
+    axios.post(`http://localhost:${PORT_POSTS}/events`, event);
+    axios.post(`http://localhost:${PORT_COMMENTS}/events`, event);
     // axios.post("http://localhost:8082", event);
 
     res.send({ status: "OK" });
