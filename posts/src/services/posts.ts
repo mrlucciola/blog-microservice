@@ -48,7 +48,6 @@ router
           msg: `Error sending to events service: ${err.code}`,
           err: err,
         });
-        ("");
       }
       // if (eventRes.status >= 400) {
       //   return res
