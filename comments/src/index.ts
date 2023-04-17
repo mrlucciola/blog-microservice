@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 // local
-import commentsRouter from "./comments";
+import commentsRouter from "./routes/comments";
 import { PORT_COMMENTS } from "./constants";
 
 // init
