@@ -31,7 +31,7 @@ app.post(
     axios.post(`http://localhost:${PORT_COMMENTS}/events`, event);
     // axios.post("http://localhost:8082", event);
 
-    res.send({ status: "OK" });
+    return res.send({ status: "OK" });
   }
 );
 

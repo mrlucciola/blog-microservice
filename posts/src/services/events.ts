@@ -6,6 +6,7 @@ const router = Router();
 // listening at /events/
 router.route("/").post(async (req, res, _next) => {
   console.log("incoming event", req.body);
+  return;
 });
 
 export default router;

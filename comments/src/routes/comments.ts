@@ -1,7 +1,9 @@
 import { Request, Router } from "express";
 import { randomBytes } from "crypto";
-import { Comment, PostIdKey } from "../interfaces";
+import { Comment, PostIdKey, ReqEventCommentCreated } from "../interfaces";
 import { comments } from "../seed";
+import axios, { AxiosResponse } from "axios";
+import { PORT_EVENT_BUS } from "../constants";
 
 const router = Router();
 
@@ -22,25 +24,39 @@ router
     res.send(comments[postId] || []);
   })
   .post(
-    (req: Request<{ postId: PostIdKey }, {}, { text: string }>, res, _next) => {
+    async (
+      req: Request<{ postId: PostIdKey }, {}, { text: string }>,
+      res,
+      _next
+    ) => {
       const {
         params: { postId },
         body: { text },
       } = req;
       const commentId = randomBytes(4).toString("hex");
-      if (!comments[postId]) res.status(203).send({});
+      if (!comments[postId]) return res.status(203).send({});
+      if (!text) return res.status(400).send("Please add text.");
+      else if (!postId) return res.status(400).send("Please add post id.");
 
-      if (!text) {
-        res.status(400).send("Please add text.");
-        return;
-      } else if (!postId) {
-        res.status(400).send("Please add post id.");
-        return;
-      } else {
-        const newComment = new Comment(commentId, text, postId);
-        comments[postId]?.push(newComment);
-        res.status(201).send(newComment);
+      const newComment = new Comment(commentId, text, postId);
+      // update store
+      comments[postId]?.push(newComment);
+
+      // emit event
+      try {
+        await axios.post<any, AxiosResponse<null, any>, ReqEventCommentCreated>(
+          `http://localhost:${PORT_EVENT_BUS}/events`,
+          new ReqEventCommentCreated("CommentCreated", newComment)
+        );
+      } catch (error) {
+        console.log("error sending comment to event bussy", error);
+        return res
+          .status(404)
+          .send("error sending event to event bus - CommentCreated");
       }
+
+      // send response
+      return res.status(201).send(newComment);
     }
   );
 
