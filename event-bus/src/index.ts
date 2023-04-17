@@ -18,6 +18,7 @@ app.get("/", (_, res) => {
 // additional routes
 app.post("/events", (req, res, _next) => {
   const event = req.body;
+  console.log("incoming event:", event);
 
   // send requests
   // axios.post("http://localhost:8080", event);
