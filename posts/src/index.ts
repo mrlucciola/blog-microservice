@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 // local
-import postsRoutes from "./posts";
+import postsRoutes from "./services/posts";
 import { PORT_POSTS } from "./constants";
 
 // init

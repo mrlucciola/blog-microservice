@@ -1,8 +1,8 @@
 import { Request, Router } from "express";
 import { randomBytes } from "crypto";
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { PORT_EVENT_BUS } from "./constants";
-import { Post, ReqEventPostCreated } from "./interfaces";
+import { PORT_EVENT_BUS } from "../constants";
+import { Post, ReqEventPostCreated } from "../interfaces";
 
 // init
 const router = Router();
@@ -44,12 +44,10 @@ router
       const err = error as AxiosError;
       console.log("errorlx", err);
       if (err.code === "ECONNREFUSED") {
-        return res
-          .status(404)
-          .send({
-            msg: `Error sending to events service: ${err.code}`,
-            err: err,
-          });
+        return res.status(404).send({
+          msg: `Error sending to events service: ${err.code}`,
+          err: err,
+        });
         ("");
       }
       // if (eventRes.status >= 400) {
@@ -63,4 +61,5 @@ router
 
     res.status(201).send(posts[id]);
   });
+
 export default router;
