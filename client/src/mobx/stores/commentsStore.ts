@@ -6,11 +6,12 @@ import { RootStore } from "./rootStore";
 // models
 import { Comment, CommentsByPost } from "../../components/comments/interfaces";
 import { PostIdKey } from "../../components/PostView/interfaces";
+import { PORT_COMMENTS } from "../../constants";
 
 const fetchCommments = async (store: CommentsStore, postId: PostIdKey) => {
   try {
     const res = await axios.get<Comment[]>(
-      `http://localhost:8081/posts/${postId}/comments`
+      `http://localhost:${PORT_COMMENTS}/posts/${postId}/comments`
     );
     if (res.data) store.setCommentsByPost(postId, res.data);
   } catch (err) {

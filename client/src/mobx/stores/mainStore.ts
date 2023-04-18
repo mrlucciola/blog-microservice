@@ -5,6 +5,7 @@ import { makeAutoObservable } from "mobx";
 import { RootStore } from "./rootStore";
 // models
 import { PostListProps, PostProps } from "../../components/PostView/PostList";
+import { PORT_QUERY } from "../../constants";
 
 /// Main
 export class MainStore {
@@ -39,7 +40,9 @@ export class MainStore {
     });
   };
   postsFetch = async () => {
-    const res = await axios.get<PostListProps>("http://localhost:8080/posts");
+    const res = await axios.get<PostListProps>(
+      `http://localhost:${PORT_QUERY}/posts`
+    );
     if (res.data) this.setPosts(Object.values(res.data));
   };
   //////////////////////// ACTIONS ////////////////////////
