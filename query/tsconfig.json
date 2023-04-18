@@ -1,0 +1,23 @@
+{
+  "lib": ["ES2021"],
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "target": "ES2021",
+    "module": "commonjs",
+
+    "allowJs": true,
+    "checkJs": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}
