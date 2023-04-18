@@ -18,7 +18,6 @@ router.route("/").post(
     _next
   ) => {
     const { type, data } = req.body;
-    console.log('type', type, 'commenty')
 
     if (type === "PostCreated") {
       const { id, title } = data as Post;
@@ -33,8 +32,9 @@ router.route("/").post(
       const post = posts[postId];
       post.comments.push({ id, text, postId });
     }
+    console.log("posts", posts);
 
-    return res.status(201).send("OK");
+    res.status(201).send("OK");
   }
 );
 

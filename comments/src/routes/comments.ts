@@ -36,8 +36,7 @@ router
       const commentId = randomBytes(4).toString("hex");
       if (!comments[postId]) return res.status(203).send({});
       if (!text) return res.status(400).send("Please add text.");
-      else if (!postId) return res.status(400).send("Please add post id.");
-
+      if (!postId) return res.status(400).send("Please add post id.");
       const newComment = new Comment(commentId, text, postId);
       // update store
       comments[postId]?.push(newComment);

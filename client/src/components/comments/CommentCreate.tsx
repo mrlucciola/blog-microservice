@@ -4,6 +4,7 @@ import axios, { AxiosError } from "axios";
 import { Box, Button, TextField } from "@mui/material";
 import { useAppState } from "../../mobx/context/hooks";
 import { Comment } from "./interfaces";
+import { PORT_COMMENTS } from "../../constants";
 
 const CommentCreate: React.FC<{ postId: string }> = ({ postId }) => {
   // state
@@ -20,7 +21,7 @@ const CommentCreate: React.FC<{ postId: string }> = ({ postId }) => {
     const commentPayload = { text: commentText };
     try {
       const res = await axios.post<Comment>(
-        `http://localhost:8081/posts/${postId}/comments`,
+        `http://localhost:${PORT_COMMENTS}/posts/${postId}/comments`,
         commentPayload
       );
 

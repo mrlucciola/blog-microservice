@@ -1,7 +1,12 @@
 import express, { Request } from "express";
 import bodyParser from "body-parser";
 import axios from "axios";
-import { PORT_COMMENTS, PORT_EVENT_BUS, PORT_POSTS } from "./constants";
+import {
+  PORT_COMMENTS,
+  PORT_EVENT_BUS,
+  PORT_POSTS,
+  PORT_QUERY,
+} from "./constants";
 
 // const asdf = EVENT_
 // init
@@ -29,7 +34,7 @@ app.post(
     // send requests
     axios.post(`http://localhost:${PORT_POSTS}/events`, event);
     axios.post(`http://localhost:${PORT_COMMENTS}/events`, event);
-    // axios.post("http://localhost:8082", event);
+    axios.post(`http://localhost:${PORT_QUERY}/events`, event);
 
     return res.send({ status: "OK" });
   }
