@@ -61,21 +61,19 @@ const PostItem: React.FC<{ postId: PostIdKey }> = ({ postId }) => {
   };
 
   return (
-    <Grid xs={12} md={6} xl={4}>
-      <Card component={Paper} elevation={2}>
-        <CardHeader title={postTitle} subheader={postId} />
-        <CardActions>
-          <Typography>{postCommentsCt} comments</Typography>
-          <ExpandMore
-            isExpanded={isExpanded}
-            handleExpandClick={handleExpandClick}
-          />
-        </CardActions>
-        <Collapse in={isExpanded} timeout="auto" unmountOnExit>
-          <CommentList postId={postId} />
-          <CommentCreate postId={postId} />
-        </Collapse>
-      </Card>
+    <Grid xs={12} md={6} xl={4} component={Card} elevation={2}>
+      <CardHeader title={postTitle} subheader={postId} />
+      <CardActions>
+        <Typography>{postCommentsCt} comments</Typography>
+        <ExpandMore
+          isExpanded={isExpanded}
+          handleExpandClick={handleExpandClick}
+        />
+      </CardActions>
+      <Collapse in={isExpanded} timeout="auto" unmountOnExit>
+        <CommentList postId={postId} />
+        <CommentCreate postId={postId} />
+      </Collapse>
     </Grid>
   );
 };

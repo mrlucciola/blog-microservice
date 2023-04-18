@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 // mui
 import { Card, Paper } from "@mui/material";
 
@@ -9,4 +10,4 @@ const CommentItem: React.FC<{ text: string }> = ({ text }) => {
   );
 };
 
-export default CommentItem;
+export default observer(CommentItem);

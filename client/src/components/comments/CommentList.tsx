@@ -1,10 +1,12 @@
-// mui
-import { Card, CardContent, Paper } from "@mui/material";
+// state
 import { observer } from "mobx-react-lite";
+import { useAppState } from "../../mobx/context/hooks";
+// mui
+import { CardContent, Paper } from "@mui/material";
 // components
 import CommentItem from "./CommentItem";
+// interfaces
 import { PostIdKey } from "../PostView/interfaces";
-import { useAppState } from "../../mobx/context/hooks";
 
 const CommentList: React.FC<{ postId: PostIdKey }> = ({ postId }) => {
   // state
@@ -16,9 +18,7 @@ const CommentList: React.FC<{ postId: PostIdKey }> = ({ postId }) => {
 
   return (
     <CardContent component={Paper} elevation={2}>
-      {/* <Card component={Paper} elevation={2}> */}
       {commentElems}
-      {/* </Card> */}
     </CardContent>
   );
 };

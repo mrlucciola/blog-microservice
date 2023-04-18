@@ -1,6 +1,7 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import axios, { AxiosError } from "axios";
 // state
+import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
 import { Button, Stack, TextField } from "@mui/material";
@@ -16,7 +17,8 @@ const CommentCreate: React.FC<{ postId: string }> = ({ postId }) => {
   const onChangeUpdateText = (
     e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => setCommentText(e.target.value);
-  const handleSubmit = async () => {
+  const onSubmitHandle = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     // validation
     if (!commentText) throw new Error("Comment text is empty");
 
@@ -34,7 +36,6 @@ const CommentCreate: React.FC<{ postId: string }> = ({ postId }) => {
       commentsPush(postId, newComment);
     } catch (err) {
       const { message, code } = err as AxiosError;
-
       throw new Error(`Error submitting new post:\n${code} - ${message}`);
     }
   };
@@ -44,10 +45,7 @@ const CommentCreate: React.FC<{ postId: string }> = ({ postId }) => {
       component="form"
       direction="row"
       justifyContent="center"
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmit();
-      }}
+      onSubmit={onSubmitHandle}
     >
       <TextField
         label="Add comment"
@@ -61,4 +59,4 @@ const CommentCreate: React.FC<{ postId: string }> = ({ postId }) => {
   );
 };
 
-export default CommentCreate;
+export default observer(CommentCreate);
