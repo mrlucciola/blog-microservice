@@ -16,9 +16,9 @@ import {
 import ExpandMoreOutlined from "@mui/icons-material/ExpandMoreOutlined";
 // components
 import CommentCreate from "../comments/CommentCreate";
+import CommentList from "../comments/CommentList";
 // interfaces
 import { PostProps } from "./PostList";
-import CommentList from "../comments/CommentList";
 import { useAppState } from "../../mobx/context/hooks";
 
 const ExpandMore: React.FC<{
@@ -46,12 +46,10 @@ const ExpandMore: React.FC<{
   );
 };
 
-const PostItem: React.FC<PostProps> = ({ id, title }) => {
+const PostItem: React.FC<PostProps> = ({ id, title, comments }) => {
   // state
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const commentsCt = useAppState((s) =>
-    s.comments.commentsByPost[id] ? s.comments.commentsByPost[id].length : 0
-  );
+  const commentsCt = comments.length;
   // event handlers
   const handleExpandClick = (isExpanded: boolean) => {
     setIsExpanded(!isExpanded);
@@ -70,7 +68,7 @@ const PostItem: React.FC<PostProps> = ({ id, title }) => {
         </CardActions>
         <Collapse in={isExpanded} timeout="auto" unmountOnExit>
           <CardContent>
-            {commentsCt > 0 && <CommentList postId={id} />}
+            {commentsCt > 0 && <CommentList comments={comments} />}
           </CardContent>
           <CommentCreate postId={id} />
         </Collapse>

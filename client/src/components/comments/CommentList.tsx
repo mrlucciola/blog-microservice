@@ -1,14 +1,11 @@
 // mui
 import { Card, Paper } from "@mui/material";
 import { observer } from "mobx-react-lite";
-import { useAppState } from "../../mobx/context/hooks";
 // components
 import CommentItem from "./CommentItem";
-import { PostIdKey } from "../PostView/interfaces";
+import { Comment } from "./interfaces";
 
-const CommentList: React.FC<{ postId: PostIdKey }> = ({ postId }) => {
-  const comments = useAppState((s) => s.comments.commentsByPost[postId]);
-
+const CommentList: React.FC<{ comments: Comment[] }> = ({ comments }) => {
   // build list of comments
   const commentElems = comments.map(({ text }, idx) => {
     return <CommentItem text={text} key={idx} />;

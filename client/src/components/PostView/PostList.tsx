@@ -5,10 +5,12 @@ import { Unstable_Grid2 as Grid, Stack, Typography } from "@mui/material";
 import PostItem from "./PostItem";
 import { useAppState } from "../../mobx/context/hooks";
 import { useEffect } from "react";
+import { Comment } from "../comments/interfaces";
 
 export interface PostProps {
   id: string;
   title: string;
+  comments: Comment[];
 }
 export interface PostListProps {
   [key: string]: PostProps;
@@ -25,8 +27,8 @@ const PostList: React.FC = () => {
   }, [postIds.length]);
 
   // build
-  const postElems = posts.map(({ id, title }, idx) => {
-    return <PostItem id={id} title={title} key={idx} />;
+  const postElems = posts.map(({ id, title, comments }, idx) => {
+    return <PostItem id={id} title={title} comments={comments} key={idx} />;
   });
 
   return (
