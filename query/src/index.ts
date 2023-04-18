@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 // local
 import { PORT_QUERY } from "./constants";
-import commentsRoute from "./routes/comments";
+import eventsRoute from "./routes/events";
 
 // init
 const app = express();
@@ -17,7 +17,7 @@ app.get("/", (_, res) => {
   res.send("Hello from query service!");
 });
 
-app.use("/", commentsRoute);
+app.use("/events", eventsRoute);
 
 // start server
 app.listen(PORT_QUERY, () => {
