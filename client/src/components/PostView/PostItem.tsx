@@ -48,9 +48,13 @@ const ExpandMore: React.FC<{
 const PostItem: React.FC<{ postId: PostIdKey }> = ({ postId }) => {
   // state
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const post = useAppState((s) => s.posts.getPostById(postId));
-  const comments = post.comments;
-  const commentsCt = comments.length;
+  const postTitle = useAppState((s) => s.posts.getPostById(postId).title);
+  const postIdStored = useAppState((s) => s.posts.getPostById(postId).id);
+  const postCommentsCt = useAppState(
+    (s) => s.posts.getPostById(postId).comments.length
+  );
+  // validate
+  if (postId !== postIdStored) throw new Error("Post IDs do not match.");
   // event handlers
   const handleExpandClick = (isExpanded: boolean) => {
     setIsExpanded(!isExpanded);
@@ -59,19 +63,17 @@ const PostItem: React.FC<{ postId: PostIdKey }> = ({ postId }) => {
   return (
     <Grid xs={12} md={6} xl={4}>
       <Card component={Paper} elevation={2}>
-        <CardHeader title={post.title} subheader={post.id} />
+        <CardHeader title={postTitle} subheader={postId} />
         <CardActions>
-          <Typography>{commentsCt} comments</Typography>
+          <Typography>{postCommentsCt} comments</Typography>
           <ExpandMore
             isExpanded={isExpanded}
             handleExpandClick={handleExpandClick}
           />
         </CardActions>
         <Collapse in={isExpanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            {commentsCt > 0 && <CommentList postId={postId} />}
-          </CardContent>
-          <CommentCreate postId={post.id} />
+          <CommentList postId={postId} />
+          <CommentCreate postId={postId} />
         </Collapse>
       </Card>
     </Grid>

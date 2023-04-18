@@ -1,5 +1,5 @@
 // mui
-import { Card, Paper } from "@mui/material";
+import { Card, CardContent, Paper } from "@mui/material";
 import { observer } from "mobx-react-lite";
 // components
 import CommentItem from "./CommentItem";
@@ -15,9 +15,11 @@ const CommentList: React.FC<{ postId: PostIdKey }> = ({ postId }) => {
   });
 
   return (
-    <Card component={Paper} elevation={2}>
+    <CardContent component={Paper} elevation={2}>
+      {/* <Card component={Paper} elevation={2}> */}
       {commentElems}
-    </Card>
+      {/* </Card> */}
+    </CardContent>
   );
 };
 
