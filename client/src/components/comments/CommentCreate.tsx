@@ -1,8 +1,10 @@
 import { ChangeEvent, useState } from "react";
 import axios, { AxiosError } from "axios";
-// mui
-import { Box, Button, TextField } from "@mui/material";
+// state
 import { useAppState } from "../../mobx/context/hooks";
+// mui
+import { Button, Stack, TextField } from "@mui/material";
+// other
 import { Comment } from "./interfaces";
 import { PORT_COMMENTS } from "../../constants";
 
@@ -38,8 +40,10 @@ const CommentCreate: React.FC<{ postId: string }> = ({ postId }) => {
   };
 
   return (
-    <Box
+    <Stack
       component="form"
+      direction="row"
+      justifyContent="center"
       onSubmit={(e) => {
         e.preventDefault();
         handleSubmit();
@@ -50,10 +54,10 @@ const CommentCreate: React.FC<{ postId: string }> = ({ postId }) => {
         value={commentText}
         onChange={onChangeUpdateText}
       />
-      <Button variant="contained" type="submit">
+      <Button variant="outlined" type="submit">
         Send
       </Button>
-    </Box>
+    </Stack>
   );
 };
 

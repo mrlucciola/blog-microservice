@@ -8,14 +8,14 @@ import { Divider, Stack } from "@mui/material";
 
 const App: React.FC = () => {
   // state
-  const fetchPosts = useAppState((s) => s.main.postsFetch);
+  const fetchPosts = useAppState((s) => s.posts.postsFetch);
   // effects
   useEffect(() => {
     fetchPosts();
   }, []);
 
   return (
-    <Stack className="App" divider={<Divider sx={{padding:'10px 0'}} />}>
+    <Stack className="App" divider={<Divider sx={{ padding: "10px 0" }} />}>
       <PostCreate />
       <PostList />
     </Stack>

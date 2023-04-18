@@ -3,12 +3,12 @@ import { observer } from "mobx-react-lite";
 import { Unstable_Grid2 as Grid, Stack, Typography } from "@mui/material";
 // components
 import PostItem from "./PostItem";
-import { useAppState } from "../../mobx/context/hooks";
-import { useEffect } from "react";
 import { Comment } from "../comments/interfaces";
+import { PostIdKey } from "./interfaces";
+import { useAppState } from "../../mobx/context/hooks";
 
 export interface PostProps {
-  id: string;
+  id: PostIdKey;
   title: string;
   comments: Comment[];
 }
@@ -18,17 +18,11 @@ export interface PostListProps {
 
 const PostList: React.FC = () => {
   // state
-  const posts = useAppState((s) => s.main.posts);
-  const fetchComments = useAppState((s) => s.comments.commentsByPostFetch);
-  // get comments for posts
-  const postIds = posts.map((post) => post.id);
-  useEffect(() => {
-    fetchComments(postIds);
-  }, [postIds.length]);
+  const postIds = useAppState((s) => s.posts.postIds);
 
   // build
-  const postElems = posts.map(({ id, title, comments }, idx) => {
-    return <PostItem id={id} title={title} comments={comments} key={idx} />;
+  const postElems = postIds.map((postId, idx) => {
+    return <PostItem postId={postId} key={idx} />;
   });
 
   return (
