@@ -4,6 +4,7 @@ import cors from "cors";
 // local
 import { PORT_QUERY } from "./constants";
 import eventsRoute from "./routes/events";
+import postsRoute from "./routes/posts";
 
 // init
 const app = express();
@@ -18,6 +19,7 @@ app.get("/", (_, res) => {
 });
 
 app.use("/events", eventsRoute);
+app.use("/posts", postsRoute);
 
 // start server
 app.listen(PORT_QUERY, () => {

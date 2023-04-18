@@ -10,7 +10,7 @@ import { posts } from "../seed";
 // init
 const router = Router();
 
-router.route("/events").post(
+router.route("/").post(
   (
     // @todo fix this
     req: Request<null, any, EventPostCreated & EventCommentCreated>,
