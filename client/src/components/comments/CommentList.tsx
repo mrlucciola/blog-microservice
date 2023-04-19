@@ -12,9 +12,9 @@ const CommentList: React.FC<{ postId: PostIdKey }> = ({ postId }) => {
   // state
   const commentIds = useAppState((s) => s.comments.getCommentIds(postId));
   // build list of comments
-  const commentElems = commentIds.map((commentId, idx) => {
-    return <CommentItem postId={postId} commentId={commentId} key={idx} />;
-  });
+  const commentElems = commentIds.map((commentId, idx) => (
+    <CommentItem postId={postId} commentId={commentId} key={idx} />
+  ));
 
   return (
     <CardContent component={Paper} elevation={2}>

@@ -1,14 +1,9 @@
-import axios from "axios";
 // state
 import { makeAutoObservable } from "mobx";
 // stores
 import { RootStore } from "./rootStore";
 // models
-import {
-  CommentIdKey,
-  Comment,
-  CommentsByPost,
-} from "../../components/comments/interfaces";
+import { CommentIdKey, Comment } from "../../components/comments/interfaces";
 import { PostIdKey } from "../../components/PostView/interfaces";
 import { PORT_COMMENTS } from "../../constants";
 import { PostsStore } from "./postsStore";
@@ -76,11 +71,7 @@ export class CommentsStore {
     const post = this.posts.getPostById(postId);
     post.comments.push(comment);
   };
-  /** Fetch the comments for multiple posts in a single query */
-  commentsByPostFetch = (postIds: PostIdKey[]) => {
-    // let this run async
-    // postIds.forEach((postId) => fetchCommments(this, postId));
-  };
+
   //////////////////////// ACTIONS ////////////////////////
   /////////////////////////////////////////////////////////
 

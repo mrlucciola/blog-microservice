@@ -49,10 +49,10 @@ const PostItem: React.FC<{ postId: PostIdKey }> = ({ postId }) => {
   // state
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const postTitle = useAppState((s) => s.posts.getPostById(postId).title);
-  const postIdStored = useAppState((s) => s.posts.getPostById(postId).id);
   const postCommentsCt = useAppState(
     (s) => s.posts.getPostById(postId).comments.length
   );
+  const postIdStored = useAppState((s) => s.posts.getPostById(postId).id);
   // validation
   if (postId !== postIdStored) throw new Error("Post IDs do not match.");
   // event handlers
@@ -61,7 +61,14 @@ const PostItem: React.FC<{ postId: PostIdKey }> = ({ postId }) => {
   };
 
   return (
-    <Grid xs={12} md={6} xl={4} component={Card} elevation={5} border="1px solid black">
+    <Grid
+      xs={12}
+      md={6}
+      xl={4}
+      component={Card}
+      elevation={5}
+      border="1px solid black"
+    >
       <CardHeader title={postTitle} subheader={postId} />
       <CardActions>
         <Typography>{postCommentsCt} comments</Typography>
