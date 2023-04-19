@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
 import {
-  Divider,
+  Container,
   Unstable_Grid2 as Grid,
   Stack,
   Typography,
@@ -21,11 +21,11 @@ const PostList: FC = () => {
   });
 
   return (
-    <Stack p={1} divider={<Divider />}>
+    <Stack component={Container} alignItems="start" spacing={2} py={1}>
       <Typography variant="h3" textAlign="start">
         Posts
       </Typography>
-      <Grid container spacing={2} sx={{ width: "100%" }}>
+      <Grid container direction="row" spacing={1} sx={{ width: "100%" }}>
         {postElems}
       </Grid>
     </Stack>
