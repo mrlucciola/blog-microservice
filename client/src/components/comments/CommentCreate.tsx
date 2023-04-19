@@ -24,11 +24,6 @@ const CommentCreate: React.FC<{ postId: string }> = ({ postId }) => {
 
     const commentPayload = { text: commentText };
     try {
-      // to add
-      // const res = await axios.post<Comment>(
-      //   `http://localhost:${PORT_QUERY}/posts/${postId}/comments`,
-      //   commentPayload
-      // );
       const res = await axios.post<Comment>(
         `http://localhost:${PORT_COMMENTS}/posts/${postId}/comments`,
         commentPayload

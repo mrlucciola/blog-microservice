@@ -9,10 +9,14 @@ const router = Router();
 
 // add route-specific middlewares
 // router.use((req, res, next) => {});
-router.param("postId", (_req, _res, _next, val: PostIdKey, name) => {
-  console.log(`val: ${val},  name: ${name}`);
-  _next();
-});
+
+// url-parameter-specific logic
+// router.param("postId", (_req, _res, _next, val: PostIdKey, name) => {
+//   console.log(`val: ${val},  name: ${name}`);
+//   _next();
+// });
+
+// comment creation
 router
   .route("/:postId/comments")
   // route-specific middleware

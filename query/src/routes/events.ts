@@ -12,7 +12,7 @@ const router = Router();
 
 router.route("/").post(
   (
-    // @todo fix this
+    // @todo use generic event type
     req: Request<null, any, EventPostCreated & EventCommentCreated>,
     res,
     _next
@@ -32,9 +32,8 @@ router.route("/").post(
       const post = posts[postId];
       post.comments.push({ id, text, postId });
     }
-    console.log("posts", posts);
 
-    res.status(201).send("OK");
+    res.status(201).send(data);
   }
 );
 
