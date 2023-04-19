@@ -1,10 +1,11 @@
 import { FC, useEffect } from "react";
+// state
+import { useAppState } from "./mobx/context/hooks";
+// mui
+import { Divider, Stack } from "@mui/material";
 // components
 import PostCreate from "./components/PostView/PostCreate";
 import PostList from "./components/PostView/PostList";
-// state
-import { useAppState } from "./mobx/context/hooks";
-import { Divider, Stack } from "@mui/material";
 
 const App: FC = () => {
   // state
