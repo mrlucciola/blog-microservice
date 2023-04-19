@@ -10,10 +10,10 @@ import { PostIdKey } from "../PostView/interfaces";
 
 const CommentList: React.FC<{ postId: PostIdKey }> = ({ postId }) => {
   // state
-  const comments = useAppState((s) => s.comments.getCommentsByPost(postId));
+  const commentIds = useAppState((s) => s.comments.getCommentIds(postId));
   // build list of comments
-  const commentElems = comments.map(({ text }, idx) => {
-    return <CommentItem text={text} key={idx} />;
+  const commentElems = commentIds.map((commentId, idx) => {
+    return <CommentItem postId={postId} commentId={commentId} key={idx} />;
   });
 
   return (

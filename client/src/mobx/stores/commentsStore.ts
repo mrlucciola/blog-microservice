@@ -4,7 +4,11 @@ import { makeAutoObservable } from "mobx";
 // stores
 import { RootStore } from "./rootStore";
 // models
-import { Comment, CommentsByPost } from "../../components/comments/interfaces";
+import {
+  CommentIdKey,
+  Comment,
+  CommentsByPost,
+} from "../../components/comments/interfaces";
 import { PostIdKey } from "../../components/PostView/interfaces";
 import { PORT_COMMENTS } from "../../constants";
 import { PostsStore } from "./postsStore";
@@ -44,9 +48,24 @@ export class CommentsStore {
   /////////////////////////////////////////////////////////
   //////////////////////// ACTIONS ////////////////////////
 
+  getCommentIds(postId: PostIdKey): CommentIdKey[] {
+    const commentIdArr = this.getCommentsByPost(postId).map((c) => c.id);
+
+    return commentIdArr;
+  }
+
   getCommentsByPost = (postId: PostIdKey): Comment[] => {
     const post = this.posts.getPostById(postId);
     return post.comments;
+  };
+
+  getComment = (postId: PostIdKey, commentId: CommentIdKey): Comment => {
+    // const post = this.posts.getPostById(postId);
+    // return post.comments;
+    const comments = this.getCommentsByPost(postId);
+    const comment = comments.find((c) => c.id === commentId)!;
+
+    return comment;
   };
   // comments
   setCommentsByPost = (postId: PostIdKey, comments: Comment[]) => {

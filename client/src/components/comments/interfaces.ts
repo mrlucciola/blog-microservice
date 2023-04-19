@@ -1,10 +1,13 @@
 import { PostIdKey } from "../PostView/interfaces";
 
+export type CommentIdKey = string;
+
 export class Comment {
-  id: string;
+  id: CommentIdKey;
   text: string;
   postId: string;
-  constructor(id: string, text: string, postId: PostIdKey) {
+
+  constructor(id: CommentIdKey, text: string, postId: PostIdKey) {
     this.id = id;
     this.text = text;
     this.postId = postId;

@@ -7,7 +7,7 @@ import { useAppState } from "../../mobx/context/hooks";
 import { Button, Stack, TextField } from "@mui/material";
 // other
 import { Comment } from "./interfaces";
-import { PORT_COMMENTS } from "../../constants";
+import { PORT_COMMENTS, PORT_QUERY } from "../../constants";
 
 const CommentCreate: React.FC<{ postId: string }> = ({ postId }) => {
   // state
@@ -24,6 +24,11 @@ const CommentCreate: React.FC<{ postId: string }> = ({ postId }) => {
 
     const commentPayload = { text: commentText };
     try {
+      // to add
+      // const res = await axios.post<Comment>(
+      //   `http://localhost:${PORT_QUERY}/posts/${postId}/comments`,
+      //   commentPayload
+      // );
       const res = await axios.post<Comment>(
         `http://localhost:${PORT_COMMENTS}/posts/${postId}/comments`,
         commentPayload

@@ -1,7 +1,12 @@
 import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
-import { Unstable_Grid2 as Grid, Stack, Typography } from "@mui/material";
+import {
+  Divider,
+  Unstable_Grid2 as Grid,
+  Stack,
+  Typography,
+} from "@mui/material";
 // components
 import PostItem from "./PostItem";
 // interfaces
@@ -26,8 +31,10 @@ const PostList: React.FC = () => {
   });
 
   return (
-    <Stack alignItems="start" spacing={2}>
-      <Typography variant="h3">Posts</Typography>
+    <Stack p={1} divider={<Divider />}>
+      <Typography variant="h3" textAlign="start">
+        Posts
+      </Typography>
       <Grid container spacing={2} sx={{ width: "100%" }}>
         {postElems}
       </Grid>
