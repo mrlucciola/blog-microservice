@@ -21,7 +21,6 @@ export class PostsStore {
 
   /////////////////////////////////////////////////////////
   ////////////////////// OBSERVABLES //////////////////////
-  posts: Post[] = [];
   postsMap = new PostsMap();
   ////////////////////// OBSERVABLES //////////////////////
   /////////////////////////////////////////////////////////
@@ -45,13 +44,15 @@ export class PostsStore {
   /////////////////////////////////////////////////////////
   //////////////////////// ACTIONS ////////////////////////
   setPosts = (newPostsArr: Post[]) => {
-    this.posts = newPostsArr;
     this.postsMap = new PostsMap(newPostsArr.map((post) => [post.id, post]));
   };
   postsPush = (newPost: Post) => {
-    this.posts.push(newPost);
     this.postsMap.set(newPost.id, newPost);
   };
+  /**
+   * @todo add logic to handle empty response
+   * @todo add logic to handle request error
+   */
   postsFetch = async () => {
     const res = await axios.get<PostListRes>(
       `http://localhost:${PORT_QUERY}/posts`
