@@ -36,7 +36,7 @@ const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
       commentsPush(postId, newComment);
     } catch (err) {
       const { message, code } = err as AxiosError;
-      throw new Error(`Error submitting new post:\n${code} - ${message}`);
+      throw new Error(`Error submitting new comment:\n${code} - ${message}`);
     }
   };
 
