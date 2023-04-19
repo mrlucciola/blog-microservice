@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 // state
 import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
@@ -6,12 +6,10 @@ import { useAppState } from "../../mobx/context/hooks";
 import { useTheme } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import Collapse from "@mui/material/Collapse";
 import Grid from "@mui/material/Unstable_Grid2";
 import IconButton from "@mui/material/IconButton";
-import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import ExpandMoreOutlined from "@mui/icons-material/ExpandMoreOutlined";
 // components
@@ -20,7 +18,7 @@ import CommentList from "../comments/CommentList";
 // interfaces
 import { PostIdKey } from "./interfaces";
 
-const ExpandMore: React.FC<{
+const ExpandMore: FC<{
   isExpanded: boolean;
   handleExpandClick: (_: boolean) => void;
 }> = ({ isExpanded, handleExpandClick }) => {
@@ -45,7 +43,7 @@ const ExpandMore: React.FC<{
   );
 };
 
-const PostItem: React.FC<{ postId: PostIdKey }> = ({ postId }) => {
+const PostItem: FC<{ postId: PostIdKey }> = ({ postId }) => {
   // state
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const postTitle = useAppState((s) => s.posts.getPostById(postId).title);

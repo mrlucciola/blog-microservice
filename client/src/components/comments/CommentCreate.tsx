@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { FC, ChangeEvent, FormEvent, useState } from "react";
 import axios, { AxiosError } from "axios";
 // state
 import { observer } from "mobx-react-lite";
@@ -7,12 +7,12 @@ import { useAppState } from "../../mobx/context/hooks";
 import { Button, Stack, TextField } from "@mui/material";
 // other
 import { Comment } from "./interfaces";
-import { PORT_COMMENTS, PORT_QUERY } from "../../constants";
+import { PORT_COMMENTS } from "../../constants";
 
-const CommentCreate: React.FC<{ postId: string }> = ({ postId }) => {
+const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
   // state
   const [commentText, setCommentText] = useState<string>("");
-  const commentsPush = useAppState((s) => s.comments.commentsByPostPush);
+  const commentsPush = useAppState((s) => s.comments.pushComment);
   // event handlers
   const onChangeUpdateText = (
     e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>

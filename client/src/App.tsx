@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 // components
 import PostCreate from "./components/PostView/PostCreate";
 import PostList from "./components/PostView/PostList";
@@ -6,7 +6,7 @@ import PostList from "./components/PostView/PostList";
 import { useAppState } from "./mobx/context/hooks";
 import { Divider, Stack } from "@mui/material";
 
-const App: React.FC = () => {
+const App: FC = () => {
   // state
   const fetchPosts = useAppState((s) => s.posts.postsFetch);
   // effects

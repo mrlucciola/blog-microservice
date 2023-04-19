@@ -1,3 +1,5 @@
+import { FC } from "react";
+// state
 import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
@@ -6,7 +8,7 @@ import { Card, Paper } from "@mui/material";
 import { PostIdKey } from "../PostView/interfaces";
 import { CommentIdKey } from "./interfaces";
 
-const CommentItem: React.FC<{
+const CommentItem: FC<{
   postId: PostIdKey;
   commentId: CommentIdKey;
 }> = ({ postId, commentId }) => {

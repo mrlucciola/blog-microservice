@@ -1,15 +1,11 @@
-import axios from "axios";
 // state
 import { makeAutoObservable } from "mobx";
 // stores
 import { RootStore } from "./rootStore";
 // models
-import { PostListProps, PostProps } from "../../components/PostView/PostList";
-import { PORT_QUERY } from "../../constants";
 
-/// Main
+/// Main store
 export class MainStore {
-  // ctor
   constructor(_rootStore: RootStore) {
     // this.other = rootStore.other
     makeAutoObservable(this, {}, { autoBind: true });
@@ -17,7 +13,6 @@ export class MainStore {
 
   /////////////////////////////////////////////////////////
   ////////////////////// OBSERVABLES //////////////////////
-  posts: PostProps[] = [];
   ////////////////////// OBSERVABLES //////////////////////
   /////////////////////////////////////////////////////////
 
@@ -28,23 +23,6 @@ export class MainStore {
 
   /////////////////////////////////////////////////////////
   //////////////////////// ACTIONS ////////////////////////
-  setPosts = (newPostsArr: PostProps[]) => {
-    this.posts = newPostsArr;
-  };
-  postsPush = (newPost: PostProps) => {
-    this.posts.push(newPost);
-  };
-  postsFilterOne = (postToRemove: PostProps) => {
-    this.posts = this.posts.filter((post) => {
-      return post.id !== postToRemove.id;
-    });
-  };
-  postsFetch = async () => {
-    const res = await axios.get<PostListProps>(
-      `http://localhost:${PORT_QUERY}/posts`
-    );
-    if (res.data) this.setPosts(Object.values(res.data));
-  };
   //////////////////////// ACTIONS ////////////////////////
   /////////////////////////////////////////////////////////
 

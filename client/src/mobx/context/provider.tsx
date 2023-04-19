@@ -1,10 +1,9 @@
+import { FC, ReactNode } from "react";
 import { useLocalStore } from "mobx-react-lite";
 import { storeContext } from "./ctx";
 import { RootStore } from "../stores/rootStore";
 
-export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const StoreProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const store = useLocalStore(() => new RootStore());
 
   return (

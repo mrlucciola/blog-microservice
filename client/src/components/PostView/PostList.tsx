@@ -1,3 +1,5 @@
+import { FC } from "react";
+// state
 import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
@@ -9,20 +11,8 @@ import {
 } from "@mui/material";
 // components
 import PostItem from "./PostItem";
-// interfaces
-import { Comment } from "../comments/interfaces";
-import { PostIdKey } from "./interfaces";
 
-export interface PostProps {
-  id: PostIdKey;
-  title: string;
-  comments: Comment[];
-}
-export interface PostListProps {
-  [key: string]: PostProps;
-}
-
-const PostList: React.FC = () => {
+const PostList: FC = () => {
   // state
   const postIds = useAppState((s) => s.posts.postIds);
   // build

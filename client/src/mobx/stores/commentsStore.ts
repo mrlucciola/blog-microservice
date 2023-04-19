@@ -55,19 +55,18 @@ export class CommentsStore {
   };
 
   getComment = (postId: PostIdKey, commentId: CommentIdKey): Comment => {
-    // const post = this.posts.getPostById(postId);
-    // return post.comments;
     const comments = this.getCommentsByPost(postId);
     const comment = comments.find((c) => c.id === commentId)!;
 
     return comment;
   };
-  // comments
+
   setCommentsByPost = (postId: PostIdKey, comments: Comment[]) => {
     const post = this.posts.getPostById(postId);
     post.comments = comments;
   };
-  commentsByPostPush = (postId: PostIdKey, comment: Comment) => {
+
+  pushComment = (postId: PostIdKey, comment: Comment) => {
     const post = this.posts.getPostById(postId);
     post.comments.push(comment);
   };

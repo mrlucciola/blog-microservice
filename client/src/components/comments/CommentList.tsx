@@ -1,3 +1,4 @@
+import { FC } from "react";
 // state
 import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
@@ -8,7 +9,7 @@ import CommentItem from "./CommentItem";
 // interfaces
 import { PostIdKey } from "../PostView/interfaces";
 
-const CommentList: React.FC<{ postId: PostIdKey }> = ({ postId }) => {
+const CommentList: FC<{ postId: PostIdKey }> = ({ postId }) => {
   // state
   const commentIds = useAppState((s) => s.comments.getCommentIds(postId));
   // build list of comments

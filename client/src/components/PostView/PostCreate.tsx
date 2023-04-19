@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { FC, MouseEvent as RMouseEvent, useState } from "react";
 import axios from "axios";
 // mui
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 
-const PostCreate: React.FC = () => {
+const PostCreate: FC = () => {
+  // state
   const [postTitle, setPostTitle] = useState<string>("");
+  // event handlers
   const onClickSubmit = async (
-    _e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    _e: RMouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     const postPayload = { title: postTitle };
 
-    console.log("submitting:", postPayload);
     try {
       await axios.post("http://localhost:8080/posts", postPayload);
     } catch (err) {
