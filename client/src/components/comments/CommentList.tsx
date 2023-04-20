@@ -3,7 +3,7 @@ import { FC } from "react";
 import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
-import { CardContent, Paper } from "@mui/material";
+import { CardContent, Divider, Stack } from "@mui/material";
 // components
 import CommentItem from "./CommentItem";
 // interfaces
@@ -18,7 +18,12 @@ const CommentList: FC<{ postId: PostIdKey }> = ({ postId }) => {
   ));
 
   return (
-    <CardContent component={Paper} elevation={2}>
+    <CardContent
+      component={Stack}
+      direction="column"
+      spacing={0.5}
+      divider={<Divider />}
+    >
       {commentElems}
     </CardContent>
   );

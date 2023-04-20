@@ -4,7 +4,7 @@ import axios, { AxiosError } from "axios";
 import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
-import { Button, Stack, TextField } from "@mui/material";
+import { Button, Container, Stack, TextField } from "@mui/material";
 // other
 import { Comment } from "./interfaces";
 import { PORT_COMMENTS } from "../../constants";
@@ -41,21 +41,25 @@ const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
   };
 
   return (
-    <Stack
-      component="form"
-      direction="row"
-      justifyContent="center"
-      onSubmit={onSubmitHandle}
-    >
-      <TextField
-        label="Add comment"
-        value={commentText}
-        onChange={onChangeUpdateText}
-      />
-      <Button variant="outlined" type="submit">
-        Send
-      </Button>
-    </Stack>
+    <Container>
+      <Stack
+        component="form"
+        direction="row"
+        justifyContent="center"
+        onSubmit={onSubmitHandle}
+        width="100%"
+      >
+        <TextField
+          label="Add comment"
+          value={commentText}
+          onChange={onChangeUpdateText}
+          fullWidth
+        />
+        <Button variant="outlined" type="submit">
+          Send
+        </Button>
+      </Stack>
+    </Container>
   );
 };
 

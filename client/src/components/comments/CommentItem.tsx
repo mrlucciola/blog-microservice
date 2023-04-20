@@ -3,7 +3,7 @@ import { FC } from "react";
 import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
-import { Card, Paper } from "@mui/material";
+import { Card, CardContent, Paper, Typography } from "@mui/material";
 // interfaces
 import { PostIdKey } from "../PostView/interfaces";
 import { CommentIdKey } from "./interfaces";
@@ -18,8 +18,12 @@ const CommentItem: FC<{
   );
 
   return (
-    <Card component={Paper} elevation={2}>
-      {text}
+    <Card elevation={0}>
+      <CardContent>
+        <Typography variant="body1" component="div" textAlign="start">
+          {text}
+        </Typography>
+      </CardContent>
     </Card>
   );
 };
