@@ -14,6 +14,7 @@ const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
   // state
   const [commentText, setCommentText] = useState<string>("");
   const commentsPush = useAppState((s) => s.comments.pushComment);
+  const activateAlert = useAppState((s) => s.alerts.activateAlert);
   // event handlers
   const onChangeUpdateText = (
     e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -21,7 +22,7 @@ const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
   const onSubmitHandle = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // validation
-    if (!commentText) throw new Error("Comment text is empty");
+    if (!commentText) return activateAlert("error", "Comment text is empty.");
 
     const commentPayload = { text: commentText };
     try {
@@ -35,8 +36,11 @@ const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
       setCommentText("");
       // add to state
       commentsPush(postId, newComment);
+      activateAlert("success", "New comment created.");
     } catch (err) {
       const { message, code } = err as AxiosError;
+
+      activateAlert("error", "Error: cannot submit comment.");
       throw new Error(`Error submitting new comment:\n${code} - ${message}`);
     }
   };
