@@ -1,4 +1,4 @@
-import { Comment } from "../comments/interfaces";
+import { Comment } from "../CommentSection/interfaces";
 
 export type PostIdKey = string;
 

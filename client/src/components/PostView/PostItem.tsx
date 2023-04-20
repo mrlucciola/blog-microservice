@@ -8,7 +8,7 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import Grid from "@mui/material/Unstable_Grid2";
 // components
-import CommentSection from "../comments/CommentSection";
+import CommentSection from "../CommentSection";
 // interfaces
 import { PostIdKey } from "./interfaces";
 
