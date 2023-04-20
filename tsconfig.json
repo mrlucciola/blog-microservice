@@ -1,7 +1,8 @@
 {
   "references": [
     { "path": "./packages/comments" },
-    { "path": "./packages/common" }
+    { "path": "./packages/common" },
+    // { "path": "./packages/client" },
   ],
   "files": [],
   "include": [],

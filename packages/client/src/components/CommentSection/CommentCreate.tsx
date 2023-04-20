@@ -8,7 +8,7 @@ import { Button, Divider, Stack, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 // other
 import { Comment } from "./interfaces";
-import { PORT_COMMENTS } from "../../constants";
+import { PORT_COMMENTS } from "@blog/common";
 
 const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
   // state
@@ -36,7 +36,7 @@ const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
       setCommentText("");
       // add to state
       commentsPush(postId, newComment);
-      console.log('comment',newComment)
+      console.log("comment", newComment);
       activateAlert("success", "New comment created.");
     } catch (err) {
       const { message, code } = err as AxiosError;

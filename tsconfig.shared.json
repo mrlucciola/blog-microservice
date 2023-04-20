@@ -21,6 +21,8 @@
     "noImplicitThis": true,
     "noFallthroughCasesInSwitch": true,
     "alwaysStrict": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
 
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,

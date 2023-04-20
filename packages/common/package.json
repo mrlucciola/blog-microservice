@@ -2,8 +2,11 @@
   "name": "@blog/common",
   "version": "1.0.0",
   "author": "mrlucciola (Rocco Lucciola)",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "tslib": "^2.5.0"
+  }
 }

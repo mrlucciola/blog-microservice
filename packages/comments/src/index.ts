@@ -6,6 +6,7 @@ import commentsRouter from "./routes/comments";
 import eventsRouter from "./routes/events";
 import { PORT_COMMENTS } from "@blog/common";
 
+// asdf.
 // init
 const app = express();
 

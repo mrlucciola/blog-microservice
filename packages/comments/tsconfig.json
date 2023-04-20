@@ -5,7 +5,7 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
-    "baseUrl": "dist",
+    // "baseUrl": "dist",
     "tsBuildInfoFile": "./dist.cache/common.tsbuildinfo",
 
     "skipLibCheck": true
