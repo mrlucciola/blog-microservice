@@ -1,6 +1,7 @@
 import { ChangeEvent, FC, FormEvent, useState } from "react";
 import axios, { AxiosError } from "axios";
 // state
+import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
 import { Button, Stack, TextField, Typography } from "@mui/material";
@@ -62,4 +63,4 @@ const PostCreate: FC = () => {
   );
 };
 
-export default PostCreate;
+export default observer(PostCreate);

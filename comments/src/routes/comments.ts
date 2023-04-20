@@ -38,12 +38,15 @@ router
         body: { text },
       } = req;
       const commentId = randomBytes(4).toString("hex");
-      if (!comments[postId]) return res.status(203).send({});
+      if (comments[postId] === undefined || comments[postId] === null) {
+        res.status(400).send({});
+        throw new Error(`no new post for: ${postId}`);
+      }
       if (!text) return res.status(400).send("Please add text.");
       if (!postId) return res.status(400).send("Please add post id.");
       const newComment = new Comment(commentId, text, postId);
       // update store
-      comments[postId]?.push(newComment);
+      comments[postId]!.push(newComment);
 
       // emit event
       try {
@@ -52,7 +55,7 @@ router
           new ReqEventCommentCreated("CommentCreated", newComment)
         );
       } catch (error) {
-        console.log("error sending comment to event bussy", error);
+        console.log("error sending comment to event bus", error);
         return res
           .status(404)
           .send("error sending event to event bus - CommentCreated");

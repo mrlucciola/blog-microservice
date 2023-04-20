@@ -59,9 +59,9 @@ export class CommentsStore {
   };
 
   pushComment = (postId: PostIdKey, comment: Comment) => {
-    const post = this.posts.getPostById(postId);
+    const comments = this.getCommentsByPost(postId);
 
-    post.comments.push(comment);
+    comments.push(comment);
   };
 
   //////////////////////// ACTIONS ////////////////////////

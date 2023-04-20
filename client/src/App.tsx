@@ -1,5 +1,6 @@
 import { FC, useEffect } from "react";
 // state
+import { observer } from "mobx-react-lite";
 import { useAppState } from "./mobx/context/hooks";
 // mui
 import { Container, Divider, Paper, Stack } from "@mui/material";
@@ -27,4 +28,4 @@ const App: FC = () => {
   );
 };
 
-export default App;
+export default observer(App);
