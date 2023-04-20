@@ -48,7 +48,7 @@ const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
       justifyContent="center"
       onSubmit={onSubmitHandle}
       px={0.1}
-      sx={{backgroundColor:"inherit"}}
+      sx={{ backgroundColor: "inherit" }}
     >
       <TextField
         label="Add comment"
@@ -58,13 +58,9 @@ const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
         fullWidth
       />
       <Divider orientation="vertical" />
-      <Button
-        variant="text"
-        type="submit"
-        // startIcon={}
-        // color="blue"
-        // sx={{ "& *": { backgroundColor: "white" } }}
-      ><SendIcon /></Button>
+      <Button variant="text" type="submit">
+        <SendIcon />
+      </Button>
     </Stack>
   );
 };

@@ -3,7 +3,7 @@ import { FC } from "react";
 import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
-import { CardContent, Divider, Stack } from "@mui/material";
+import { List } from "@mui/material";
 // components
 import CommentItem from "./CommentItem";
 // interfaces
@@ -17,11 +17,7 @@ const CommentList: FC<{ postId: PostIdKey }> = ({ postId }) => {
     <CommentItem postId={postId} commentId={commentId} key={idx} />
   ));
 
-  return (
-    <CardContent component={Stack} direction="column" divider={<Divider />}>
-      {commentElems}
-    </CardContent>
-  );
+  return <List sx={{ py: 0 }}>{commentElems}</List>;
 };
 
 export default observer(CommentList);

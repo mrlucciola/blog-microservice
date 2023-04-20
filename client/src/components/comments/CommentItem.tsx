@@ -3,7 +3,7 @@ import { FC } from "react";
 import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
-import { Card, CardContent, Paper, Typography } from "@mui/material";
+import { ListItemButton, ListItemText } from "@mui/material";
 // interfaces
 import { PostIdKey } from "../PostView/interfaces";
 import { CommentIdKey } from "./interfaces";
@@ -18,13 +18,13 @@ const CommentItem: FC<{
   );
 
   return (
-    <Card elevation={0} sx={{ backgroundColor: "inherit" }}>
-      <CardContent >
-        <Typography variant="body1" component="div" textAlign="start">
-          {text}
-        </Typography>
-      </CardContent>
-    </Card>
+    <ListItemButton
+      disableRipple
+      disableTouchRipple
+      sx={{ backgroundColor: "#f4f6f9", marginY: "1px" }}
+    >
+      <ListItemText primary={text} />
+    </ListItemButton>
   );
 };
 
