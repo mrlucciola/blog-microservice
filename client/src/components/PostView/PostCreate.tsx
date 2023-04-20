@@ -6,8 +6,6 @@ import { useAppState } from "../../mobx/context/hooks";
 import {
   Alert,
   Button,
-  Container,
-  Paper,
   Snackbar,
   Stack,
   TextField,
@@ -19,6 +17,7 @@ import { PORT_POSTS } from "../../constants";
 
 const PostCreate: FC = () => {
   // state
+  const [isFailSnackbarOpen, setIsFailSnackbarOpen] = useState<boolean>(false);
   const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false);
   const [postTitle, setPostTitle] = useState<string>("");
   const postsPush = useAppState((s) => s.posts.postsPush);
@@ -46,6 +45,7 @@ const PostCreate: FC = () => {
       setIsSnackbarOpen(true);
     } catch (err) {
       const { message, code } = err as AxiosError;
+      setIsFailSnackbarOpen(true);
       throw new Error(`Error submitting new post:\n${code} - ${message}`);
     }
   };
@@ -72,6 +72,15 @@ const PostCreate: FC = () => {
       >
         <Alert variant="filled" severity="success">
           Post submitted successfully
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={isFailSnackbarOpen}
+        autoHideDuration={6000}
+        onClose={() => setIsFailSnackbarOpen(false)}
+      >
+        <Alert variant="filled" severity="error">
+          Post submission failure
         </Alert>
       </Snackbar>
     </Stack>
