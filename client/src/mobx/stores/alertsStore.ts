@@ -2,53 +2,49 @@
 import { makeAutoObservable } from "mobx";
 // stores
 import { RootStore } from "./rootStore";
+import { AlertColor } from "@mui/material";
 
 enum AlertEnum {
   success = "success",
   info = "info",
-  warn = "warn",
+  warning = "warning",
   error = "error",
 }
 
-export class BaseAlert<T extends AlertEnum> {
+export class BaseAlert<T extends AlertColor> {
   message: string;
   display = false;
-  readonly kind: T;
+  kind: T;
 
   constructor(message: string, kind: T) {
     this.message = message;
     this.kind = kind;
   }
-  activate() {
-    this.display = true;
-  }
 }
 
-export class Success extends BaseAlert<AlertEnum.success> {
+export class SuccessAlert extends BaseAlert<AlertEnum.success> {
   constructor(msg: string) {
     super(msg, AlertEnum.success);
   }
 }
-export class Info extends BaseAlert<AlertEnum.info> {
+export class InfoAlert extends BaseAlert<AlertEnum.info> {
   constructor(msg: string) {
     super(msg, AlertEnum.info);
   }
 }
-export class Warn extends BaseAlert<AlertEnum.warn> {
+export class WarningAlert extends BaseAlert<AlertEnum.warning> {
   constructor(msg: string) {
-    super(msg, AlertEnum.warn);
+    super(msg, AlertEnum.warning);
   }
 }
-export class Error extends BaseAlert<AlertEnum.error> {
+export class ErrorAlert extends BaseAlert<AlertEnum.error> {
   constructor(msg: string) {
     super(msg, AlertEnum.error);
   }
 }
 
-interface Alert extends BaseAlert<AlertEnum> {}
+export class Alert extends BaseAlert<AlertColor> {}
 
-// const asdf: Success = { message: "asdf", display: false, kind: "success" };
-const asdf2 = new Success("asdf");
 /// Alerts store
 export class AlertsStore {
   constructor(_rootStore: RootStore) {
@@ -57,29 +53,26 @@ export class AlertsStore {
 
   /////////////////////////////////////////////////////////
   ////////////////////// OBSERVABLES //////////////////////
-  alerts: Alert[] = [];
+  // alerts: Alert[] = [];
+  current: Alert | null = null;
   ////////////////////// OBSERVABLES //////////////////////
   /////////////////////////////////////////////////////////
 
   /////////////////////////////////////////////////////////
   /////////////////////// COMPUTEDS ///////////////////////
-  get current(): Alert | null {
-    if (this.alerts.length === 0) return null;
-    return this.alerts[this.alerts.length - 1];
-  }
-  get queueLen(): number {
-    return this.alerts.length;
+  get isActive(): boolean {
+    return this.current !== null;
   }
   /////////////////////// COMPUTEDS ///////////////////////
   /////////////////////////////////////////////////////////
 
   /////////////////////////////////////////////////////////
   //////////////////////// ACTIONS ////////////////////////
-  push = (alert: Alert) => {
-    this.alerts.push(alert);
+  activateAlert = (alert: Alert) => {
+    this.current = alert;
   };
-  dequeue = () => {
-    this.alerts.shift();
+  deactivateAlert = () => {
+    this.current = null;
   };
   //////////////////////// ACTIONS ////////////////////////
   /////////////////////////////////////////////////////////

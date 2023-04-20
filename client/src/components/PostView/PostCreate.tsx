@@ -3,23 +3,16 @@ import axios, { AxiosError } from "axios";
 // state
 import { useAppState } from "../../mobx/context/hooks";
 // mui
-import {
-  Alert,
-  Button,
-  Snackbar,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, Stack, TextField, Typography } from "@mui/material";
 // interfaces
 import { Post, PostCreateRes } from "./interfaces";
 import { PORT_POSTS } from "../../constants";
+import { ErrorAlert, SuccessAlert } from "../../mobx/stores/alertsStore";
 
 const PostCreate: FC = () => {
   // state
-  const [isFailSnackbarOpen, setIsFailSnackbarOpen] = useState<boolean>(false);
-  const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false);
   const [postTitle, setPostTitle] = useState<string>("");
+  const activateAlert = useAppState((s) => s.alerts.activateAlert);
   const postsPush = useAppState((s) => s.posts.postsPush);
   // event handlers
   const onChangeUpdateText = (
@@ -28,7 +21,9 @@ const PostCreate: FC = () => {
   const onSubmitHandle = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // validation
-    if (!postTitle) throw new Error("Post title is empty");
+    if (!postTitle) {
+      activateAlert(new ErrorAlert("Error: could not create new post"));
+    }
 
     const postPayload = { title: postTitle };
     try {
@@ -42,10 +37,10 @@ const PostCreate: FC = () => {
       setPostTitle("");
       // add to state
       postsPush(newPost);
-      setIsSnackbarOpen(true);
+      activateAlert(new SuccessAlert("Created new post"));
     } catch (err) {
       const { message, code } = err as AxiosError;
-      setIsFailSnackbarOpen(true);
+      activateAlert(new ErrorAlert("Error: could not create new post"));
       throw new Error(`Error submitting new post:\n${code} - ${message}`);
     }
   };
@@ -65,24 +60,6 @@ const PostCreate: FC = () => {
           Submit
         </Button>
       </Stack>
-      <Snackbar
-        open={isSnackbarOpen}
-        autoHideDuration={6000}
-        onClose={() => setIsSnackbarOpen(false)}
-      >
-        <Alert variant="filled" severity="success">
-          Post submitted successfully
-        </Alert>
-      </Snackbar>
-      <Snackbar
-        open={isFailSnackbarOpen}
-        autoHideDuration={6000}
-        onClose={() => setIsFailSnackbarOpen(false)}
-      >
-        <Alert variant="filled" severity="error">
-          Post submission failure
-        </Alert>
-      </Snackbar>
     </Stack>
   );
 };

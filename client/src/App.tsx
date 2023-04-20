@@ -6,6 +6,7 @@ import { Container, Divider, Paper, Stack } from "@mui/material";
 // components
 import PostCreate from "./components/PostView/PostCreate";
 import PostList from "./components/PostView/PostList";
+import Alerts from "./components/Alerts";
 
 const App: FC = () => {
   // state
@@ -21,6 +22,7 @@ const App: FC = () => {
         <PostCreate />
         <PostList />
       </Stack>
+      <Alerts />
     </Container>
   );
 };
