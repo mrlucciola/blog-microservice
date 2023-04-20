@@ -1,7 +1,9 @@
 {
-  "compilerOptions": {},
+  "references": [
+    { "path": "./packages/comments" },
+    { "path": "./packages/common" }
+  ],
   "files": [],
   "include": [],
-  "references": [{ "path": "./packages/*" }],
-  "exclude": ["**/node_modules"]
+  "exclude": ["**/node_modules", "packages/**/tests/**", "packages/**/dist/**"]
 }

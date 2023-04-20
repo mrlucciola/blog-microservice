@@ -4,8 +4,16 @@
   "description": "",
   "private": true,
   "scripts": {
-    "build": "tsc -b",
-    "build:watch": "tsc -b --watch"
+    "build": "tsc -b tsconfig.json",
+    "rebuild:full": "yarn remove-all; yarn; yarn build",
+    "rebuild:tsc": "yarn remove-tsc; yarn build",
+    "remove-tsc": "yarn remove-comments:tsc; yarn remove-common",
+    "remove-all": "yarn remove-base; yarn remove-comments; yarn remove-common",
+    "remove-base": "rm -rf node_modules && rm yarn.lock",
+    "remove-comments": "rm -rf packages/comments/dist && rm -rf packages/comments/node_modules && rm packages/comments/tsconfig.tsbuildinfo",
+    "remove-comments:tsc": "rm -rf packages/comments/dist*/",
+    "remove-common": "rm -rf packages/common/dist*/",
+    "build:watch": "tsc -b tsconfig.json --watch"
   },
   "keywords": [],
   "author": "mrlucciola (Rocco Lucciola)",
@@ -14,7 +22,7 @@
     "husky": "^8.0.3"
   },
   "devDependencies": {
-    "typescript": "^4.9.5"
+    "typescript": "^5.0.3"
   },
   "workspaces": [
     "packages/*"

@@ -1,28 +1,34 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["ESNext"],
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "composite": true,
+    "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true,
+    "composite": true,
+
+    "target": "ES2021",
+    "lib": ["ES2021"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+
     "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noFallthroughCasesInSwitch": true,
+    "alwaysStrict": true,
 
-    // "noImplicitAny": true,
-    // "strictNullChecks": true,
-    // "strictFunctionTypes": true,
-    // "noImplicitThis": true,
-    // // "noUnusedLocals": true,
-    // // "noUnusedParameters": true,
-    // "noImplicitReturns": true,
-    // "noFallthroughCasesInSwitch": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
 
-    // "alwaysStrict": true,
-    "removeComments": true,
-    "pretty": true,
-    "preserveSymlinks": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "pretty": true
+    // "removeComments": true,
+    // "preserveSymlinks": true,
   }
+  // "typeAcquisition": { "enable": true }
 }

@@ -15,5 +15,5 @@ yarn-debug.log*
 yarn-error.log*
 
 **/*hidden*
-
-**/*dist/
+**/*dist*/
+**/*tsconfig.tsbuildinfo

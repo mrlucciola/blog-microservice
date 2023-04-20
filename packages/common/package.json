@@ -2,15 +2,8 @@
   "name": "@blog/common",
   "version": "1.0.0",
   "author": "mrlucciola (Rocco Lucciola)",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "types": "dist/index.d.ts",
   "license": "MIT",
-  "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc --watch"
-  },
-  "devDependencies": {
-    "@types/node": "^18.15.11",
-    "typescript": "^5.0.3"
-  }
+  "private": true
 }
