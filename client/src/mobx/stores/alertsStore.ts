@@ -5,34 +5,34 @@ import { RootStore } from "./rootStore";
 import { AlertColor } from "@mui/material";
 
 export class BaseAlert<T extends AlertColor> {
+  kind: T;
   message: string;
   display = false;
-  kind: T;
 
-  constructor(message: string, kind: T) {
-    this.message = message;
+  constructor(kind: T, message: string) {
     this.kind = kind;
+    this.message = message;
   }
 }
 
 export class SuccessAlert extends BaseAlert<"success"> {
   constructor(msg: string) {
-    super(msg, "success");
+    super("success", msg);
   }
 }
 export class InfoAlert extends BaseAlert<"info"> {
   constructor(msg: string) {
-    super(msg, "info");
+    super("info", msg);
   }
 }
 export class WarningAlert extends BaseAlert<"warning"> {
   constructor(msg: string) {
-    super(msg, "warning");
+    super("warning", msg);
   }
 }
 export class ErrorAlert extends BaseAlert<"error"> {
   constructor(msg: string) {
-    super(msg, "error");
+    super("error", msg);
   }
 }
 
@@ -61,9 +61,11 @@ export class AlertsStore {
 
   /////////////////////////////////////////////////////////
   //////////////////////// ACTIONS ////////////////////////
-  activateAlert = (alert: Alert) => {
-    this.current = alert;
-  };
+  activateAlert(kind: AlertColor, msg: string) {
+    const newAlert = new BaseAlert<AlertColor>(kind, msg);
+
+    this.current = newAlert;
+  }
   deactivateAlert = () => {
     this.current = null;
   };

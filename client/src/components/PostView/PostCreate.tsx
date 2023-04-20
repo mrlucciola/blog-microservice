@@ -7,7 +7,6 @@ import { Button, Stack, TextField, Typography } from "@mui/material";
 // interfaces
 import { Post, PostCreateRes } from "./interfaces";
 import { PORT_POSTS } from "../../constants";
-import { ErrorAlert, SuccessAlert } from "../../mobx/stores/alertsStore";
 
 const PostCreate: FC = () => {
   // state
@@ -21,9 +20,7 @@ const PostCreate: FC = () => {
   const onSubmitHandle = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // validation
-    if (!postTitle) {
-      activateAlert(new ErrorAlert("Error: could not create new post"));
-    }
+    if (!postTitle) return activateAlert("error", "Error: no post title");
 
     const postPayload = { title: postTitle };
     try {
@@ -37,10 +34,11 @@ const PostCreate: FC = () => {
       setPostTitle("");
       // add to state
       postsPush(newPost);
-      activateAlert(new SuccessAlert("Created new post"));
+      activateAlert("success", "Created new post");
     } catch (err) {
       const { message, code } = err as AxiosError;
-      activateAlert(new ErrorAlert("Error: could not create new post"));
+      activateAlert("error", "Error: could not create new post");
+
       throw new Error(`Error submitting new post:\n${code} - ${message}`);
     }
   };
