@@ -4,7 +4,8 @@ import axios, { AxiosError } from "axios";
 import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
-import { Button, Container, Stack, TextField } from "@mui/material";
+import { Button, Divider, Stack, TextField } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 // other
 import { Comment } from "./interfaces";
 import { PORT_COMMENTS } from "../../constants";
@@ -41,25 +42,30 @@ const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
   };
 
   return (
-    <Container>
-      <Stack
-        component="form"
-        direction="row"
-        justifyContent="center"
-        onSubmit={onSubmitHandle}
-        width="100%"
-      >
-        <TextField
-          label="Add comment"
-          value={commentText}
-          onChange={onChangeUpdateText}
-          fullWidth
-        />
-        <Button variant="outlined" type="submit">
-          Send
-        </Button>
-      </Stack>
-    </Container>
+    <Stack
+      component="form"
+      direction="row"
+      justifyContent="center"
+      onSubmit={onSubmitHandle}
+      px={0.1}
+      sx={{backgroundColor:"inherit"}}
+    >
+      <TextField
+        label="Add comment"
+        value={commentText}
+        onChange={onChangeUpdateText}
+        variant="filled"
+        fullWidth
+      />
+      <Divider orientation="vertical" />
+      <Button
+        variant="text"
+        type="submit"
+        // startIcon={}
+        // color="blue"
+        // sx={{ "& *": { backgroundColor: "white" } }}
+      ><SendIcon /></Button>
+    </Stack>
   );
 };
 

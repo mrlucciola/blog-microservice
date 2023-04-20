@@ -18,8 +18,8 @@ const CommentItem: FC<{
   );
 
   return (
-    <Card elevation={0}>
-      <CardContent>
+    <Card elevation={0} sx={{ backgroundColor: "inherit" }}>
+      <CardContent >
         <Typography variant="body1" component="div" textAlign="start">
           {text}
         </Typography>

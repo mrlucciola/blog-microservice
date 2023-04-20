@@ -18,12 +18,7 @@ const CommentList: FC<{ postId: PostIdKey }> = ({ postId }) => {
   ));
 
   return (
-    <CardContent
-      component={Stack}
-      direction="column"
-      spacing={0.5}
-      divider={<Divider />}
-    >
+    <CardContent component={Stack} direction="column" divider={<Divider />}>
       {commentElems}
     </CardContent>
   );

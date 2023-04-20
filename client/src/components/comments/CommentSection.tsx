@@ -21,9 +21,11 @@ const CommentSection: FC<{ postId: PostIdKey }> = ({ postId }) => {
     setIsExpanded(!isExpanded);
   };
 
+  const backgroundColor = "#ebeef4";
+
   return (
     <>
-      <CardActions>
+      <CardActions sx={{ backgroundColor }}>
         <Typography>{postCommentsCt} comments</Typography>
 
         <ExpandComments
@@ -31,10 +33,14 @@ const CommentSection: FC<{ postId: PostIdKey }> = ({ postId }) => {
           handleExpandClick={handleExpandClick}
         />
       </CardActions>
-      <Collapse in={isExpanded} timeout="auto" unmountOnExit>
+      <Collapse
+        sx={{ backgroundColor }}
+        in={isExpanded}
+        timeout="auto"
+        unmountOnExit
+      >
         <Divider />
         <CommentList postId={postId} />
-        <Divider />
         <CommentCreate postId={postId} />
       </Collapse>
     </>
