@@ -5,6 +5,7 @@ import { Container, Paper } from "@mui/material";
 import PostCreate from "./PostCreate";
 import PostList from "./PostList";
 
+// this component is not used
 const PostView: FC = () => {
   return (
     <Paper component={Container}>

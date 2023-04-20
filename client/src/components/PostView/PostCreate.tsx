@@ -4,9 +4,11 @@ import axios, { AxiosError } from "axios";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
 import {
+  Alert,
   Button,
   Container,
   Paper,
+  Snackbar,
   Stack,
   TextField,
   Typography,
@@ -17,6 +19,7 @@ import { PORT_POSTS } from "../../constants";
 
 const PostCreate: FC = () => {
   // state
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState<boolean>(false);
   const [postTitle, setPostTitle] = useState<string>("");
   const postsPush = useAppState((s) => s.posts.postsPush);
   // event handlers
@@ -40,6 +43,7 @@ const PostCreate: FC = () => {
       setPostTitle("");
       // add to state
       postsPush(newPost);
+      setIsSnackbarOpen(true);
     } catch (err) {
       const { message, code } = err as AxiosError;
       throw new Error(`Error submitting new post:\n${code} - ${message}`);
@@ -61,6 +65,15 @@ const PostCreate: FC = () => {
           Submit
         </Button>
       </Stack>
+      <Snackbar
+        open={isSnackbarOpen}
+        autoHideDuration={6000}
+        onClose={() => setIsSnackbarOpen(false)}
+      >
+        <Alert variant="filled" severity="success">
+          Post submitted successfully
+        </Alert>
+      </Snackbar>
     </Stack>
   );
 };
