@@ -4,13 +4,6 @@ import { makeAutoObservable } from "mobx";
 import { RootStore } from "./rootStore";
 import { AlertColor } from "@mui/material";
 
-enum AlertEnum {
-  success = "success",
-  info = "info",
-  warning = "warning",
-  error = "error",
-}
-
 export class BaseAlert<T extends AlertColor> {
   message: string;
   display = false;
@@ -22,24 +15,24 @@ export class BaseAlert<T extends AlertColor> {
   }
 }
 
-export class SuccessAlert extends BaseAlert<AlertEnum.success> {
+export class SuccessAlert extends BaseAlert<"success"> {
   constructor(msg: string) {
-    super(msg, AlertEnum.success);
+    super(msg, "success");
   }
 }
-export class InfoAlert extends BaseAlert<AlertEnum.info> {
+export class InfoAlert extends BaseAlert<"info"> {
   constructor(msg: string) {
-    super(msg, AlertEnum.info);
+    super(msg, "info");
   }
 }
-export class WarningAlert extends BaseAlert<AlertEnum.warning> {
+export class WarningAlert extends BaseAlert<"warning"> {
   constructor(msg: string) {
-    super(msg, AlertEnum.warning);
+    super(msg, "warning");
   }
 }
-export class ErrorAlert extends BaseAlert<AlertEnum.error> {
+export class ErrorAlert extends BaseAlert<"error"> {
   constructor(msg: string) {
-    super(msg, AlertEnum.error);
+    super(msg, "error");
   }
 }
 
