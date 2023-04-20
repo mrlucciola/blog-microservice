@@ -1,16 +1,16 @@
 import { FC } from "react";
 // mui
-import { Container } from "@mui/material";
+import { Container, Paper } from "@mui/material";
 // components
 import PostCreate from "./PostCreate";
 import PostList from "./PostList";
 
 const PostView: FC = () => {
   return (
-    <Container>
+    <Paper component={Container}>
       <PostCreate />
       <PostList />
-    </Container>
+    </Paper>
   );
 };
 

@@ -6,6 +6,7 @@ import { useAppState } from "../../mobx/context/hooks";
 import {
   Button,
   Container,
+  Paper,
   Stack,
   TextField,
   Typography,
@@ -46,7 +47,7 @@ const PostCreate: FC = () => {
   };
 
   return (
-    <Stack component={Container} alignItems="start" spacing={2}>
+    <Stack alignItems="start" spacing={2}>
       <Typography variant="h3">Create New Post</Typography>
       <Stack component="form" onSubmit={onSubmitHandle} sx={{ width: 300 }}>
         <TextField

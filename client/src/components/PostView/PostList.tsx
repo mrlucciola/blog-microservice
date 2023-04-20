@@ -6,6 +6,7 @@ import { useAppState } from "../../mobx/context/hooks";
 import {
   Container,
   Unstable_Grid2 as Grid,
+  Paper,
   Stack,
   Typography,
 } from "@mui/material";
@@ -21,7 +22,7 @@ const PostList: FC = () => {
   });
 
   return (
-    <Stack component={Container} alignItems="start" spacing={2} py={1}>
+    <Stack alignItems="start" spacing={2} py={1}>
       <Typography variant="h3" textAlign="start">
         Posts
       </Typography>
