@@ -3,7 +3,8 @@
 
   "compilerOptions": {
     "composite": true,
-    "rootDir": "src",
+    "declaration": true,
+    "rootDir": "./",
     "outDir": "dist",
     "baseUrl": "dist",
     "tsBuildInfoFile": "dist.cache/common.tsbuildinfo",
@@ -14,9 +15,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "target": "es5",
-    "importHelpers": true,
-    "paths": { "constants": ["./src/constants"] }
+    "importHelpers": true
   },
 
-  "include": ["src"]
+  "include": ["index.ts", "constants"],
+  // "exclude": ["dist*/", "package.json"]
 }

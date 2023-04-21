@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response, Router } from "express";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { randomBytes } from "crypto";
-import { PORT_EVENT_BUS } from "@blog/common";
+import { PORT_EVENT_BUS } from "@blog/common/constants";
 import { Post, ReqEventPostCreated } from "../interfaces";
 
 // init

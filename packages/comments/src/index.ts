@@ -4,9 +4,8 @@ import cors from "cors";
 // local
 import commentsRouter from "./routes/comments";
 import eventsRouter from "./routes/events";
-import { PORT_COMMENTS } from "@blog/common";
+import { PORT_COMMENTS } from "@blog/common/constants";
 
-// asdf.
 // init
 const app = express();
 

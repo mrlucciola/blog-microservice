@@ -4,7 +4,7 @@ import cors from "cors";
 // local
 import postsRoutes from "./services/posts";
 import eventsRoutes from "./services/events";
-import { PORT_POSTS } from "@blog/common";
+import { PORT_POSTS } from "@blog/common/constants";
 
 // init
 const app = express();
