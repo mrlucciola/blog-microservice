@@ -2,7 +2,8 @@
   "name": "@blog/event-bus",
   "version": "1.0.0",
   "private": true,
-  "main": "./src/index.ts",
+  "main": "dist",
+  "types": "dist",
   "author": "mrlucciola (Rocco Lucciola)",
   "license": "MIT",
   "scripts": {
@@ -10,10 +11,10 @@
     "start": "nodemon --exec ts-node ./src/index.ts"
   },
   "dependencies": {
+    "@blog/common": "1.0.0",
     "axios": "^1.3.5",
     "body-parser": "^1.20.2",
-    "express": "^4.18.2",
-    "@blog/common": "1.0.0"
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",

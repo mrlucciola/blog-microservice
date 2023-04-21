@@ -5,9 +5,6 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
-    // "baseUrl": "dist",
-    "tsBuildInfoFile": "dist.cache/comments.tsbuildinfo",
-
-    "skipLibCheck": true
+    "tsBuildInfoFile": "dist.cache/comments.tsbuildinfo"
   }
 }

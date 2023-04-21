@@ -13,7 +13,6 @@
 
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "lib": ["es2021"],
     "target": "es5",
     "importHelpers": true
   },
