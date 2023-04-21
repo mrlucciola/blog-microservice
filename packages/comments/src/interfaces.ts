@@ -1,4 +1,4 @@
-import { Comment } from "@blog/common/src/interfaces";
+import { Comment, EventType } from "@blog/common/src/interfaces";
 
 export class ReqEventCommentCreated {
   type: string;
@@ -19,15 +19,6 @@ export class Post {
     this.id = id;
     this.title = title;
     this.comments = comments || [];
-  }
-}
-export class EventType<D extends object> {
-  type: string;
-  data: D;
-
-  constructor(type: string, data: D) {
-    this.type = type;
-    this.data = data;
   }
 }
 

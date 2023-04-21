@@ -1,14 +1,4 @@
-import { Comment } from "@blog/common/src/interfaces";
-
-export class EventType<D extends object> {
-  type: string;
-  data: D;
-
-  constructor(type: string, data: D) {
-    this.type = type;
-    this.data = data;
-  }
-}
+import { Comment, EventType } from "@blog/common/src/interfaces";
 
 export class Post {
   id: string;

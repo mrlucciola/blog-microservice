@@ -11,3 +11,13 @@ export class Comment {
     this.postId = postId;
   }
 }
+
+export class EventType<D extends object> {
+  type: string;
+  data: D;
+
+  constructor(type: string, data: D) {
+    this.type = type;
+    this.data = data;
+  }
+}
