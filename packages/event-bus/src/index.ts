@@ -6,7 +6,7 @@ import {
   PORT_EVENT_BUS,
   PORT_POSTS,
   PORT_QUERY,
-} from "./constants";
+} from "@blog/common";
 
 // const asdf = EVENT_
 // init

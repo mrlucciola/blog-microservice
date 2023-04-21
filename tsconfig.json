@@ -2,6 +2,7 @@
   "references": [
     { "path": "./packages/comments" },
     { "path": "./packages/common" },
+    { "path": "./packages/event-bus" }
     // { "path": "./packages/client" },
   ],
   "files": [],

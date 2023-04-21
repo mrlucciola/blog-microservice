@@ -1,8 +1,8 @@
 import { Request, Router } from "express";
+import axios, { AxiosResponse } from "axios";
 import { randomBytes } from "crypto";
 import { Comment, PostIdKey, ReqEventCommentCreated } from "../interfaces";
 import { comments } from "../seed";
-import axios, { AxiosResponse } from "axios";
 import { PORT_EVENT_BUS } from "@blog/common";
 
 const router = Router();

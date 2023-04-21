@@ -6,7 +6,7 @@
     "rootDir": "src",
     "outDir": "dist",
     "baseUrl": "dist",
-    "tsBuildInfoFile": "./dist.cache/common.tsbuildinfo",
+    "tsBuildInfoFile": "dist.cache/common.tsbuildinfo",
 
     "experimentalDecorators": true,
     // "emitDecoratorMetadata": true,
