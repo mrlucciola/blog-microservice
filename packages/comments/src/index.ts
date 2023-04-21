@@ -4,7 +4,7 @@ import cors from "cors";
 // local
 import commentsRouter from "./routes/comments";
 import eventsRouter from "./routes/events";
-import { PORT_COMMENTS } from "@blog/common/constants";
+import { PORT_COMMENTS } from "@blog/common/src/constants";
 
 // init
 const app = express();

@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from "axios";
 import { randomBytes } from "crypto";
 import { Comment, PostIdKey, ReqEventCommentCreated } from "../interfaces";
 import { comments } from "../seed";
-import { PORT_EVENT_BUS } from "@blog/common/constants";
+import { PORT_EVENT_BUS } from "@blog/common/src/constants";
 
 const router = Router();
 

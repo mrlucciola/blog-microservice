@@ -8,7 +8,8 @@ import {
   Post,
   PostListRes,
 } from "../../components/PostView/interfaces";
-import { PORT_QUERY } from "@blog/common/constants";
+import { constants } from "@blog/common";
+const { PORT_QUERY } = constants;
 
 export const PostsMap = Map<PostIdKey, Post>;
 

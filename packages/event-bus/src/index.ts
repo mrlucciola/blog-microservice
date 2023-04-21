@@ -6,7 +6,7 @@ import {
   PORT_EVENT_BUS,
   PORT_POSTS,
   PORT_QUERY,
-} from "@blog/common/constants";
+} from "@blog/common/src/constants";
 
 // init
 const app = express();

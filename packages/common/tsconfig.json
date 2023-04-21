@@ -4,7 +4,7 @@
   "compilerOptions": {
     "composite": true,
     "declaration": true,
-    "rootDir": "./",
+    "rootDir": "src",
     "outDir": "dist",
     "baseUrl": "dist",
     "tsBuildInfoFile": "dist.cache/common.tsbuildinfo",
@@ -18,6 +18,5 @@
     "importHelpers": true
   },
 
-  "include": ["index.ts", "constants"],
-  // "exclude": ["dist*/", "package.json"]
+  "include": ["src"]
 }
