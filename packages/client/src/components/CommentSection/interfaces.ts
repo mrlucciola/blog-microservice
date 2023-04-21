@@ -1,18 +1,7 @@
-import { PostIdKey } from "../PostView/interfaces";
+import { Comment, PostIdKey } from "@blog/common/src/interfaces";
 
 export type CommentIdKey = string;
 
-export class Comment {
-  id: CommentIdKey;
-  text: string;
-  postId: string;
-
-  constructor(id: CommentIdKey, text: string, postId: PostIdKey) {
-    this.id = id;
-    this.text = text;
-    this.postId = postId;
-  }
-}
 export class CommentsByPost {
   [key: PostIdKey]: Comment[];
   constructor() {}

@@ -1,4 +1,4 @@
-import { Comment, PostIdKey } from "./interfaces";
+import { Comment, PostIdKey } from "@blog/common/src/interfaces";
 
 export const comments: { [key in PostIdKey]?: Comment[] } = {
   asdf: [

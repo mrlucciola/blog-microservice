@@ -1,11 +1,7 @@
 import { Request, Router } from "express";
-import {
-  Comment,
-  EventCommentCreated,
-  EventPostCreated,
-  Post,
-} from "../interfaces";
+import { EventCommentCreated, EventPostCreated, Post } from "../interfaces";
 import { posts } from "../seed";
+import { Comment } from "@blog/common/src/interfaces";
 
 // init
 const router = Router();

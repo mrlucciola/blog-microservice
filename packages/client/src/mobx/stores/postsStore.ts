@@ -3,11 +3,8 @@ import axios from "axios";
 import { makeAutoObservable } from "mobx";
 import { RootStore } from "./rootStore";
 // models
-import {
-  PostIdKey,
-  Post,
-  PostListRes,
-} from "../../components/PostView/interfaces";
+import { Post, PostListRes } from "../../components/PostView/interfaces";
+import { PostIdKey } from "@blog/common/src/interfaces";
 import { constants } from "@blog/common";
 const { PORT_QUERY } = constants;
 

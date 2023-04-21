@@ -1,3 +1,5 @@
+import { Comment } from "@blog/common/src/interfaces";
+
 export class EventType<D extends object> {
   type: string;
   data: D;
@@ -7,19 +9,7 @@ export class EventType<D extends object> {
     this.data = data;
   }
 }
-export type PostIdKey = string;
 
-export class Comment {
-  id: string;
-  text: string;
-  postId: string;
-
-  constructor(id: string, text: string, postId: PostIdKey) {
-    this.id = id;
-    this.text = text;
-    this.postId = postId;
-  }
-}
 export class Post {
   id: string;
   title: string;

@@ -7,7 +7,7 @@ import { List } from "@mui/material";
 // components
 import CommentItem from "./CommentItem";
 // interfaces
-import { PostIdKey } from "../PostView/interfaces";
+import { PostIdKey } from "@blog/common/src/interfaces";
 
 const CommentList: FC<{ postId: PostIdKey }> = ({ postId }) => {
   // state

@@ -7,7 +7,7 @@ import { useAppState } from "../../mobx/context/hooks";
 import { Button, Divider, Stack, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 // other
-import { Comment } from "./interfaces";
+import { Comment } from "@blog/common/src/interfaces";
 import { constants } from "@blog/common";
 const { PORT_COMMENTS } = constants;
 

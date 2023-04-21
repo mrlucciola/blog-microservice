@@ -1,6 +1,4 @@
-import { Comment } from "../CommentSection/interfaces";
-
-export type PostIdKey = string;
+import { Comment, PostIdKey } from "@blog/common/src/interfaces";
 
 export class Post {
   id: PostIdKey;
