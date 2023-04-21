@@ -2,9 +2,9 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 // local
-import { PORT_QUERY } from "./constants";
 import eventsRoute from "./routes/events";
 import postsRoute from "./routes/posts";
+import { PORT_QUERY } from "@blog/common";
 
 // init
 const app = express();

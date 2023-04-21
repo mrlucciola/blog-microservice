@@ -2,8 +2,7 @@
   "references": [{ "path": "../common" }],
 
   "compilerOptions": {
-    "target": "ES2021",
-    // "target": "es5",
+    "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     // mui
     "noImplicitAny": true,
