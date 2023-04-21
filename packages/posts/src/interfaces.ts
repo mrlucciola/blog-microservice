@@ -1,5 +1,6 @@
-/**
- * Request to Event service of type `NewPost`
+import { Post } from "@blog/common/src/interfaces";
+
+/** Request to Event service of type `NewPost`
  */
 export class ReqEventPostCreated {
   type: string;
@@ -17,16 +18,6 @@ export class ResEventPostCreated {
   constructor(type: string, data: Post) {
     this.type = type;
     this.data = data;
-  }
-}
-
-export class Post {
-  id: string;
-  title: string;
-
-  constructor(id: string, title: string) {
-    this.id = id;
-    this.title = title;
   }
 }
 

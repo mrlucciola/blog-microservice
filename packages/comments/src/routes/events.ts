@@ -1,5 +1,5 @@
 import { Request, Router } from "express";
-import { EventPostCreated, Post } from "../interfaces";
+import { EventPostCreated, Post } from "@blog/common/src/interfaces";
 import { comments } from "../seed";
 
 const router = Router();
