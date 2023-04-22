@@ -6,9 +6,9 @@ import { useAppState } from "../../mobx/context/hooks";
 // mui
 import { Button, Stack, TextField, Typography } from "@mui/material";
 // interfaces
-import { Post, PostCreateRes } from "./interfaces";
-import { constants } from "@blog/common";
+import { constants, interfaces } from "@blog/common";
 const { PORT_POSTS } = constants;
+class Post extends interfaces.Post {}
 
 const PostCreate: FC = () => {
   // state
@@ -26,7 +26,7 @@ const PostCreate: FC = () => {
 
     const postPayload = { title: postTitle };
     try {
-      const res = await axios.post<PostCreateRes>(
+      const res = await axios.post<Post>(
         `http://localhost:${PORT_POSTS}/posts`,
         postPayload
       );

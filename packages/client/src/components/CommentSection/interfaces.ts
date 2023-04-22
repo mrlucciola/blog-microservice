@@ -1,12 +1,9 @@
-import { Comment, PostIdKey } from "@blog/common/src/interfaces";
+import { interfaces } from "@blog/common";
+class Comment extends interfaces.Comment {}
 
 export type CommentIdKey = string;
 
-export class CommentsByPost {
-  [key: PostIdKey]: Comment[];
-  constructor() {}
-}
-export const comments: { [key in PostIdKey]?: Comment[] } = {
+export const comments: { [key in string]?: Comment[] } = {
   asdf: [
     new Comment("81hd9", " test comment1", "asdf"),
     new Comment("1ji9f", "another comment on asdf", "asdf"),

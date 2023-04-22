@@ -3,12 +3,12 @@ import axios from "axios";
 import { makeAutoObservable } from "mobx";
 import { RootStore } from "./rootStore";
 // models
-import { Post, PostListRes } from "../../components/PostView/interfaces";
-import { PostIdKey } from "@blog/common/src/interfaces";
+import { PostListRes } from "../../components/PostView/interfaces";
+import { Post } from "@blog/common/src/interfaces";
 import { constants } from "@blog/common";
 const { PORT_QUERY } = constants;
 
-export const PostsMap = Map<PostIdKey, Post>;
+export const PostsMap = Map<string, Post>;
 
 /// Posts store
 export class PostsStore {
@@ -25,8 +25,8 @@ export class PostsStore {
 
   /////////////////////////////////////////////////////////
   /////////////////////// COMPUTEDS ///////////////////////
-  get postIds(): PostIdKey[] {
-    const postIdArr: PostIdKey[] = [];
+  get postIds(): string[] {
+    const postIdArr: string[] = [];
     const postsIter = this.postsMap.keys();
 
     for (let idx = 0; idx < this.postsMap.size; idx++) {
@@ -57,7 +57,7 @@ export class PostsStore {
     );
     if (res.data) this.setPosts(Object.values(res.data));
   };
-  getPostById = (postId: PostIdKey): Post => {
+  getPostById = (postId: string): Post => {
     return this.postsMap.get(postId)!;
   };
   //////////////////////// ACTIONS ////////////////////////

@@ -1,16 +1,6 @@
-import { Comment, PostIdKey } from "@blog/common/src/interfaces";
-
-export class Post {
-  id: PostIdKey;
-  title: string;
-  comments: Comment[];
-
-  constructor(id: PostIdKey, title: string, comments: Comment[]) {
-    this.id = id;
-    this.title = title;
-    this.comments = comments;
-  }
-}
+import { interfaces } from "@blog/common";
+export type PostIdKey = interfaces.PostIdKey;
+export class Post extends interfaces.Post {}
 
 export interface PostCreateRes {
   id: PostIdKey;

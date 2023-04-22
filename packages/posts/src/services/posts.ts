@@ -4,15 +4,12 @@ import { randomBytes } from "crypto";
 import { PORT_EVENT_BUS } from "@blog/common/src/constants";
 import { Post } from "@blog/common/src/interfaces";
 import { ReqEventPostCreated } from "@blog/common/src/interfaces/requests";
+import { posts } from "../seed";
 
 // init
 const router = Router();
 
 // seed
-const posts: { [key: string]: Post } = {
-  asdf: new Post("asdf", "test post 1 asdf"),
-  cc9012j8: new Post("cc9012j8", "test post 2 cc9012j8"),
-};
 
 router
   .route("/")

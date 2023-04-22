@@ -1,5 +1,4 @@
-import { Comment } from "@blog/common/src/interfaces";
-import { Post } from "./interfaces";
+import { Comment, Post } from "@blog/common/src/interfaces";
 
 export const posts: { [key: string]: Post } = {
   asdf: new Post("asdf", "test post 1 asdf", [

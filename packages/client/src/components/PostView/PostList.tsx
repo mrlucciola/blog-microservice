@@ -3,13 +3,7 @@ import { FC } from "react";
 import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
-import {
-  Container,
-  Unstable_Grid2 as Grid,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Unstable_Grid2 as Grid, Stack, Typography } from "@mui/material";
 // components
 import PostItem from "./PostItem";
 

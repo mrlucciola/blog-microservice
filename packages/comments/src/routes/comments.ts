@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from "axios";
 import { randomBytes } from "crypto";
 import { comments } from "../seed";
 import { PORT_EVENT_BUS } from "@blog/common/src/constants";
-import { Comment, PostIdKey } from "@blog/common/src/interfaces";
+import { Comment } from "@blog/common/src/interfaces";
 import { ReqEventCommentCreated } from "@blog/common/src/interfaces/requests";
 
 const router = Router();
@@ -22,7 +22,7 @@ router
   .route("/:postId/comments")
   // route-specific middleware
   // .all()
-  .get((req: Request<{ postId: PostIdKey }>, res, _next) => {
+  .get((req: Request<{ postId: string }>, res, _next) => {
     const { postId } = req.params;
 
     // simple way to handle empty arrays
@@ -30,7 +30,7 @@ router
   })
   .post(
     async (
-      req: Request<{ postId: PostIdKey }, {}, { text: string }>,
+      req: Request<{ postId: string }, {}, { text: string }>,
       res,
       _next
     ) => {

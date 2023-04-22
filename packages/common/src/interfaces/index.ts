@@ -8,7 +8,7 @@ export class Comment {
   text: string;
   postId: string;
 
-  constructor(id: string, text: string, postId: PostIdKey) {
+  constructor(id: string, text: string, postId: string) {
     this.id = id;
     this.text = text;
     this.postId = postId;
@@ -17,7 +17,7 @@ export class Comment {
 export class Post {
   id: string;
   title: string;
-  comments?: Comment[] = [];
+  comments: Comment[];
 
   constructor(id: string, title: string, comments?: Comment[]) {
     this.id = id;
