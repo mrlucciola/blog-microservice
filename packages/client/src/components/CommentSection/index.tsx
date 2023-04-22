@@ -8,6 +8,7 @@ import { CardActions, Collapse, Divider, Typography } from "@mui/material";
 import CommentList from "./CommentList";
 import CommentCreate from "./CommentCreate";
 import ExpandComments from "./ExpandComments";
+// interfaces
 import { PostIdKey } from "@blog/common/src/interfaces";
 
 const CommentSection: FC<{ postId: PostIdKey }> = ({ postId }) => {

@@ -4,8 +4,7 @@ import { makeAutoObservable } from "mobx";
 import { RootStore } from "./rootStore";
 import { PostsStore } from "./postsStore";
 // interfaces
-import { CommentIdKey } from "../../components/CommentSection/interfaces";
-import { Comment, PostIdKey } from "@blog/common/src/interfaces";
+import { Comment, PostIdKey, CommentIdKey } from "@blog/common/src/interfaces";
 
 /// Comments store
 export class CommentsStore {

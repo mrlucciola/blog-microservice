@@ -1,7 +1,4 @@
-import { interfaces } from "@blog/common";
-class Comment extends interfaces.Comment {}
-
-export type CommentIdKey = string;
+import { Comment } from "@blog/common/src/interfaces";
 
 export const comments: { [key in string]?: Comment[] } = {
   asdf: [

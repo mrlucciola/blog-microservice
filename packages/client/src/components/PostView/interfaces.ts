@@ -1,6 +1,4 @@
-import { interfaces } from "@blog/common";
-export type PostIdKey = interfaces.PostIdKey;
-export class Post extends interfaces.Post {}
+import { PostIdKey, Post } from "@blog/common/src/interfaces";
 
 export interface PostCreateRes {
   id: PostIdKey;

@@ -5,8 +5,7 @@ import { useAppState } from "../../mobx/context/hooks";
 // mui
 import { ListItemButton, ListItemText } from "@mui/material";
 // interfaces
-import { CommentIdKey } from "./interfaces";
-import { PostIdKey } from "@blog/common/src/interfaces";
+import { PostIdKey, CommentIdKey } from "@blog/common/src/interfaces";
 
 const CommentItem: FC<{
   postId: PostIdKey;
