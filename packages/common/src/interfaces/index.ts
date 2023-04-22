@@ -20,10 +20,10 @@ export class Post {
   title: string;
   comments: Comment[];
 
-  constructor(id: PostIdKey, title: string, comments?: Comment[]) {
+  constructor(id: PostIdKey, title: string, comments: Comment[]) {
     this.id = id;
     this.title = title;
-    this.comments = comments || [];
+    this.comments = comments;
   }
 }
 
