@@ -6,6 +6,7 @@ import {
   EventReq,
 } from "@blog/common/src/interfaces";
 import { PORT_EVENT_BUS } from "@blog/common/src/constants";
+import { serviceName } from ".";
 
 const router = Router();
 
@@ -27,7 +28,12 @@ router.route("/").post(async (req: EventReq, res, next) => {
     res.status(200).send("Emit CommentModerated");
     next();
   } else {
-    // next("event not handled");
+    res.send({
+      service: serviceName,
+      eventName,
+      msg: "event not handled",
+    });
+    next();
   }
 });
 
