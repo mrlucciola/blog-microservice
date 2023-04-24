@@ -46,7 +46,7 @@ router
         res.status(201).send(posts[id]);
       } catch (error) {
         const err = error as AxiosError;
-        console.log("errorlx", err);
+        console.log("error", err);
         if (err.code === "ECONNREFUSED") {
           res.status(404).send({
             msg: `Error sending to events service: ${err.code}`,

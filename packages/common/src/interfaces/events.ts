@@ -1,6 +1,8 @@
 import { Comment, Post } from ".";
 
-export class EventType<D extends object> {
+export type EventNames = "PostCreated" | "CommentCreated";
+
+export class EventMsg<D extends object> {
   type: string;
   data: D;
 
@@ -10,5 +12,5 @@ export class EventType<D extends object> {
   }
 }
 
-export class EventCommentCreated extends EventType<Comment> {}
-export class EventPostCreated extends EventType<Post> {}
+export class EventCommentCreated extends EventMsg<Comment> {}
+export class EventPostCreated extends EventMsg<Post> {}
