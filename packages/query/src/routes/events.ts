@@ -13,7 +13,7 @@ router.route("/").post(
     next
   ) => {
     const { type, data } = req.body;
-    console.log(`QUERY > EVENTS: ${type}\n`,data)
+    console.log(`QUERY > EVENTS: ${type}\n`, data);
 
     if (type === "PostCreated") {
       const { id, title } = data as Post;
@@ -22,8 +22,8 @@ router.route("/").post(
       posts[id] = new Post(id, title, []);
     }
     if (type === "CommentCreated") {
-      const { id, text, postId } = data as Comment;
-      const newComment = new Comment(id, text, postId);
+      const { id, text, postId, status } = data as Comment;
+      const newComment = new Comment(id, text, postId, status);
 
       // add data to store
       const post = posts[postId];
