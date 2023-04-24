@@ -32,7 +32,7 @@ router
     async (
       req: Request<{ postId: string }, {}, { text: string }>,
       res,
-      _next
+      next
     ) => {
       const {
         params: { postId },
@@ -58,13 +58,16 @@ router
         );
       } catch (error) {
         console.log("error sending comment to event bus", error);
-        return res
+        res
           .status(404)
           .send("error sending event to event bus - CommentCreated");
+        return next();
       }
 
       // send response
-      return res.status(201).send(newComment);
+      res.status(201).send(newComment);
+      console.log("comments", comments);
+      next();
     }
   );
 
