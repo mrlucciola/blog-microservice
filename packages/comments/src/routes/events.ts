@@ -13,7 +13,7 @@ import { PORT_EVENT_BUS } from "@blog/common/src/constants";
 const router = Router();
 
 // router
-router.route("/").post(async (req: EventReq, res, _next) => {
+router.route("/").post(async (req: EventReq, res, next) => {
   const { eventName, data } = req.body;
   console.log(`COMMENTS > EVENTS: ${eventName}\n`, data);
 
@@ -22,7 +22,10 @@ router.route("/").post(async (req: EventReq, res, _next) => {
 
     // add comments to store
     comments.initNewPostComments(postId);
+
     res.status(201).send({ msg: "OK" });
+
+    next();
   } else if (eventName === "CommentModerated") {
     const { id, text, postId, status } = data as Comment;
     const comment = new Comment(id, text, postId, status);
@@ -34,16 +37,21 @@ router.route("/").post(async (req: EventReq, res, _next) => {
     // @todo create event method for event msg type
     // event.emit();
     await axios.post<EventCommentUpdated>(
-      `http://localhost${PORT_EVENT_BUS}/events`,
+      `http://localhost:${PORT_EVENT_BUS}/events`,
       event
     );
+
     res.status(203).send({ msg: "OK" });
+
+    next();
   } else {
     res.send({
       service: serviceName,
       eventName,
       msg: "event not handled",
     });
+
+    next();
   }
 });
 
