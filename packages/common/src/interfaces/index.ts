@@ -4,6 +4,9 @@ export * from "./requests";
 import * as responses from "./responses";
 export { responses };
 export * from "./responses";
+import * as events from "./events";
+export { events };
+export * from "./events";
 
 export class Comment {
   id: string;
@@ -27,19 +30,6 @@ export class Post {
     this.comments = comments;
   }
 }
-
-export class EventType<D extends object> {
-  type: string;
-  data: D;
-
-  constructor(type: string, data: D) {
-    this.type = type;
-    this.data = data;
-  }
-}
-
-export class EventCommentCreated extends EventType<Comment> {}
-export class EventPostCreated extends EventType<Post> {}
 
 // type Environments = "local" | "dev" | "prod";
 

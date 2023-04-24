@@ -1,10 +1,10 @@
 import { Post } from ".";
 
-export interface ResEventPostList {
+export interface ResPostList {
   [key: string]: Post;
 }
 
-export class ResEventPostCreated {
+export class ResPostCreated {
   type: string;
   data: Post;
 
