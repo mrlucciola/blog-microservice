@@ -4,6 +4,7 @@
     { "path": "./packages/comments" },
     { "path": "./packages/common" },
     { "path": "./packages/event-bus" },
+    { "path": "./packages/moderation" },
     { "path": "./packages/posts" },
     { "path": "./packages/query" }
   ],

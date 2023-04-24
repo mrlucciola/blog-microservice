@@ -28,8 +28,8 @@
     "emitDecoratorMetadata": true,
 
     "importHelpers": true,
-    "pretty": true
-    // "removeComments": true,
+    "pretty": true,
+    "removeComments": true
     // "preserveSymlinks": true,
   }
   // "typeAcquisition": { "enable": true }
