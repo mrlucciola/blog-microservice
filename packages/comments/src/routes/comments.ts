@@ -54,7 +54,7 @@ router
       try {
         await axios.post<any, AxiosResponse<null, any>, EventCommentCreated>(
           `http://localhost:${PORT_EVENT_BUS}/events`,
-          new EventCommentCreated("CommentCreated", newComment)
+          new EventCommentCreated(newComment)
         );
       } catch (error) {
         console.log("error sending comment to event bus", error);

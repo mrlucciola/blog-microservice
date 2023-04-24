@@ -1,4 +1,4 @@
-import { Comment, Post } from ".";
+import { Post } from ".";
 
 /** Request to Event service of type `NewPost`
  */
