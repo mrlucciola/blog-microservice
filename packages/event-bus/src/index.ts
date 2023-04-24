@@ -1,4 +1,4 @@
-import express, { Request } from "express";
+import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
 import {
@@ -8,12 +8,7 @@ import {
   PORT_POSTS,
   PORT_QUERY,
 } from "@blog/common/src/constants";
-import {
-  Comment,
-  EventMsg,
-  Post,
-  ServiceNames,
-} from "@blog/common/src/interfaces";
+import { EventReq, ServiceNames } from "@blog/common/src/interfaces";
 
 export const serviceName: ServiceNames = "event-bus";
 
@@ -29,21 +24,18 @@ app.get("/", (_, res) => {
 });
 
 // additional routes
-app.post(
-  "/events",
-  (req: Request<null, object, EventMsg<Comment | Post>>, res, _next) => {
-    const event = req.body;
-    console.log(`incoming event: ${event.type}\n`, event.data);
+app.post("/events", (req: EventReq, res, _next) => {
+  const event = req.body;
+  console.log(`incoming event: ${event.type}\n`, event.data);
 
-    // send requests
-    axios.post(`http://localhost:${PORT_POSTS}/events`, event);
-    axios.post(`http://localhost:${PORT_COMMENTS}/events`, event);
-    axios.post(`http://localhost:${PORT_MODERATION}/events`, event);
-    axios.post(`http://localhost:${PORT_QUERY}/events`, event);
+  // send requests
+  axios.post(`http://localhost:${PORT_POSTS}/events`, event);
+  axios.post(`http://localhost:${PORT_COMMENTS}/events`, event);
+  axios.post(`http://localhost:${PORT_MODERATION}/events`, event);
+  axios.post(`http://localhost:${PORT_QUERY}/events`, event);
 
-    return res.send({ status: "OK" });
-  }
-);
+  return res.send({ status: "OK" });
+});
 
 // start server
 app.listen(PORT_EVENT_BUS, () => {
