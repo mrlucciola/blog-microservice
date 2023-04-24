@@ -2,8 +2,7 @@ import { NextFunction, Request, Response, Router } from "express";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { randomBytes } from "crypto";
 import { PORT_EVENT_BUS } from "@blog/common/src/constants";
-import { Post } from "@blog/common/src/interfaces";
-import { ReqEventPostCreated } from "@blog/common/src/interfaces/requests";
+import { Post, EventPostCreated } from "@blog/common/src/interfaces";
 import { posts } from "../seed";
 
 // init
@@ -35,10 +34,10 @@ router
 
       // get data from db
       posts[id] = new Post(id, title, []);
-      let postReq = new ReqEventPostCreated("PostCreated", posts[id]);
+      let postReq = new EventPostCreated(posts[id]);
 
       try {
-        await axios.post<any, AxiosResponse<null, any>, ReqEventPostCreated>(
+        await axios.post<any, AxiosResponse<null, any>, EventPostCreated>(
           `http://localhost:${PORT_EVENT_BUS}/events`,
           postReq
         );

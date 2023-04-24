@@ -1,6 +1,3 @@
-import * as requests from "./requests";
-export { requests };
-export * from "./requests";
 import * as responses from "./responses";
 export { responses };
 export * from "./responses";
