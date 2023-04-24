@@ -5,6 +5,9 @@ import cors from "cors";
 import commentsRouter from "./routes/comments";
 import eventsRouter from "./routes/events";
 import { PORT_COMMENTS } from "@blog/common/src/constants";
+import { ServiceNames } from "@blog/common/src/interfaces";
+
+export const serviceName: ServiceNames = "comments";
 
 // init
 const app = express();

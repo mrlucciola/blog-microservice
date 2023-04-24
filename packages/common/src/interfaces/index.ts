@@ -5,6 +5,12 @@ import * as events from "./events";
 export { events };
 export * from "./events";
 
+export type ServiceNames =
+  | "comments"
+  | "event-bus"
+  | "moderation"
+  | "posts"
+  | "query";
 type CommentStatus = "pending" | "rejected" | "approved";
 export class Comment {
   id: string;

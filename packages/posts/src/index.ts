@@ -5,6 +5,9 @@ import cors from "cors";
 import postsRoutes from "./routes/posts";
 import eventsRoutes from "./routes/events";
 import { PORT_POSTS } from "@blog/common/src/constants";
+import { ServiceNames } from "@blog/common/src/interfaces";
+
+export const serviceName: ServiceNames = "posts";
 
 // init
 const app = express();

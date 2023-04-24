@@ -5,6 +5,10 @@ import cors from "cors";
 import eventsRoute from "./routes/events";
 import postsRoute from "./routes/posts";
 import { PORT_QUERY } from "@blog/common/src/constants";
+import { ServiceNames } from "@blog/common/src/interfaces";
+
+export const serviceName: ServiceNames = "query";
+
 // init
 const app = express();
 

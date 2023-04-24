@@ -8,7 +8,14 @@ import {
   PORT_POSTS,
   PORT_QUERY,
 } from "@blog/common/src/constants";
-import { Comment, EventMsg, Post } from "@blog/common/src/interfaces";
+import {
+  Comment,
+  EventMsg,
+  Post,
+  ServiceNames,
+} from "@blog/common/src/interfaces";
+
+export const serviceName: ServiceNames = "event-bus";
 
 // init
 const app = express();
