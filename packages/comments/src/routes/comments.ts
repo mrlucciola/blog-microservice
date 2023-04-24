@@ -1,7 +1,7 @@
 import { Request, Router } from "express";
 import axios, { AxiosResponse } from "axios";
 import { randomBytes } from "crypto";
-import { comments } from "../seed";
+import { CommentsMap, comments } from "../seed";
 import { PORT_EVENT_BUS } from "@blog/common/src/constants";
 import { Comment } from "@blog/common/src/interfaces";
 import { EventCommentCreated } from "@blog/common/src/interfaces";
@@ -26,7 +26,7 @@ router
     const { postId } = req.params;
 
     // simple way to handle empty arrays
-    res.send(comments[postId] || []);
+    res.send(comments.getPostComments(postId) || new CommentsMap());
   })
   .post(
     async (
@@ -40,15 +40,23 @@ router
       } = req;
       console.log(`COMMENTS > NEW: ${postId}\n`, text);
       const commentId = randomBytes(4).toString("hex");
-      if (comments[postId] === undefined || comments[postId] === null) {
+      if (
+        comments.getPostComments(postId) === undefined ||
+        comments.getPostComments(postId) === null
+      ) {
         res.status(400).send({});
         throw new Error(`no new post for: ${postId}`);
       }
       if (!text) return res.status(400).send("Please add text.");
       if (!postId) return res.status(400).send("Please add post id.");
       const newComment = new Comment(commentId, text, postId);
+      // quick check
+      const initLen = comments.getPostComments(postId).size;
+      console.log("initLen", initLen);
       // update store
-      comments[postId]!.push(newComment);
+      comments.pushComment(newComment);
+      const postLen = comments.getPostComments(postId).size;
+      console.log("postLen", postLen);
 
       // emit event
       try {
