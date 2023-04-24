@@ -12,7 +12,7 @@ const router = Router();
 // router.use((req, res, next) => {});
 
 // url-parameter-specific logic
-// router.param("postId", (_req, _res, _next, val: PostIdKey, name) => {
+// router.param("postId", (_req, _res, _next, val: string, name) => {
 //   console.log(`val: ${val},  name: ${name}`);
 //   _next();
 // });

@@ -4,12 +4,10 @@ import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
 import { ListItemButton, ListItemText } from "@mui/material";
-// interfaces
-import { PostIdKey, CommentIdKey } from "@blog/common/src/interfaces";
 
 const CommentItem: FC<{
-  postId: PostIdKey;
-  commentId: CommentIdKey;
+  postId: string;
+  commentId: string;
 }> = ({ postId, commentId }) => {
   // state
   const text = useAppState(

@@ -6,10 +6,8 @@ import { useAppState } from "../../mobx/context/hooks";
 import { List } from "@mui/material";
 // components
 import CommentItem from "./CommentItem";
-// interfaces
-import { PostIdKey } from "@blog/common/src/interfaces";
 
-const CommentList: FC<{ postId: PostIdKey }> = ({ postId }) => {
+const CommentList: FC<{ postId: string }> = ({ postId }) => {
   // state
   const commentIds = useAppState((s) => s.comments.getCommentIds(postId));
   // build list of comments

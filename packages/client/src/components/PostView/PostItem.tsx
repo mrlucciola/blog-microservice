@@ -9,10 +9,8 @@ import CardHeader from "@mui/material/CardHeader";
 import Grid from "@mui/material/Unstable_Grid2";
 // components
 import CommentSection from "../CommentSection";
-// interfaces
-import { PostIdKey } from "@blog/common/src/interfaces";
 
-const PostItem: FC<{ postId: PostIdKey }> = ({ postId }) => {
+const PostItem: FC<{ postId: string }> = ({ postId }) => {
   // state
   const postTitle = useAppState((s) => s.posts.getPostById(postId).title);
   const postIdStored = useAppState((s) => s.posts.getPostById(postId).id);

@@ -4,7 +4,7 @@ import { makeAutoObservable } from "mobx";
 import { RootStore } from "./rootStore";
 import { PostsStore } from "./postsStore";
 // interfaces
-import { Comment, PostIdKey, CommentIdKey } from "@blog/common/src/interfaces";
+import { Comment } from "@blog/common/src/interfaces";
 
 /// Comments store
 export class CommentsStore {
@@ -29,32 +29,32 @@ export class CommentsStore {
   /////////////////////////////////////////////////////////
   //////////////////////// ACTIONS ////////////////////////
 
-  getCommentIds(postId: PostIdKey): CommentIdKey[] {
+  getCommentIds(postId: string): string[] {
     const commentIdArr = this.getCommentsByPost(postId).map((c) => c.id);
 
     return commentIdArr;
   }
 
-  getCommentsByPost = (postId: PostIdKey): Comment[] => {
+  getCommentsByPost = (postId: string): Comment[] => {
     const post = this.posts.getPostById(postId);
 
     return post.comments;
   };
 
-  getComment = (postId: PostIdKey, commentId: CommentIdKey): Comment => {
+  getComment = (postId: string, commentId: string): Comment => {
     const comments = this.getCommentsByPost(postId);
     const comment = comments.find((c) => c.id === commentId)!;
 
     return comment;
   };
 
-  setCommentsByPost = (postId: PostIdKey, comments: Comment[]) => {
+  setCommentsByPost = (postId: string, comments: Comment[]) => {
     const post = this.posts.getPostById(postId);
 
     post.comments = comments;
   };
 
-  pushComment = (postId: PostIdKey, comment: Comment) => {
+  pushComment = (postId: string, comment: Comment) => {
     const comments = this.getCommentsByPost(postId);
 
     comments.push(comment);

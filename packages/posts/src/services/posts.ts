@@ -34,7 +34,7 @@ router
       }
 
       // get data from db
-      posts[id] = new Post(id, title);
+      posts[id] = new Post(id, title, []);
       let postReq = new ReqEventPostCreated("PostCreated", posts[id]);
 
       try {

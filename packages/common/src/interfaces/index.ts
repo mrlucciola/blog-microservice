@@ -1,26 +1,23 @@
 import * as requests from "./requests";
 export { requests };
 
-export type PostIdKey = string;
-export type CommentIdKey = string;
-
 export class Comment {
-  id: CommentIdKey;
+  id: string;
   text: string;
-  postId: PostIdKey;
+  postId: string;
 
-  constructor(id: CommentIdKey, text: string, postId: PostIdKey) {
+  constructor(id: string, text: string, postId: string) {
     this.id = id;
     this.text = text;
     this.postId = postId;
   }
 }
 export class Post {
-  id: PostIdKey;
+  id: string;
   title: string;
   comments: Comment[];
 
-  constructor(id: PostIdKey, title: string, comments: Comment[]) {
+  constructor(id: string, title: string, comments: Comment[]) {
     this.id = id;
     this.title = title;
     this.comments = comments;

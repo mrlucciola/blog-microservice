@@ -2,11 +2,10 @@ import axios from "axios";
 // state
 import { makeAutoObservable } from "mobx";
 import { RootStore } from "./rootStore";
-// models
+// interfaces
 import { PostListRes } from "../../components/PostView/interfaces";
 import { Post } from "@blog/common/src/interfaces";
-import { constants } from "@blog/common";
-const { PORT_QUERY } = constants;
+import { PORT_QUERY } from "@blog/common/src/constants";
 
 export const PostsMap = Map<string, Post>;
 

@@ -1,7 +1,7 @@
-import { PostIdKey, Post } from "@blog/common/src/interfaces";
+import { Post } from "@blog/common/src/interfaces";
 
 export interface PostCreateRes {
-  id: PostIdKey;
+  id: string;
   title: string;
 }
 

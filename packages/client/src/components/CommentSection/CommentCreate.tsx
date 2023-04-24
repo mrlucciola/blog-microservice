@@ -8,8 +8,7 @@ import { Button, Divider, Stack, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 // other
 import { Comment } from "@blog/common/src/interfaces";
-import { constants } from "@blog/common";
-const { PORT_COMMENTS } = constants;
+import { PORT_COMMENTS } from "@blog/common/src/constants";
 
 const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
   // state

@@ -23,7 +23,7 @@ router.route("/").post(
       const { id, title } = data as Post;
 
       // add data to store
-      posts[id] = new Post(id, title);
+      posts[id] = new Post(id, title, []);
     }
     if (type === "CommentCreated") {
       const { id, text, postId } = data as Comment;

@@ -5,9 +5,10 @@ import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
 import { Button, Stack, TextField, Typography } from "@mui/material";
-// interfaces
-import { constants, interfaces } from "@blog/common";
-const { PORT_POSTS } = constants;
+import { PORT_POSTS } from "@blog/common/src/constants";
+// still need to figure this issue out
+// import { Post } from "@blog/common/src/interfaces";
+import { interfaces } from "@blog/common";
 class Post extends interfaces.Post {}
 
 const PostCreate: FC = () => {
