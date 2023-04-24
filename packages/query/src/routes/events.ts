@@ -26,6 +26,12 @@ router.route("/").post((req: EventReq, res, next) => {
     post.comments.push(newComment);
     res.status(201).send(newComment);
     next();
+  } else if (eventName === "CommentUpdated") {
+    const { id, postId, status } = data as Comment;
+    const comment = posts[postId].comments.find((comment) => {
+      return comment.id === id;
+    });
+    comment!.status = status;
   } else {
     res.send({
       service: serviceName,
