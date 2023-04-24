@@ -5,7 +5,7 @@ import * as events from "./events";
 export { events };
 export * from "./events";
 
-type CommentStatus = "pending";
+type CommentStatus = "pending" | "rejected" | "approved";
 export class Comment {
   id: string;
   text: string;
@@ -23,7 +23,12 @@ export class Comment {
     this.postId = postId;
     this.status = status;
   }
+
+  updateStatus = (newStatus: CommentStatus) => {
+    this.status = newStatus;
+  };
 }
+
 export class Post {
   id: string;
   title: string;

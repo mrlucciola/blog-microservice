@@ -4,9 +4,11 @@ import axios from "axios";
 import {
   PORT_COMMENTS,
   PORT_EVENT_BUS,
+  PORT_MODERATION,
   PORT_POSTS,
   PORT_QUERY,
 } from "@blog/common/src/constants";
+import { Comment, EventMsg, Post } from "@blog/common/src/interfaces";
 
 // init
 const app = express();
@@ -22,17 +24,14 @@ app.get("/", (_, res) => {
 // additional routes
 app.post(
   "/events",
-  (
-    req: Request<{}, {}, { type: string; data: { id: string; title: string } }>,
-    res,
-    _next
-  ) => {
+  (req: Request<null, object, EventMsg<Comment | Post>>, res, _next) => {
     const event = req.body;
     console.log(`incoming event: ${event.type}\n`, event.data);
 
     // send requests
     axios.post(`http://localhost:${PORT_POSTS}/events`, event);
     axios.post(`http://localhost:${PORT_COMMENTS}/events`, event);
+    axios.post(`http://localhost:${PORT_MODERATION}/events`, event);
     axios.post(`http://localhost:${PORT_QUERY}/events`, event);
 
     return res.send({ status: "OK" });

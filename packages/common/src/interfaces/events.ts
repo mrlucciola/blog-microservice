@@ -1,6 +1,6 @@
 import { Comment, Post } from ".";
 
-export type EventNames = "PostCreated" | "CommentCreated";
+export type EventNames = "PostCreated" | "CommentCreated" | "CommentModerated";
 
 export class EventMsg<D extends object> {
   type: EventNames;
@@ -15,6 +15,11 @@ export class EventMsg<D extends object> {
 export class EventCommentCreated extends EventMsg<Comment> {
   constructor(data: Comment) {
     super("CommentCreated", data);
+  }
+}
+export class EventCommentModerated extends EventMsg<Comment> {
+  constructor(data: Comment) {
+    super("CommentModerated", data);
   }
 }
 export class EventPostCreated extends EventMsg<Post> {
