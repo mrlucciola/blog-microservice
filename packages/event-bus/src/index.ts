@@ -1,6 +1,6 @@
 import express, { Request } from "express";
-import bodyParser from "body-parser";
 import axios from "axios";
+import bodyParser from "body-parser";
 import {
   PORT_COMMENTS,
   PORT_EVENT_BUS,
