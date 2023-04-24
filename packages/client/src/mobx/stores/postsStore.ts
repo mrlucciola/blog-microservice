@@ -3,7 +3,7 @@ import axios from "axios";
 import { makeAutoObservable } from "mobx";
 import { RootStore } from "./rootStore";
 // interfaces
-import { Post, PostListRes } from "@blog/common/src/interfaces";
+import { Post, ResEventPostList } from "@blog/common/src/interfaces";
 import { PORT_QUERY } from "@blog/common/src/constants";
 
 export const PostsMap = Map<string, Post>;
@@ -50,7 +50,7 @@ export class PostsStore {
    * @todo add logic to handle request error
    */
   postsFetch = async () => {
-    const res = await axios.get<PostListRes>(
+    const res = await axios.get<ResEventPostList>(
       `http://localhost:${PORT_QUERY}/posts`
     );
     if (res.data) this.setPosts(Object.values(res.data));
