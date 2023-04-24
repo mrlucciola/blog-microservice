@@ -9,36 +9,37 @@ export type EventNames =
 
 export type DataTypes = Post | Comment;
 export class EventMsg<D extends DataTypes = DataTypes> {
-  type: EventNames;
+  eventName: EventNames;
   data: D;
 
-  constructor(type: EventNames, data: D) {
-    this.type = type;
+  constructor(eventName: EventNames, data: D) {
+    this.eventName = eventName;
     this.data = data;
   }
 }
+
 export type EventReq = Request<null, object, EventMsg>;
 
 export class EventCommentCreated extends EventMsg<Comment> {
-  type: EventNames = "CommentCreated";
+  eventName: EventNames = "CommentCreated";
   constructor(data: Comment) {
     super("CommentCreated", data);
   }
 }
 export class EventCommentModerated extends EventMsg<Comment> {
-  type: EventNames = "CommentModerated";
+  eventName: EventNames = "CommentModerated";
   constructor(data: Comment) {
     super("CommentModerated", data);
   }
 }
 export class EventCommentUpdated extends EventMsg<Comment> {
-  type: EventNames = "CommentUpdated";
+  eventName: EventNames = "CommentUpdated";
   constructor(data: Comment) {
     super("CommentUpdated", data);
   }
 }
 export class EventPostCreated extends EventMsg<Post> {
-  type: EventNames = "PostCreated";
+  eventName: EventNames = "PostCreated";
   constructor(data: Post) {
     super("PostCreated", data);
   }

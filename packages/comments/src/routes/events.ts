@@ -14,16 +14,16 @@ const router = Router();
 
 // router
 router.route("/").post(async (req: EventReq, res, _next) => {
-  const { type, data } = req.body;
-  console.log(`COMMENTS > EVENTS: ${type}\n`, data);
+  const { eventName, data } = req.body;
+  console.log(`COMMENTS > EVENTS: ${eventName}\n`, data);
 
-  if (type === "PostCreated") {
+  if (eventName === "PostCreated") {
     const { id: postId } = data as Post;
 
     // add comments to store
     comments.initNewPostComments(postId);
     res.status(201).send({ msg: "OK" });
-  } else if (type === "CommentModerated") {
+  } else if (eventName === "CommentModerated") {
     const { id, text, postId, status } = data as Comment;
     const comment = new Comment(id, text, postId, status);
 
@@ -41,7 +41,7 @@ router.route("/").post(async (req: EventReq, res, _next) => {
   } else {
     res.send({
       service: serviceName,
-      eventName: type,
+      eventName,
       msg: "event not handled",
     });
   }

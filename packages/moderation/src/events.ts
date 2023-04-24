@@ -10,10 +10,10 @@ import { PORT_EVENT_BUS } from "@blog/common/src/constants";
 const router = Router();
 
 router.route("/").post(async (req: EventReq, res, next) => {
-  const { type, data } = req.body;
-  console.log(`MOD > EVENTS: ${type}\n`, data);
+  const { eventName, data } = req.body;
+  console.log(`MOD > EVENTS: ${eventName}\n`, data);
 
-  if (type === "CommentCreated") {
+  if (eventName === "CommentCreated") {
     const { id: commentId, text, postId, status } = data as Comment;
     // validation
     const newStatus = text === "orange" ? "rejected" : "approved";

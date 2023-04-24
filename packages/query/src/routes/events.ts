@@ -7,17 +7,17 @@ import { serviceName } from "..";
 const router = Router();
 
 router.route("/").post((req: EventReq, res, next) => {
-  const { type, data } = req.body;
-  console.log(`QUERY > EVENTS: ${type}\n`, data);
+  const { eventName, data } = req.body;
+  console.log(`QUERY > EVENTS: ${eventName}\n`, data);
 
-  if (type === "PostCreated") {
+  if (eventName === "PostCreated") {
     const { id, title } = data as Post;
 
     // add data to store
     posts[id] = new Post(id, title, []);
     res.status(201).send(data);
-  }
-  if (type === "CommentCreated") {
+    next();
+  } else if (eventName === "CommentCreated") {
     const { id, text, postId, status } = data as Comment;
     const newComment = new Comment(id, text, postId, status);
 
@@ -25,14 +25,15 @@ router.route("/").post((req: EventReq, res, next) => {
     const post = posts[postId];
     post.comments.push(newComment);
     res.status(201).send(newComment);
+    next();
+  } else {
+    res.send({
+      service: serviceName,
+      eventName,
+      msg: "event not handled",
+    });
+    next();
   }
-
-  res.send({
-    service: serviceName,
-    eventName: type,
-    msg: "event not handled",
-  });
-  next();
 });
 
 export default router;

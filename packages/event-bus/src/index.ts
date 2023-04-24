@@ -26,7 +26,7 @@ app.get("/", (_, res) => {
 // additional routes
 app.post("/events", (req: EventReq, res, _next) => {
   const event = req.body;
-  console.log(`incoming event: ${event.type}\n`, event.data);
+  console.log(`incoming event: ${event.eventName}\n`, event.data);
 
   // send requests
   axios.post(`http://localhost:${PORT_POSTS}/events`, event);
