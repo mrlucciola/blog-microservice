@@ -4,7 +4,7 @@ import { randomBytes } from "crypto";
 import { comments } from "../seed";
 import { PORT_EVENT_BUS } from "@blog/common/src/constants";
 import { Comment } from "@blog/common/src/interfaces";
-import { ReqEventCommentCreated } from "@blog/common/src/interfaces/requests";
+import { EventCommentCreated } from "@blog/common/src/interfaces";
 
 const router = Router();
 
@@ -38,6 +38,7 @@ router
         params: { postId },
         body: { text },
       } = req;
+      console.log(`COMMENTS > NEW: ${postId}\n`, text);
       const commentId = randomBytes(4).toString("hex");
       if (comments[postId] === undefined || comments[postId] === null) {
         res.status(400).send({});
@@ -51,9 +52,9 @@ router
 
       // emit event
       try {
-        await axios.post<any, AxiosResponse<null, any>, ReqEventCommentCreated>(
+        await axios.post<any, AxiosResponse<null, any>, EventCommentCreated>(
           `http://localhost:${PORT_EVENT_BUS}/events`,
-          new ReqEventCommentCreated("CommentCreated", newComment)
+          new EventCommentCreated("CommentCreated", newComment)
         );
       } catch (error) {
         console.log("error sending comment to event bus", error);

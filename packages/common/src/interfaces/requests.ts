@@ -11,13 +11,3 @@ export class ReqEventPostCreated {
     this.data = data;
   }
 }
-
-export class ReqEventCommentCreated {
-  type: string;
-  data: Comment;
-
-  constructor(type: string, data: Comment) {
-    this.type = type;
-    this.data = data;
-  }
-}

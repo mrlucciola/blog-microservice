@@ -9,6 +9,7 @@ router
   .route("/")
   .post((req: Request<null, any, EventPostCreated>, res, _next) => {
     const { type, data } = req.body;
+    console.log(`COMMENTS > EVENTS: ${type}\n`, data);
 
     if (type === "PostCreated") {
       const { id: postId } = data as Post;

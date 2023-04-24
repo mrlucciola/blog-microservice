@@ -8,15 +8,23 @@ import * as events from "./events";
 export { events };
 export * from "./events";
 
+type CommentStatus = "pending";
 export class Comment {
   id: string;
   text: string;
   postId: string;
+  status: CommentStatus;
 
-  constructor(id: string, text: string, postId: string) {
-    this.id = id;
+  constructor(
+    commentId: string,
+    text: string,
+    postId: string,
+    status: CommentStatus = "pending"
+  ) {
+    this.id = commentId;
     this.text = text;
     this.postId = postId;
+    this.status = status;
   }
 }
 export class Post {
@@ -24,8 +32,8 @@ export class Post {
   title: string;
   comments: Comment[];
 
-  constructor(id: string, title: string, comments: Comment[]) {
-    this.id = id;
+  constructor(postId: string, title: string, comments: Comment[]) {
+    this.id = postId;
     this.title = title;
     this.comments = comments;
   }

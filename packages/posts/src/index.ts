@@ -2,8 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 // local
-import postsRoutes from "./services/posts";
-import eventsRoutes from "./services/events";
+import postsRoutes from "./routes/posts";
+import eventsRoutes from "./routes/events";
 import { PORT_POSTS } from "@blog/common/src/constants";
 
 // init
