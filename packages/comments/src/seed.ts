@@ -33,29 +33,34 @@ class CommentStore {
   getComment = ({
     postId,
     commentId,
+    id,
   }: {
     postId: string;
-    commentId: string;
+    commentId?: string;
+    id?: string;
   }): Comment => {
+    if (commentId && id && commentId !== id)
+      throw new Error("No comment ID provided.");
+    if (!commentId && !id) throw new Error("Comment IDs don't match.");
+
+    const commentLookupId = (commentId || id)!;
     const commentsForPost = this.getPostComments(postId);
-    const comment = commentsForPost.get(commentId);
+    const comment = commentsForPost.get(commentLookupId);
 
     if (comment) return comment;
     else throw new Error(`Comments not init for post: ${postId}`);
   };
   pushComment = (newComment: Comment) => {
     const { id, postId } = newComment;
-    // see if we can use getPostComments here
-    const commentsForPost = this.postsMap.get(postId);
+    const commentsForPost = this.getPostComments(postId);
     // add the comment
     commentsForPost?.set(id, newComment);
   };
   updateComment = (updatedComment: Comment) => {
     const { id, postId } = updatedComment;
-    // see if we can use getPostComments here
-    const commentsForPost = this.postsMap.get(postId);
+    const commentsForPost = this.getPostComments(postId);
     // set the comment
-    commentsForPost?.set(id, updatedComment);
+    commentsForPost.set(id, updatedComment);
   };
 }
 export const comments: CommentStore = new CommentStore({

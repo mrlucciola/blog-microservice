@@ -50,13 +50,8 @@ router
       if (!text) return res.status(400).send("Please add text.");
       if (!postId) return res.status(400).send("Please add post id.");
       const newComment = new Comment(commentId, text, postId);
-      // quick check
-      const initLen = comments.getPostComments(postId).size;
-      console.log("initLen", initLen);
       // update store
       comments.pushComment(newComment);
-      const postLen = comments.getPostComments(postId).size;
-      console.log("postLen", postLen);
 
       // emit event
       try {
@@ -74,7 +69,7 @@ router
 
       // send response
       res.status(201).send(newComment);
-      console.log("comments", comments);
+      console.log("comments", comments.postsMap);
       next();
     }
   );
