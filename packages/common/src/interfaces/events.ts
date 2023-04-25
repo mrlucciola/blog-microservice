@@ -34,8 +34,8 @@ export class EventCommentModerated extends EventMsg<Comment> {
 }
 export class EventCommentUpdated extends EventMsg<Comment> {
   eventName: EventNames = "CommentUpdated";
-  constructor(data: Comment) {
-    super("CommentUpdated", data);
+  constructor(data: { postId: string; id: string; status: string } | Comment) {
+    super("CommentUpdated", data as Comment);
   }
 }
 export class EventPostCreated extends EventMsg<Post> {

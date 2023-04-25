@@ -11,7 +11,7 @@ export type ServiceNames =
   | "moderation"
   | "posts"
   | "query";
-type CommentStatus = "pending" | "rejected" | "approved";
+export type CommentStatus = "pending" | "rejected" | "approved";
 export class Comment {
   id: string;
   text: string;

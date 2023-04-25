@@ -9,6 +9,7 @@ import {
   PORT_QUERY,
 } from "@blog/common/src/constants";
 import { EventReq, ServiceNames } from "@blog/common/src/interfaces";
+import { events } from "./seed";
 
 export const serviceName: ServiceNames = "event-bus";
 
@@ -27,6 +28,7 @@ app.get("/", (_, res) => {
 app.post("/events", (req: EventReq, res, _next) => {
   const event = req.body;
   console.log(`incoming event: ${event.eventName}\n`, event.data);
+  events.push(event);
 
   // send requests
   axios.post(`http://localhost:${PORT_POSTS}/events`, event);
