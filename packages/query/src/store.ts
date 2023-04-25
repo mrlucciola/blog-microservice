@@ -39,7 +39,8 @@ export class PostsStore {
     this.values[post.id] = new Post(post.id, post.title, []);
     this.postsMap.set(post.id, post);
   };
-  pushComment = (comment: Comment) => {
+  createComment = ({ id: commentId, text, postId, status }: Comment) => {
+    const comment = new Comment(commentId, text, postId, status);
     // const comments = this.getComments(comment.postId);
     const comments = this.getCommentsForPost(comment.postId);
     // validation: check if comment doesnt already exist

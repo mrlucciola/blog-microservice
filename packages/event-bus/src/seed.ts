@@ -17,54 +17,65 @@ export class EventsStore {
 }
 
 export const events = new EventsStore([
-  // new EventPostCreated(new Post("asdf", "test post 1 asdf")),
-  // new EventPostCreated(new Post("cc9012j8", "test post 2 cc9012j8")),
-  // // create comment
-  // new EventCommentCreated(new Comment("81hd9", "test comment1", "asdf")),
-  // new EventCommentModerated(
-  //   new Comment("81hd9", "test comment1", "asdf", "approved")
-  // ),
-  // new EventCommentUpdated(
-  //   new Comment("81hd9", "test comment1", "asdf", "approved")
-  // ),
-  // // create comment
-  // new EventCommentCreated(
-  //   new Comment("1ji9f", "another comment on asdf", "asdf")
-  // ),
-  // new EventCommentModerated(
-  //   new Comment("1ji9f", "another comment on asdf", "asdf", "approved")
-  // ),
-  // new EventCommentUpdated(
-  //   new Comment("1ji9f", "another comment on asdf", "asdf", "approved")
-  // ),
-  // // create comment
-  // new EventCommentCreated(
-  //   new Comment("lm10d89", "this is a comment", "cc9012j8")
-  // ),
-  // new EventCommentModerated(
-  //   new Comment("lm10d89", "this is a comment", "cc9012j8", "approved")
-  // ),
-  // new EventCommentUpdated(
-  //   new Comment("lm10d89", "this is a comment", "cc9012j8", "approved")
-  // ),
-  // // create comment
-  // new EventCommentCreated(new Comment("c09uc98", "orange", "cc9012j8")),
-  // new EventCommentModerated(
-  //   new Comment("c09uc98", "orange", "cc9012j8", "rejected")
-  // ),
-  // new EventCommentUpdated(
-  //   new Comment("c09uc98", "orange", "cc9012j8", "rejected")
-  // ),
+  new EventPostCreated({ id: "6a8c9585", title: "First post", comments: [] }),
+  new EventCommentCreated({
+    id: "3e5552d6",
+    text: "adding comment",
+    postId: "6a8c9585",
+    status: "pending",
+  } as Comment),
+  new EventCommentModerated({
+    id: "3e5552d6",
+    text: "adding comment",
+    postId: "6a8c9585",
+    status: "approved",
+  } as Comment),
+  new EventCommentUpdated({
+    id: "3e5552d6",
+    text: "adding comment",
+    postId: "6a8c9585",
+    status: "approved",
+  } as Comment),
+  ///////////
+  new EventPostCreated({
+    id: "f52ee43a",
+    title: "second test post",
+    comments: [],
+  } as Post),
+  new EventCommentCreated({
+    id: "ce623eed",
+    text: "orange",
+    postId: "f52ee43a",
+    status: "pending",
+  } as Comment),
+  new EventCommentModerated({
+    id: "ce623eed",
+    text: "orange",
+    postId: "f52ee43a",
+    status: "rejected",
+  } as Comment),
+  new EventCommentUpdated({
+    id: "ce623eed",
+    text: "orange",
+    postId: "f52ee43a",
+    status: "rejected",
+  } as Comment),
+  new EventCommentCreated({
+    id: "c95ea315",
+    text: "approved",
+    postId: "f52ee43a",
+    status: "pending",
+  } as Comment),
+  new EventCommentModerated({
+    id: "c95ea315",
+    text: "approved",
+    postId: "f52ee43a",
+    status: "approved",
+  } as Comment),
+  new EventCommentUpdated({
+    id: "c95ea315",
+    text: "approved",
+    postId: "f52ee43a",
+    status: "approved",
+  } as Comment),
 ]);
-
-// posts
-// {
-//   asdf: new Post("asdf", "test post 1 asdf", [
-//     new Comment("81hd9", "test comment1", "asdf"),
-//     new Comment("1ji9f", "another comment on asdf", "asdf"),
-//   ]),
-//   cc9012j8: new Post("cc9012j8", "test post 2 cc9012j8", [
-//     new Comment("lm10d89", "this is a comment", "cc9012j8"),
-//     new Comment("c09uc98", "this is a comment", "cc9012j8"),
-//   ]),
-// }

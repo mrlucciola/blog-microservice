@@ -12,7 +12,7 @@ export const handleEvent = ({ eventName, data }: EventMsg): boolean => {
     posts.addPost(data as Post);
   } else if (eventName === "CommentCreated") {
     // add data to store
-    posts.pushComment(data as Comment);
+    posts.createComment(data as Comment);
   } else if (eventName === "CommentUpdated") {
     posts.updateComment(data as Comment);
   } else return false;
