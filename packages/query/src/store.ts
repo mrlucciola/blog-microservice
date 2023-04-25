@@ -1,25 +1,30 @@
-import { Comment, CommentStatus, Post } from "@blog/common/src/interfaces";
+import { Comment, Post } from "@blog/common/src/interfaces";
 
 export type PostsMap = Map<string, Post>;
 export const PostsMap = Map<string, Post>;
 export class PostsStore {
   values: { [key: string]: Post } = {};
-  // postsMap: PostsMap;
+  postsMap = new PostsMap();
 
-  constructor() {
-    // create map
-    // this.postsMap = new PostsMap(posts);
-  }
+  constructor() {}
 
   getCommentsForPost = (postId: string): Comment[] => {
     if (this.values[postId]) {
       return this.values[postId].comments;
     } else throw new Error(`Post id "${postId}" not in store.`);
   };
+  getComments = (postId: string): Comment[] => {
+    const post = this.postsMap.get(postId);
+    if (post) return post.comments;
+    else throw new Error(`Post id "${postId}" not in store.`);
+  };
   getComment = ({
     postId,
     id: commentId,
   }: { postId: string; id: string } | Comment): Comment => {
+    // const comment = this.getComments(postId).find((comment) => {
+    //   return comment.id === commentId;
+    // });
     const comment = this.getCommentsForPost(postId).find((comment) => {
       return comment.id === commentId;
     });
@@ -28,13 +33,25 @@ export class PostsStore {
 
     return comment;
   };
-  updateCommentStatus = (
-    newComment: { postId: string; id: string; status: CommentStatus } | Comment
-  ) => {
+  addPost = (post: Post) => {
+    if (this.values[post.id]) throw new Error(`Post "${post.id}" exists`);
+
+    this.values[post.id] = new Post(post.id, post.title, []);
+    this.postsMap.set(post.id, post);
+  };
+  pushComment = (comment: Comment) => {
+    // const comments = this.getComments(comment.postId);
+    const comments = this.getCommentsForPost(comment.postId);
+    // validation: check if comment doesnt already exist
+    // add to store
+    comments.push(comment);
+  };
+  updateComment = (newComment: Comment) => {
     const commentToUpdate = this.getComment({
       id: newComment.id,
       postId: newComment.postId,
     });
     commentToUpdate.status = newComment.status;
+    commentToUpdate.text = newComment.text;
   };
 }

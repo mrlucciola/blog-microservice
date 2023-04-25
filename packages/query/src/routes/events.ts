@@ -9,19 +9,12 @@ const router = Router();
 export const handleEvent = ({ eventName, data }: EventMsg): boolean => {
   // event
   if (eventName === "PostCreated") {
-    const { id, title } = data as Post;
-
-    // add data to store
-    posts.values[id] = new Post(id, title, []);
+    posts.addPost(data as Post);
   } else if (eventName === "CommentCreated") {
-    const { id, text, postId, status } = data as Comment;
-    const newComment = new Comment(id, text, postId, status);
-
     // add data to store
-    const post = posts.values[postId];
-    post.comments.push(newComment);
+    posts.pushComment(data as Comment);
   } else if (eventName === "CommentUpdated") {
-    posts.updateCommentStatus(data as Comment);
+    posts.updateComment(data as Comment);
   } else return false;
 
   return true;

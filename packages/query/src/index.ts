@@ -36,6 +36,7 @@ app.listen(PORT_QUERY, async () => {
   );
 
   res.data.forEach((event) => {
+    // @todo add validation
     handleEvent(event);
   });
 });
