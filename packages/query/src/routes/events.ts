@@ -1,24 +1,18 @@
 import { Router } from "express";
-import { Comment, EventReq, Post } from "@blog/common/src/interfaces";
+import { Comment, EventMsg, EventReq, Post } from "@blog/common/src/interfaces";
 import { posts } from "../seed";
 import { serviceName } from "..";
 
 // init
 const router = Router();
 
-router.route("/").post((req: EventReq, res, next) => {
-  const { eventName, data } = req.body;
-  console.log(`QUERY > EVENTS: ${eventName}\n`, data);
-
+const handleEvent = ({ eventName, data }: EventMsg): boolean => {
+  // event
   if (eventName === "PostCreated") {
     const { id, title } = data as Post;
 
     // add data to store
     posts.values[id] = new Post(id, title, []);
-
-    res.status(201).send(data);
-
-    next();
   } else if (eventName === "CommentCreated") {
     const { id, text, postId, status } = data as Comment;
     const newComment = new Comment(id, text, postId, status);
@@ -26,25 +20,26 @@ router.route("/").post((req: EventReq, res, next) => {
     // add data to store
     const post = posts.values[postId];
     post.comments.push(newComment);
-
-    res.status(201).send(newComment);
-
-    next();
   } else if (eventName === "CommentUpdated") {
     posts.updateCommentStatus(data as Comment);
+  } else return false;
 
-    res.status(203).send({ msg: "OK" });
+  return true;
+};
 
-    next();
-  } else {
-    res.send({
-      service: serviceName,
-      eventName,
-      msg: "event not handled",
-    });
+router.route("/").post((req: EventReq, res, next) => {
+  const { eventName, data } = req.body;
+  console.log(`QUERY > EVENTS: ${eventName}\n`, data);
 
-    next();
-  }
+  const isHandled = handleEvent(req.body);
+
+  res.send({
+    service: serviceName,
+    eventName,
+    isHandled,
+  });
+
+  next();
 });
 
 export default router;
