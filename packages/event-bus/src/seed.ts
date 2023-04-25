@@ -16,7 +16,7 @@ export class EventsStore {
   }
 }
 
-export const events: EventMsg[] = [
+export const events = new EventsStore([
   // new EventPostCreated(new Post("asdf", "test post 1 asdf")),
   // new EventPostCreated(new Post("cc9012j8", "test post 2 cc9012j8")),
   // // create comment
@@ -55,4 +55,4 @@ export const events: EventMsg[] = [
   // new EventCommentUpdated(
   //   new Comment("c09uc98", "orange", "cc9012j8", "rejected")
   // ),
-];
+]);

@@ -6,7 +6,7 @@ import { serviceName } from "..";
 // init
 const router = Router();
 
-const handleEvent = ({ eventName, data }: EventMsg): boolean => {
+export const handleEvent = ({ eventName, data }: EventMsg): boolean => {
   // event
   if (eventName === "PostCreated") {
     const { id, title } = data as Post;
