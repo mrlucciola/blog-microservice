@@ -1,5 +1,5 @@
 import express, { Response } from "express";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import bodyParser from "body-parser";
 import {
   PORT_COMMENTS,
@@ -36,10 +36,29 @@ app
     events.values.push(event);
 
     // send requests
-    axios.post(`http://localhost:${PORT_POSTS}/events`, event);
-    axios.post(`http://localhost:${PORT_COMMENTS}/events`, event);
-    axios.post(`http://localhost:${PORT_MODERATION}/events`, event);
-    axios.post(`http://localhost:${PORT_QUERY}/events`, event);
+    axios
+      .post(`http://localhost:${PORT_POSTS}/events`, event)
+      .catch((err: AxiosError) => {
+        console.log("POSTS", err.code, err.cause);
+      });
+
+    axios
+      .post(`http://localhost:${PORT_COMMENTS}/events`, event)
+      .catch((err: AxiosError) => {
+        console.log("COMMENTS", err.code, err.cause);
+      });
+
+    axios
+      .post(`http://localhost:${PORT_MODERATION}/events`, event)
+      .catch((err: AxiosError) => {
+        console.log("MODERATION", err.code, err.cause);
+      });
+
+    axios
+      .post(`http://localhost:${PORT_QUERY}/events`, event)
+      .catch((err: AxiosError) => {
+        console.log("QUERY", err.code, err.cause);
+      });
 
     res.send({ status: "OK" });
   });
