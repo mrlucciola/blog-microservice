@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { posts } from "../seed";
+import { posts } from "..";
 
 const router = Router();
 

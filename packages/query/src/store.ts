@@ -3,12 +3,10 @@ import { Comment, CommentStatus, Post } from "@blog/common/src/interfaces";
 export type PostsMap = Map<string, Post>;
 export const PostsMap = Map<string, Post>;
 export class PostsStore {
-  values: { [key: string]: Post };
+  values: { [key: string]: Post } = {};
   // postsMap: PostsMap;
 
-  constructor(posts: { [key: string]: Post }) {
-    this.values = posts;
-
+  constructor() {
     // create map
     // this.postsMap = new PostsMap(posts);
   }
@@ -40,14 +38,3 @@ export class PostsStore {
     commentToUpdate.status = newComment.status;
   };
 }
-
-export const posts = new PostsStore({
-  asdf: new Post("asdf", "test post 1 asdf", [
-    new Comment("81hd9", "test comment1", "asdf"),
-    new Comment("1ji9f", "another comment on asdf", "asdf"),
-  ]),
-  cc9012j8: new Post("cc9012j8", "test post 2 cc9012j8", [
-    new Comment("lm10d89", "this is a comment", "cc9012j8"),
-    new Comment("c09uc98", "this is a comment", "cc9012j8"),
-  ]),
-});

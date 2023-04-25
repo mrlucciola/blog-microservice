@@ -6,12 +6,14 @@ import cors from "cors";
 import eventsRoute, { handleEvent } from "./routes/events";
 import postsRoute from "./routes/posts";
 import { PORT_EVENT_BUS, PORT_QUERY } from "@blog/common/src/constants";
-import { ServiceNames } from "@blog/common/src/interfaces";
+import { EventMsg, ServiceNames } from "@blog/common/src/interfaces";
+import { PostsStore } from "./store";
 
 export const serviceName: ServiceNames = "query";
 
 // init
 const app = express();
+export const posts = new PostsStore();
 
 // add middlewares
 app.use(bodyParser.json());
@@ -29,7 +31,9 @@ app.use("/posts", postsRoute);
 app.listen(PORT_QUERY, async () => {
   console.log(`"Query" Server listening at http://localhost:${PORT_QUERY}`);
 
-  const res = await axios.get(`http://localhost:${PORT_EVENT_BUS}/events`);
+  const res = await axios.get<EventMsg[]>(
+    `http://localhost:${PORT_EVENT_BUS}/events`
+  );
 
   res.data.forEach((event) => {
     handleEvent(event);

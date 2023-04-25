@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { Comment, EventMsg, EventReq, Post } from "@blog/common/src/interfaces";
-import { posts } from "../seed";
-import { serviceName } from "..";
+// local
+import { serviceName, posts } from "..";
 
 // init
 const router = Router();
