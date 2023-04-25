@@ -39,7 +39,7 @@ router
         body: { text },
       } = req;
       console.log(`COMMENTS > NEW: ${postId}\n`, text);
-      const commentId = randomBytes(4).toString("hex");
+
       if (
         comments.getPostComments(postId) === undefined ||
         comments.getPostComments(postId) === null
@@ -47,8 +47,10 @@ router
         res.status(400).send({});
         throw new Error(`no new post for: ${postId}`);
       }
-      if (!text) return res.status(400).send("Please add text.");
-      if (!postId) return res.status(400).send("Please add post id.");
+      if (!text) res.status(400).send("Please add text.");
+      if (!postId) res.status(400).send("Please add post id.");
+
+      const commentId = randomBytes(4).toString("hex");
       const newComment = new Comment(commentId, text, postId);
       // update store
       comments.pushComment(newComment);
@@ -59,18 +61,19 @@ router
           `http://localhost:${PORT_EVENT_BUS}/events`,
           new EventCommentCreated(newComment)
         );
+        // send response
+        res.status(201).send(newComment);
+        console.log("comments", comments.postsMap);
+
+        next();
       } catch (error) {
         console.log("error sending comment to event bus", error);
         res
           .status(404)
           .send("error sending event to event bus - CommentCreated");
-        return next();
-      }
 
-      // send response
-      res.status(201).send(newComment);
-      console.log("comments", comments.postsMap);
-      next();
+        next();
+      }
     }
   );
 

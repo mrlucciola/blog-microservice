@@ -10,17 +10,26 @@ const CommentItem: FC<{
   commentId: string;
 }> = ({ postId, commentId }) => {
   // state
-  const text = useAppState(
-    (s) => s.comments.getComment(postId, commentId).text
-  );
+  const comment = useAppState((s) => s.comments.getComment(postId, commentId));
+  const statusColor =
+    comment.status === "pending"
+      ? "orange"
+      : comment.status === "rejected"
+      ? "red"
+      : undefined;
 
   return (
     <ListItemButton
       disableRipple
       disableTouchRipple
       sx={{ backgroundColor: "#f4f6f9", marginY: "1px" }}
+      disabled={comment.status === "rejected"}
     >
-      <ListItemText primary={text} />
+      <ListItemText
+        secondaryTypographyProps={{ color: statusColor }}
+        primary={comment.text}
+        secondary={comment.status}
+      />
     </ListItemButton>
   );
 };
