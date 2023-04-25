@@ -40,7 +40,7 @@ export class Post {
   title: string;
   comments: Comment[];
 
-  constructor(postId: string, title: string, comments: Comment[]) {
+  constructor(postId: string, title: string, comments: Comment[] = []) {
     this.id = postId;
     this.title = title;
     this.comments = comments;
