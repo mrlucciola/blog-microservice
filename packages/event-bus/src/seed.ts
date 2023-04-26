@@ -3,20 +3,11 @@ import {
   EventCommentCreated,
   EventCommentModerated,
   EventCommentUpdated,
-  EventMsg,
   EventPostCreated,
   Post,
 } from "@blog/common/src/interfaces";
 
-export class EventsStore {
-  values: EventMsg[];
-
-  constructor(events: EventMsg[]) {
-    this.values = events;
-  }
-}
-
-export const events = new EventsStore([
+export const seedEvents = [
   new EventPostCreated({ id: "6a8c9585", title: "First post", comments: [] }),
   new EventCommentCreated({
     id: "3e5552d6",
@@ -78,4 +69,4 @@ export const events = new EventsStore([
     postId: "f52ee43a",
     status: "approved",
   } as Comment),
-]);
+];

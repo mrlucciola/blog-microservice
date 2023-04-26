@@ -1,67 +1,23 @@
-import express, { Response } from "express";
-import axios, { AxiosError } from "axios";
+import express from "express";
 import bodyParser from "body-parser";
-import {
-  PORT_COMMENTS,
-  PORT_EVENT_BUS,
-  PORT_MODERATION,
-  PORT_POSTS,
-  PORT_QUERY,
-} from "@blog/common/src/constants";
-import { EventMsg, EventReq, ServiceNames } from "@blog/common/src/interfaces";
-import { EventsStore, events } from "./seed";
+import { PORT_EVENT_BUS } from "@blog/common/src/constants";
+import { ServiceNames } from "@blog/common/src/interfaces";
+// local
+import routes from "./routes";
+import { EventsStore } from "./store";
+import { seedEvents } from "./seed";
 
 export const serviceName: ServiceNames = "event-bus";
 
 // init
 const app = express();
+export const events = new EventsStore(seedEvents);
 
 // add middlewares
 app.use(bodyParser.json());
 
-// base route
-app.get("/", (_, res) => {
-  res.send("Hello from event-bus service!");
-});
-
-// additional routes
-app
-  .route("/events")
-  .get((_req, res: Response<EventMsg[]>, _next) => {
-    res.status(200).send(events.values);
-  })
-  .post((req: EventReq, res, _next) => {
-    const event = req.body;
-    console.log(`incoming event: ${event.eventName}\n`, event.data);
-    events.values.push(event);
-
-    // send requests
-    axios
-      .post(`http://localhost:${PORT_POSTS}/events`, event)
-      .catch((err: AxiosError) => {
-        console.log("POSTS", err.code, err.cause);
-      });
-
-    axios
-      .post(`http://localhost:${PORT_COMMENTS}/events`, event)
-      .catch((err: AxiosError) => {
-        console.log("COMMENTS", err.code, err.cause);
-      });
-
-    axios
-      .post(`http://localhost:${PORT_MODERATION}/events`, event)
-      .catch((err: AxiosError) => {
-        console.log("MODERATION", err.code, err.cause);
-      });
-
-    axios
-      .post(`http://localhost:${PORT_QUERY}/events`, event)
-      .catch((err: AxiosError) => {
-        console.log("QUERY", err.code, err.cause);
-      });
-
-    res.send({ status: "OK" });
-  });
+// add routes
+app.use("/", routes);
 
 // start server
 app.listen(PORT_EVENT_BUS, () => {
