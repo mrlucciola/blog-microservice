@@ -2,12 +2,14 @@ import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
 import cors from "cors";
-// local
-import eventsRoute, { handleEvent } from "./routes/events";
-import postsRoute from "./routes/posts";
 import { PORT_EVENT_BUS, PORT_QUERY } from "@blog/common/src/constants";
 import { EventMsg, ServiceNames } from "@blog/common/src/interfaces";
+// local
+import routes from "./routes";
+// import eventsRoute from "./routes/events";
+// import postsRoute from "./routes/posts";
 import { PostsStore } from "./store";
+import { handleEvent } from "./utils";
 
 export const serviceName: ServiceNames = "query";
 
@@ -19,15 +21,8 @@ export const posts = new PostsStore();
 app.use(bodyParser.json());
 app.use(cors());
 
-// base
-app.get("/", (_, res) => {
-  res.send("Hello from query service!");
-});
-
-app.use("/events", eventsRoute);
-app.use("/posts", postsRoute);
-
 // start server
+app.use("/", routes);
 app.listen(PORT_QUERY, async () => {
   console.log(`"Query" Server listening at http://localhost:${PORT_QUERY}`);
 
