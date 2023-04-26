@@ -1,11 +1,10 @@
-import express, { Response } from "express";
+import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-// local
-import commentsRouter from "./routes/comments";
-import eventsRouter from "./routes/events";
 import { PORT_COMMENTS } from "@blog/common/src/constants";
 import { ServiceNames } from "@blog/common/src/interfaces";
+// local
+import routes from "./routes";
 
 export const serviceName: ServiceNames = "comments";
 
@@ -16,13 +15,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-// base
-app.get("/", (_: any, res: Response) => {
-  res.send("Hello from comments service!");
-});
-// app.use("/posts", postsRouter);
-app.use("/posts", commentsRouter);
-app.use("/events", eventsRouter);
+// set routes
+app.use("/", routes);
 
 // start server
 app.listen(PORT_COMMENTS, () => {
