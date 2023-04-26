@@ -3,15 +3,16 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import { randomBytes } from "crypto";
 import { PORT_EVENT_BUS } from "@blog/common/src/constants";
 import { Post, EventPostCreated } from "@blog/common/src/interfaces";
+import { getFileTitle } from "@blog/common/src/utils";
+// local
 import { posts } from "../seed";
 
 // init
 const router = Router();
-
-// seed
+const baseRt = `/${getFileTitle(__filename)}`;
 
 router
-  .route("/")
+  .route(baseRt)
   // send all posts (@todo add pagination)
   .get((_req, res, _next) => {
     res.send(posts);
@@ -19,7 +20,7 @@ router
   // create new post
   .post(
     async (
-      req: Request<{}, {}, { title: string }>,
+      req: Request<object, object, { title: string }>,
       res: Response,
       next: NextFunction
     ) => {

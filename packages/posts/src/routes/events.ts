@@ -1,11 +1,13 @@
-import { EventReq } from "@blog/common/src/interfaces";
 import { Router } from "express";
+import { EventReq } from "@blog/common/src/interfaces";
+import { getFileTitle } from "@blog/common/src/utils";
 
 // init
 const router = Router();
+const baseRt = `/${getFileTitle(__filename)}`;
 
 // listening at /events/
-router.route("/").post((req: EventReq, res, _next) => {
+router.route(baseRt).post((req: EventReq, res, _next) => {
   console.log("Post event:", req.body.eventName);
 
   return res.send("OK");

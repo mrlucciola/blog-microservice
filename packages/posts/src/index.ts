@@ -1,11 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-// local
-import postsRoutes from "./routes/posts";
-import eventsRoutes from "./routes/events";
 import { PORT_POSTS } from "@blog/common/src/constants";
 import { ServiceNames } from "@blog/common/src/interfaces";
+// local
+import routes from "./routes";
 
 export const serviceName: ServiceNames = "posts";
 
@@ -17,11 +16,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // base
-app.get("/", (_, res) => {
-  res.send("Hello from posts service!");
-});
-app.use("/posts", postsRoutes);
-app.use("/events", eventsRoutes);
+app.use("/", routes);
 
 // start server
 app.listen(PORT_POSTS, () => {
