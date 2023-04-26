@@ -1,14 +1,16 @@
 import { Router } from "express";
 import { EventReq } from "@blog/common/src/interfaces";
+import { getFileTitle } from "@blog/common/src/utils";
 // local
 import { serviceName } from "..";
-import { getFileTitle, handleEvent } from "../utils";
+import { handleEvent } from "../utils";
 
 const fileTitle = getFileTitle(__filename);
+const baseRt = `/${fileTitle}`;
 // init
 const router = Router();
 
-router.route(`/${fileTitle}`).post((req: EventReq, res, next) => {
+router.route(baseRt).post((req: EventReq, res, next) => {
   const { eventName, data } = req.body;
   console.log(`QUERY > EVENTS: ${eventName}\n`, data);
 
