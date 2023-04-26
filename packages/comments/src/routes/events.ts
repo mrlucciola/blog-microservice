@@ -1,14 +1,15 @@
 import { Router } from "express";
+import axios from "axios";
 import {
   Comment,
   EventCommentUpdated,
   EventReq,
   Post,
 } from "@blog/common/src/interfaces";
+import { PORT_EVENT_BUS } from "@blog/common/src/constants";
+// local
 import { comments } from "../seed";
 import { serviceName } from "..";
-import axios from "axios";
-import { PORT_EVENT_BUS } from "@blog/common/src/constants";
 
 const router = Router();
 
