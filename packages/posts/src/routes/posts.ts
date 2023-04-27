@@ -4,7 +4,7 @@ import { randomBytes } from "crypto";
 // common
 import { PORT_EVENT_BUS } from "@blog/constants/src/ports";
 import { Post, EventPostCreated } from "@blog/interfaces";
-import { getFileTitle } from "@blog/common/src/utils";
+import { getFileTitle } from "@blog/utils";
 // local
 import { posts } from "../seed";
 

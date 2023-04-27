@@ -11,7 +11,7 @@
     "start": "nodemon --exec ts-node ./src/index.ts"
   },
   "dependencies": {
-    "@blog/common": "1.0.0",
+    "@blog/utils": "1.0.0",
     "@blog/constants": "1.0.0",
     "@blog/interfaces": "1.0.0",
     "axios": "^1.3.5",

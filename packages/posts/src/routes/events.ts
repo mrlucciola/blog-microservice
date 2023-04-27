@@ -1,6 +1,7 @@
 import { Router } from "express";
+// common
 import { EventReq } from "@blog/interfaces";
-import { getFileTitle } from "@blog/common/src/utils";
+import { getFileTitle } from "@blog/utils";
 
 // init
 const router = Router();

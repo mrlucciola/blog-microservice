@@ -1,6 +1,6 @@
 import { Router } from "express";
+import { getFileTitle } from "@blog/utils";
 import { posts } from "..";
-import { getFileTitle } from "@blog/common/src/utils";
 
 const fileTitle = getFileTitle(__filename);
 const baseRt = `/${fileTitle}`;
