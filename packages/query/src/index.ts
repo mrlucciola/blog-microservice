@@ -3,12 +3,10 @@ import axios from "axios";
 import bodyParser from "body-parser";
 import cors from "cors";
 // common
-import { PORT_EVENT_BUS, PORT_QUERY } from "@blog/constants/src/ports";
+import { PORT_EVENT_BUS, PORT_QUERY } from "@blog/constants";
 import { EventMsg, ServiceNames } from "@blog/interfaces";
 // local
 import routes from "./routes";
-// import eventsRoute from "./routes/events";
-// import postsRoute from "./routes/posts";
 import { PostsStore } from "./store";
 import { handleEvent } from "./utils";
 
@@ -22,8 +20,10 @@ export const posts = new PostsStore();
 app.use(bodyParser.json());
 app.use(cors());
 
-// start server
+// set routes
 app.use("/", routes);
+
+// start server
 app.listen(PORT_QUERY, async () => {
   console.log(`"Query" Server listening at http://localhost:${PORT_QUERY}`);
 

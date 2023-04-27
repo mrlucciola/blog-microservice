@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 // common
-import { PORT_POSTS } from "@blog/constants/src/ports";
+import { PORT_POSTS } from "@blog/constants";
 import { ServiceNames } from "@blog/interfaces";
 // local
 import routes from "./routes";

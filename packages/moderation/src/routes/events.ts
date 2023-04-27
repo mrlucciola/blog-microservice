@@ -2,7 +2,7 @@ import { Router } from "express";
 import axios, { AxiosResponse } from "axios";
 // common
 import { Comment, EventCommentModerated, EventReq } from "@blog/interfaces";
-import { PORT_EVENT_BUS } from "@blog/constants/src/ports";
+import { PORT_EVENT_BUS } from "@blog/constants";
 import { getFileTitle } from "@blog/utils";
 // local
 import { serviceName } from "..";

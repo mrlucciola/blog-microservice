@@ -2,7 +2,7 @@ import { Router } from "express";
 import axios from "axios";
 // common
 import { Comment, EventCommentUpdated, EventReq, Post } from "@blog/interfaces";
-import { PORT_EVENT_BUS } from "@blog/constants/src/ports";
+import { PORT_EVENT_BUS } from "@blog/constants";
 // local
 import { comments } from "../seed";
 import { serviceName } from "..";
