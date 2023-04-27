@@ -1,5 +1,5 @@
 import { Request } from "express";
-import { Comment, Post } from ".";
+import { Comment, Post } from "./main";
 
 export type EventNames =
   | "PostCreated"

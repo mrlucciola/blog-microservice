@@ -27,8 +27,7 @@ export const addRoutes = (dirname: string, filename: string): Router => {
       const routeBase = `/${fileTitle}`;
       /** i.e.: `./<RouteBase>.ts` */
       const relativeFilepath = `${dirname}/${f}`;
-      const subRouter = require(relativeFilepath);
-      console.log(routeBase, subRouter);
+      const subRouter = require(relativeFilepath).default;
 
       router.use(routeBase, subRouter);
     }
