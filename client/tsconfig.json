@@ -1,8 +1,5 @@
 {
-  "references": [
-    { "path": "../packages/common" },
-    { "path": "../packages/interfaces" }
-  ],
+  "references": [{ "path": "../packages/common" }],
 
   "compilerOptions": {
     "target": "es5",

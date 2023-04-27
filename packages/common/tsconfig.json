@@ -1,5 +1,9 @@
 {
-  "references": [{ "path": "./utils" },{"path":"./constants"}, { "path": "../interfaces" }],
+  "references": [
+    { "path": "./utils" },
+    { "path": "./constants" },
+    { "path": "./interfaces" }
+  ],
   "extends": "../../tsconfig.shared.json",
   "files": [],
   "include": [],
