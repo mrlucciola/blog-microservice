@@ -5,9 +5,10 @@
   "engines": {
     "npm": ">=8.0.0",
     "node": ">=18.5.0"
-},
+  },
   "dependencies": {
     "@blog/constants": "1.0.0",
+    "@blog/interfaces": "1.0.0",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.16",

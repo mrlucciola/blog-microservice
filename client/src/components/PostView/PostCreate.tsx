@@ -5,23 +5,9 @@ import { observer } from "mobx-react-lite";
 import { useAppState } from "../../mobx/context/hooks";
 // mui
 import { Button, Stack, TextField, Typography } from "@mui/material";
+// common
 import { PORT_POSTS } from "@blog/constants/src/ports";
-import { Comment } from "../CommentSection/CommentCreate";
-// still need to figure this issue out
-// import { Post } from "@blog/common/src/interfaces";
-// import { interfaces } from "@blog/common";
-// class Post extends interfaces.Post {}
-export class Post {
-  id: string;
-  title: string;
-  comments: Comment[];
-
-  constructor(postId: string, title: string, comments: Comment[] = []) {
-    this.id = postId;
-    this.title = title;
-    this.comments = comments;
-  }
-}
+import { Post } from "@blog/interfaces";
 
 const PostCreate: FC = () => {
   // state

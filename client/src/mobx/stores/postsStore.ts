@@ -2,10 +2,9 @@ import axios from "axios";
 // state
 import { makeAutoObservable } from "mobx";
 import { RootStore } from "./rootStore";
-// interfaces
-// import { Post, ResPostList } from "@blog/common/src/interfaces";
+// common
 import { PORT_QUERY } from "@blog/constants/src/ports";
-import { Post } from "../../components/PostView/PostCreate";
+import { Post } from "@blog/interfaces";
 
 class ResPostList {}
 

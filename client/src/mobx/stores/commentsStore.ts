@@ -3,8 +3,8 @@ import { makeAutoObservable } from "mobx";
 // stores
 import { RootStore } from "./rootStore";
 import { PostsStore } from "./postsStore";
-import { Comment } from "../../components/CommentSection/CommentCreate";
-// interfaces
+// common
+import { Comment } from "@blog/interfaces";
 
 /// Comments store
 export class CommentsStore {
