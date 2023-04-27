@@ -1,0 +1,7 @@
+{
+  "references": [{ "path": "./utils" },{"path":"./constants"}, { "path": "../interfaces" }],
+  "extends": "../../tsconfig.shared.json",
+  "files": [],
+  "include": [],
+  "exclude": ["**/node_modules", "**/tests/**", "**/dist/**"]
+}

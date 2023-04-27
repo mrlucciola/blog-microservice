@@ -1,9 +1,7 @@
 {
   "references": [
-    // { "path": "./packages/client" },
+    { "path": "./packages/common" },
     { "path": "./packages/comments" },
-    { "path": "./packages/utils" },
-    { "path": "./packages/common/constants" },
     { "path": "./packages/interfaces" },
     { "path": "./packages/event-bus" },
     { "path": "./packages/moderation" },

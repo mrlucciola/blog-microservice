@@ -1,8 +1,7 @@
 {
   "references": [
-    { "path": "../packages/common/constants" },
-    { "path": "../packages/interfaces" },
-    { "path": "../packages/utils" }
+    { "path": "../packages/common" },
+    { "path": "../packages/interfaces" }
   ],
 
   "compilerOptions": {
