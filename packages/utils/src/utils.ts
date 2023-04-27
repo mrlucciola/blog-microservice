@@ -12,11 +12,15 @@ export const getFileTitle = (filePath: string) => {
 };
 
 /** must use __dirname and __filename */
-export const addRoutes = (dirname: string, filename: string): Router => {
+export const addRoutes = (): Router => {
   const router = Router();
 
-  readdirSync(dirname).forEach((f: string) => {
-    if (f !== path.basename(filename) && f.includes(path.extname(f))) {
+  // @todo - validate dirname to be exactly one level below `packages`
+  const cwd = require.main!.path;
+  const routesDirName = `${cwd}/routes`;
+
+  readdirSync(routesDirName).forEach((f: string) => {
+    if (f !== "index.ts" && f.includes(".ts")) {
       /** i.e.: `<RouteBase>.ts` */
       const fileName = path.basename(f);
       /** i.e.: `.ts` */
@@ -26,7 +30,7 @@ export const addRoutes = (dirname: string, filename: string): Router => {
       /** i.e.: `<RouteBase>` */
       const routeBase = `/${fileTitle}`;
       /** i.e.: `./<RouteBase>.ts` */
-      const relativeFilepath = `${dirname}/${f}`;
+      const relativeFilepath = `${routesDirName}/${f}`;
       const subRouter = require(relativeFilepath).default;
 
       router.use(routeBase, subRouter);
@@ -37,5 +41,8 @@ export const addRoutes = (dirname: string, filename: string): Router => {
 };
 
 export const getDir = (): string => {
+  console.log("dirname:", __dirname);
+  console.log("cwd:", process.cwd());
+  console.log("main:", require.main);
   return __dirname;
 };
