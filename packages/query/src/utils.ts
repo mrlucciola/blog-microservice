@@ -1,4 +1,6 @@
-import { Comment, EventMsg, Post } from "@blog/common/src/interfaces";
+// common
+import { Comment, EventMsg, Post } from "@blog/interfaces";
+// local
 import { posts } from ".";
 
 export const handleEvent = ({ eventName, data }: EventMsg): boolean => {

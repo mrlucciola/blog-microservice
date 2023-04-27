@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { EventReq } from "@blog/common/src/interfaces";
+import { EventReq } from "@blog/interfaces";
 import { getFileTitle } from "@blog/common/src/utils";
 
 // init

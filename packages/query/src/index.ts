@@ -4,7 +4,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 // common
 import { PORT_EVENT_BUS, PORT_QUERY } from "@blog/constants/src/ports";
-import { EventMsg, ServiceNames } from "@blog/common/src/interfaces";
+import { EventMsg, ServiceNames } from "@blog/interfaces";
 // local
 import routes from "./routes";
 // import eventsRoute from "./routes/events";

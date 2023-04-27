@@ -1,4 +1,4 @@
-import { Comment } from "@blog/common/src/interfaces";
+import { Comment } from "@blog/interfaces";
 
 interface CommentsByPost {
   [key: string]: Comment[];

@@ -7,7 +7,7 @@ import {
   PORT_POSTS,
   PORT_QUERY,
 } from "@blog/constants/src/ports";
-import { EventMsg, EventReq } from "@blog/common/src/interfaces";
+import { EventMsg, EventReq } from "@blog/interfaces";
 // local
 import { events } from ".";
 

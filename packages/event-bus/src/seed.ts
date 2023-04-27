@@ -5,7 +5,7 @@ import {
   EventCommentUpdated,
   EventPostCreated,
   Post,
-} from "@blog/common/src/interfaces";
+} from "@blog/interfaces";
 
 export const seedEvents = [
   new EventPostCreated({ id: "6a8c9585", title: "First post", comments: [] }),

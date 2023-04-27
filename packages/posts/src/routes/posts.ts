@@ -3,7 +3,7 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 import { randomBytes } from "crypto";
 // common
 import { PORT_EVENT_BUS } from "@blog/constants/src/ports";
-import { Post, EventPostCreated } from "@blog/common/src/interfaces";
+import { Post, EventPostCreated } from "@blog/interfaces";
 import { getFileTitle } from "@blog/common/src/utils";
 // local
 import { posts } from "../seed";

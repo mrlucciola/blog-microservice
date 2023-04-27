@@ -5,7 +5,7 @@ import {
   Comment,
   EventCommentModerated,
   EventReq,
-} from "@blog/common/src/interfaces";
+} from "@blog/interfaces";
 import { PORT_EVENT_BUS } from "@blog/constants/src/ports";
 import { getFileTitle } from "@blog/common/src/utils";
 // local

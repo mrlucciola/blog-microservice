@@ -1,4 +1,4 @@
-import { Comment, Post } from "@blog/common/src/interfaces";
+import { Comment, Post } from "@blog/interfaces";
 
 export type PostsMap = Map<string, Post>;
 export const PostsMap = Map<string, Post>;

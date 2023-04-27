@@ -1,4 +1,4 @@
-import { EventMsg } from "@blog/common/src/interfaces";
+import { EventMsg } from "@blog/interfaces";
 
 export class EventsStore {
   values: EventMsg[];

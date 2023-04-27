@@ -5,7 +5,7 @@ import {
   EventCommentUpdated,
   EventReq,
   Post,
-} from "@blog/common/src/interfaces";
+} from "@blog/interfaces";
 import { PORT_EVENT_BUS } from "@blog/constants/src/ports";
 // local
 import { comments } from "../seed";
