@@ -1,10 +1,3 @@
-import { Router } from "express";
-// local
-import eventsRoutes from "./events";
-import postsRoutes from "./posts";
+import { addRoutes } from "@blog/utils";
 
-const router = Router();
-
-router.use("/", eventsRoutes, postsRoutes);
-
-export default router;
+export default addRoutes(__dirname, __filename);

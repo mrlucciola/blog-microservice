@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { PORT_EVENT_BUS } from "@blog/constants/src/ports";
+// common
+import { PORT_EVENT_BUS } from "@blog/constants";
 import { ServiceNames } from "@blog/interfaces";
 // local
 import routes from "./routes";

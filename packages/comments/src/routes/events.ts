@@ -1,11 +1,7 @@
 import { Router } from "express";
 import axios from "axios";
-import {
-  Comment,
-  EventCommentUpdated,
-  EventReq,
-  Post,
-} from "@blog/interfaces";
+// common
+import { Comment, EventCommentUpdated, EventReq, Post } from "@blog/interfaces";
 import { PORT_EVENT_BUS } from "@blog/constants/src/ports";
 // local
 import { comments } from "../seed";
