@@ -7,8 +7,8 @@ import { useAppState } from "../../mobx/context/hooks";
 import { Button, Divider, Stack, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 // common
-import { Comment } from "@blog/interfaces";
 import { PORT_COMMENTS } from "@blog/constants";
+import { Comment } from "@blog/interfaces";
 
 const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
   // state

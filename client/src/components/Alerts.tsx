@@ -1,8 +1,10 @@
-import { Alert as MuiAlert, Snackbar } from "@mui/material";
-import { observer } from "mobx-react-lite";
 import { FC, useEffect, useState } from "react";
+// state
+import { observer } from "mobx-react-lite";
 import { useAppState } from "../mobx/context/hooks";
 import { Alert, SuccessAlert } from "../mobx/stores/alertsStore";
+// mui
+import { Alert as MuiAlert, Snackbar } from "@mui/material";
 
 const Alerts: FC = () => {
   // state

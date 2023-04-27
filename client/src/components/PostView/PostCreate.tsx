@@ -6,7 +6,7 @@ import { useAppState } from "../../mobx/context/hooks";
 // mui
 import { Button, Stack, TextField, Typography } from "@mui/material";
 // common
-import { PORT_POSTS } from "@blog/constants/src/ports";
+import { PORT_POSTS } from "@blog/constants";
 import { Post } from "@blog/interfaces";
 
 const PostCreate: FC = () => {

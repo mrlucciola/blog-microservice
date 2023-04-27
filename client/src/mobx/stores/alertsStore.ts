@@ -1,8 +1,10 @@
 // state
+// state
 import { makeAutoObservable } from "mobx";
+// mui
+import { AlertColor } from "@mui/material";
 // stores
 import { RootStore } from "./rootStore";
-import { AlertColor } from "@mui/material";
 
 export class BaseAlert<T extends AlertColor> {
   kind: T;

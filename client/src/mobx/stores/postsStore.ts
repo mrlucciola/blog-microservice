@@ -3,7 +3,7 @@ import axios from "axios";
 import { makeAutoObservable } from "mobx";
 import { RootStore } from "./rootStore";
 // common
-import { PORT_QUERY } from "@blog/constants/src/ports";
+import { PORT_QUERY } from "@blog/constants";
 import { Post } from "@blog/interfaces";
 
 class ResPostList {}
