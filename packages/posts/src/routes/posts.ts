@@ -2,18 +2,16 @@ import { NextFunction, Request, Response, Router } from "express";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { randomBytes } from "crypto";
 // common
-import { PORT_EVENT_BUS } from "@blog/constants/src/ports";
+import { PORT_EVENT_BUS } from "@blog/constants";
 import { Post, EventPostCreated } from "@blog/interfaces";
-import { getFileTitle } from "@blog/utils";
 // local
 import { posts } from "../seed";
 
 // init
 const router = Router();
-const baseRt = `/${getFileTitle(__filename)}`;
 
 router
-  .route(baseRt)
+  .route("/")
   // send all posts (@todo add pagination)
   .get((_req, res, _next) => {
     res.send(posts);

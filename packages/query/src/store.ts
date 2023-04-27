@@ -2,6 +2,7 @@ import { Comment, Post } from "@blog/interfaces";
 
 export type PostsMap = Map<string, Post>;
 export const PostsMap = Map<string, Post>;
+
 export class PostsStore {
   values: { [key: string]: Post } = {};
   postsMap = new PostsMap();

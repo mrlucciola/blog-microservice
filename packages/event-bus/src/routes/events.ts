@@ -9,13 +9,13 @@ import {
 } from "@blog/constants";
 import { EventMsg, EventReq } from "@blog/interfaces";
 // local
-import { events } from ".";
+import { events } from "..";
 
 // init
 const router = Router();
 
 router
-  .route("/events")
+  .route("/")
   .get((_req, res: Response<EventMsg[]>, _next) => {
     res.status(200).send(events.values);
   })

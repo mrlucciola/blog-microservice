@@ -35,3 +35,7 @@ export const addRoutes = (dirname: string, filename: string): Router => {
 
   return router;
 };
+
+export const getDir = (): string => {
+  return __dirname;
+};

@@ -1,17 +1,15 @@
 import { Router } from "express";
 import axios, { AxiosResponse } from "axios";
 // common
-import { Comment, EventCommentModerated, EventReq } from "@blog/interfaces";
 import { PORT_EVENT_BUS } from "@blog/constants";
-import { getFileTitle } from "@blog/utils";
+import { Comment, EventCommentModerated, EventReq } from "@blog/interfaces";
 // local
 import { serviceName } from "..";
 
 // init
 const router = Router();
-const baseRt = `/${getFileTitle(__filename)}`;
 
-router.route(baseRt).post(async (req: EventReq, res, next) => {
+router.route("/").post(async (req: EventReq, res, next) => {
   const { eventName, data } = req.body;
   console.log(`MOD > EVENTS: ${eventName}\n`, data);
 
