@@ -1,13 +1,13 @@
 {
   "references": [
     { "path": "./common" },
-    { "path": "./packages/comments" },
-    { "path": "./packages/event-bus" },
-    { "path": "./packages/moderation" },
-    { "path": "./packages/posts" },
-    { "path": "./packages/query" }
+    { "path": "./services/comments" },
+    { "path": "./services/event-bus" },
+    { "path": "./services/moderation" },
+    { "path": "./services/posts" },
+    { "path": "./services/query" }
   ],
   "files": [],
   "include": [],
-  "exclude": ["**/node_modules", "packages/**/tests/**", "packages/**/dist/**"]
+  "exclude": ["**/node_modules", "services/**/tests/**", "services/**/dist/**"]
 }

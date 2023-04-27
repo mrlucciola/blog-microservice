@@ -6,7 +6,7 @@ import { Router } from "express";
 export const addRoutes = (): Router => {
   const router = Router();
 
-  // @todo - validate dirname to be exactly one level below `packages`
+  // @todo - validate dirname to be exactly one level below `services`
   const cwd = require.main!.path;
   const routesDirName = `${cwd}/routes`;
 
