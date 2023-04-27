@@ -5,8 +5,8 @@ import cors from "cors";
 // common
 import { PORT_EVENT_BUS, PORT_QUERY } from "@blog/constants";
 import { EventMsg, ServiceNames } from "@blog/interfaces";
+import { addRoutes } from "@blog/utils";
 // local
-import routes from "./routes";
 import { PostsStore } from "./store";
 import { handleEvent } from "./utils";
 
@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // set routes
-app.use("/", routes);
+app.use("/", addRoutes());
 
 // start server
 app.listen(PORT_QUERY, async () => {

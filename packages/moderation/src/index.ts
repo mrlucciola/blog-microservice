@@ -3,8 +3,7 @@ import bodyParser from "body-parser";
 // common
 import { PORT_MODERATION } from "@blog/constants";
 import { ServiceNames } from "@blog/interfaces";
-// local
-import routes from "./routes";
+import { addRoutes } from "@blog/utils";
 
 export const serviceName: ServiceNames = "moderation";
 
@@ -15,7 +14,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // add routes
-app.use("/", routes);
+app.use("/", addRoutes());
 
 // start server
 app.listen(PORT_MODERATION, () => {

@@ -3,8 +3,8 @@ import bodyParser from "body-parser";
 // common
 import { PORT_EVENT_BUS } from "@blog/constants";
 import { ServiceNames } from "@blog/interfaces";
+import { addRoutes } from "@blog/utils";
 // local
-import routes from "./routes";
 import { EventsStore } from "./store";
 import { seedEvents } from "./seed";
 
@@ -18,7 +18,7 @@ export const events = new EventsStore(seedEvents);
 app.use(bodyParser.json());
 
 // add routes
-app.use("/", routes);
+app.use("/", addRoutes());
 
 // start server
 app.listen(PORT_EVENT_BUS, () => {

@@ -4,8 +4,7 @@ import cors from "cors";
 // common
 import { PORT_COMMENTS } from "@blog/constants";
 import { ServiceNames } from "@blog/interfaces";
-// local
-import routes from "./routes";
+import { addRoutes } from "@blog/utils";
 
 export const serviceName: ServiceNames = "comments";
 
@@ -17,7 +16,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // set routes
-app.use("/", routes);
+app.use("/", addRoutes());
 
 // start server
 app.listen(PORT_COMMENTS, () => {
