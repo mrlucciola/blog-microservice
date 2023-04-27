@@ -1,6 +1,6 @@
 {
   "references": [
-    { "path": "./packages/common" },
+    { "path": "./common" },
     { "path": "./packages/comments" },
     { "path": "./packages/event-bus" },
     { "path": "./packages/moderation" },

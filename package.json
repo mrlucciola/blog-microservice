@@ -16,7 +16,7 @@
     "rm-moderation": "rm -rf packages/moderation/node_modules; yarn rm-moderation:ts",
     "rm-posts": "rm -rf packages/posts/node_modules; yarn rm-posts:ts",
     "rm-query": "rm -rf packages/query/node_modules; yarn rm-query:ts",
-    "rm-common": "cd packages/common && rm -rf */dist*/",
+    "rm-common": "cd common && rm -rf */dist*/",
     "rm-comments:ts": "rm -rf packages/comments/dist*/",
     "rm-event-bus:ts": "rm -rf packages/event-bus/dist*/",
     "rm-moderation:ts": "rm -rf packages/moderation/dist*/",
@@ -35,7 +35,7 @@
   },
   "workspaces": [
     "packages/*",
-    "packages/common/*",
+    "common/*",
     "client"
   ]
 }

@@ -16,5 +16,6 @@
     "noUnusedParameters": true,
     "target": "es5",
     "importHelpers": true
-  }
+  },
+  "include": ["src"]
 }
