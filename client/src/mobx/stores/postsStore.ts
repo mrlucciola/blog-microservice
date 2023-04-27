@@ -3,8 +3,11 @@ import axios from "axios";
 import { makeAutoObservable } from "mobx";
 import { RootStore } from "./rootStore";
 // interfaces
-import { Post, ResPostList } from "@blog/common/src/interfaces";
-import { PORT_QUERY } from "@blog/common/src/constants";
+// import { Post, ResPostList } from "@blog/common/src/interfaces";
+import { PORT_QUERY } from "@blog/constants/src/ports";
+import { Post } from "../../components/PostView/PostCreate";
+
+class ResPostList {}
 
 export const PostsMap = Map<string, Post>;
 

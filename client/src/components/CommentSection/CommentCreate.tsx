@@ -7,8 +7,32 @@ import { useAppState } from "../../mobx/context/hooks";
 import { Button, Divider, Stack, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 // other
-import { Comment } from "@blog/common/src/interfaces";
-import { PORT_COMMENTS } from "@blog/common/src/constants";
+// import { Comment } from "@blog/common/src/interfaces";
+import { PORT_COMMENTS } from "@blog/constants/src/ports";
+
+export type CommentStatus = "pending" | "rejected" | "approved";
+export class Comment {
+  id: string;
+  text: string;
+  postId: string;
+  status: CommentStatus;
+
+  constructor(
+    commentId: string,
+    text: string,
+    postId: string,
+    status: CommentStatus = "pending"
+  ) {
+    this.id = commentId;
+    this.text = text;
+    this.postId = postId;
+    this.status = status;
+  }
+
+  updateStatus = (newStatus: CommentStatus) => {
+    this.status = newStatus;
+  };
+}
 
 const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
   // state
