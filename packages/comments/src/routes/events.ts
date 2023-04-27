@@ -6,7 +6,7 @@ import {
   EventReq,
   Post,
 } from "@blog/common/src/interfaces";
-import { PORT_EVENT_BUS } from "@blog/common/src/constants";
+import { PORT_EVENT_BUS } from "@blog/constants/src/ports";
 // local
 import { comments } from "../seed";
 import { serviceName } from "..";

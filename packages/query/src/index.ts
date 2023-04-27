@@ -2,7 +2,8 @@ import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
 import cors from "cors";
-import { PORT_EVENT_BUS, PORT_QUERY } from "@blog/common/src/constants";
+// common
+import { PORT_EVENT_BUS, PORT_QUERY } from "@blog/constants/src/ports";
 import { EventMsg, ServiceNames } from "@blog/common/src/interfaces";
 // local
 import routes from "./routes";

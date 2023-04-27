@@ -1,11 +1,12 @@
 import { Response, Router } from "express";
 import axios, { AxiosError } from "axios";
+// common
 import {
   PORT_COMMENTS,
   PORT_MODERATION,
   PORT_POSTS,
   PORT_QUERY,
-} from "@blog/common/src/constants";
+} from "@blog/constants/src/ports";
 import { EventMsg, EventReq } from "@blog/common/src/interfaces";
 // local
 import { events } from ".";

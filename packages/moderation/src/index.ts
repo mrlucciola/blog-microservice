@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { PORT_MODERATION } from "@blog/common/src/constants";
+// common
+import { PORT_MODERATION } from "@blog/constants/src/ports";
 import { ServiceNames } from "@blog/common/src/interfaces";
 // local
 import routes from "./routes";

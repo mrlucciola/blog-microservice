@@ -2,7 +2,7 @@ import { Request, Router } from "express";
 import axios, { AxiosResponse } from "axios";
 import { randomBytes } from "crypto";
 import { CommentsMap, comments } from "../seed";
-import { PORT_EVENT_BUS } from "@blog/common/src/constants";
+import { PORT_EVENT_BUS } from "@blog/constants/src/ports";
 import { Comment } from "@blog/common/src/interfaces";
 import { EventCommentCreated } from "@blog/common/src/interfaces";
 
