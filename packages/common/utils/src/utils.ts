@@ -2,15 +2,6 @@ import path from "path";
 import { readdirSync } from "fs";
 import { Router } from "express";
 
-export const getFileTitle = (filePath: string) => {
-  const scriptName = path.basename(filePath);
-  /** i.e.: `.ts` */
-  const extName = path.extname(scriptName);
-  const fileTitle = scriptName.replace(extName, "").trim();
-
-  return fileTitle;
-};
-
 /** must use __dirname and __filename */
 export const addRoutes = (): Router => {
   const router = Router();
@@ -38,11 +29,4 @@ export const addRoutes = (): Router => {
   });
 
   return router;
-};
-
-export const getDir = (): string => {
-  console.log("dirname:", __dirname);
-  console.log("cwd:", process.cwd());
-  console.log("main:", require.main);
-  return __dirname;
 };
