@@ -1,6 +1,6 @@
 {
   "references": [
-    { "path": "../constants" },
+    { "path": "../common/constants" },
     { "path": "../interfaces" },
     { "path": "../utils" }
   ],

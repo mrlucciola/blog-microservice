@@ -3,7 +3,7 @@
     // { "path": "./packages/client" },
     { "path": "./packages/comments" },
     { "path": "./packages/utils" },
-    { "path": "./packages/constants" },
+    { "path": "./packages/common/constants" },
     { "path": "./packages/interfaces" },
     { "path": "./packages/event-bus" },
     { "path": "./packages/moderation" },

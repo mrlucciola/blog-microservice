@@ -17,7 +17,7 @@
     "rm-posts": "rm -rf packages/posts/node_modules; yarn rm-posts:ts",
     "rm-query": "rm -rf packages/query/node_modules; yarn rm-query:ts",
     "rm-utils": "rm -rf packages/utils/dist*/",
-    "rm-constants": "rm -rf packages/constants/dist*/",
+    "rm-constants": "rm -rf packages/common/constants/dist*/",
     "rm-interfaces": "rm -rf packages/interfaces/dist*/",
     "rm-comments:ts": "rm -rf packages/comments/dist*/",
     "rm-event-bus:ts": "rm -rf packages/event-bus/dist*/",
@@ -37,6 +37,7 @@
   },
   "workspaces": [
     "packages/*",
+    "packages/common/*",
     "client"
   ]
 }
