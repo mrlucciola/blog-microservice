@@ -6,11 +6,11 @@ WORKDIR /app
 COPY *.json ./
 
 # add app source & config
-COPY services/posts/*.json ./services/posts/
-COPY services/posts/src ./services/posts/src
+COPY ./services/posts/*.json ./services/posts/
+COPY ./services/posts/src ./services/posts/src
 
 # add common source & config
-COPY common/ ./common/
+COPY ./common ./common
 RUN rm -rf common/*/dist*
 
 # install packages

@@ -8,6 +8,12 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -b",
+    "d:img": "NAME=posts; docker build -t $NAME ../.. --file Dockerfile",
+    "d:run": "NAME=posts; docker run -itd --name $NAME $NAME",
+    "d:exec": "NAME=posts; docker exec -it $NAME sh",
+    "d:up": "yarn d:img && yarn d:run",
+    "d:reup": "yarn d:rm; yarn d:up",
+    "d:rm": "NAME=posts; docker stop $NAME; docker rm $NAME; docker image rm $NAME",
     "start": "nodemon --exec ts-node ./src/index.ts"
   },
   "dependencies": {
