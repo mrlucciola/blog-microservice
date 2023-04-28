@@ -7,8 +7,14 @@
   "author": "mrlucciola (Rocco Lucciola)",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
-    "start": "nodemon --exec ts-node ./src/index.ts"
+    "build": "tsc -b",
+    "start": "nodemon --exec ts-node ./src/index.ts",
+    "d:img": "NAME=event_bus; docker build -t $NAME ../.. --file Dockerfile",
+    "d:run": "NAME=event_bus; docker run -itd --name $NAME $NAME",
+    "d:exec": "NAME=event_bus; docker exec -it $NAME sh",
+    "d:up": "yarn d:img && yarn d:run",
+    "d:reup": "yarn d:rm; yarn d:up",
+    "d:rm": "NAME=event_bus; docker stop $NAME; docker rm $NAME; docker image rm $NAME"
   },
   "dependencies": {
     "@blog/utils": "1.0.0",
