@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "create": "kubectl apply -f k8s/",
+    "delete": "kubectl delete -f k8s/",
+    "delete:posts": "kubectl delete -f k8s/posts.yaml",
+    "list": "kubectl get pods",
+    "exec:posts": "kubectl exec -it posts sh",
+    "describe:posts": "kubectl describe pod posts"
+  }
+}
