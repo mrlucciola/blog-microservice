@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 // common
-import { PORT_EVENT_BUS } from "@blog/constants";
+import { HOST_ADDR_EVENT_BUS, PORT_EVENT_BUS } from "@blog/constants";
 import { ServiceNames } from "@blog/interfaces";
 import { addRoutes } from "@blog/utils";
 // local
@@ -22,5 +22,5 @@ app.use("/", addRoutes());
 
 // start server
 app.listen(PORT_EVENT_BUS, () => {
-  console.log(`Server listening at http://localhost:${PORT_EVENT_BUS}`);
+  console.log(`Server listening at ${HOST_ADDR_EVENT_BUS}`);
 });

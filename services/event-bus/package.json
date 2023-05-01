@@ -9,12 +9,13 @@
   "scripts": {
     "build": "tsc -b",
     "start": "nodemon --exec ts-node ./src/index.ts",
-    "d:img": "IMG_NAME=mrlucciola/event_bus:1.0.0; docker build -t $IMG_NAME ../.. --file Dockerfile",
+    "d:img": "IMG_NAME=mrlucciola/event_bus:1.0.0; docker image rm $IMG_NAME; docker build -t $IMG_NAME ../.. --file Dockerfile",
     "k:run": "SRV_NAME=event-bus; kubectl apply -f ../../infra/k8s/$SRV_NAME-depl.yaml",
-    "d:exec": "NAME=event_bus; docker exec -it $NAME sh",
-    "d:up": "yarn d:img && yarn d:run",
-    "d:reup": "yarn d:rm; yarn d:up",
-    "d:rm": "NAME=event_bus; docker stop $NAME; docker rm $NAME; docker image rm $NAME"
+    "k:restart": "SRV_NAME=event-bus; kubectl rollout restart deployment $SRV_NAME-depl",
+    "d:exec": "NAME=event-bus; docker exec -it $NAME sh",
+    "d:up": "yarn d:run",
+    "d:reup": "yarn d:rm; yarn d:img; yarn d:up",
+    "k:rm": "IMG_NAME=mrlucciola/event_bus:1.0.0; SRV_NAME=event-bus; kubectl delete deployment $SRV_NAME-depl; kubectl delete service $SRV_NAME-srv; docker image rm $IMG_NAME"
   },
   "dependencies": {
     "@blog/utils": "1.0.0",

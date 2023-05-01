@@ -9,7 +9,7 @@
   "scripts": {
     "build": "tsc -b",
     "start": "nodemon --exec ts-node ./src/index.ts",
-    "d:img": "IMG_NAME=mrlucciola/posts:1.0.0; docker build -t $IMG_NAME ../.. --file Dockerfile",
+    "d:img": "IMG_NAME=mrlucciola/posts:1.0.0; docker image rm $IMG_NAME; docker build -t $IMG_NAME ../.. --file Dockerfile",
     "k:run": "SRV_NAME=posts; kubectl apply -f ../../infra/k8s/$SRV_NAME-depl.yaml",
     "k:srv": "SRV_NAME=posts; kubectl apply -f ../../infra/k8s/$SRV_NAME-srv.yaml",
     "k:exec": "NAME=mrlucciola/posts:1.0.0; sh -c 'kubectl exec -it ${0} sh'",

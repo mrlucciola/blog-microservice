@@ -2,9 +2,9 @@ import { Response, Router } from "express";
 import axios, { AxiosError } from "axios";
 // common
 import {
+  HOST_ADDR_POSTS,
   PORT_COMMENTS,
   PORT_MODERATION,
-  PORT_POSTS,
   PORT_QUERY,
 } from "@blog/constants";
 import { EventMsg, EventReq } from "@blog/interfaces";
@@ -25,11 +25,9 @@ router
     events.values.push(event);
 
     // send requests
-    axios
-      .post(`http://localhost:${PORT_POSTS}/events`, event)
-      .catch((err: AxiosError) => {
-        console.log("POSTS", err.code, err.cause);
-      });
+    axios.post(`${HOST_ADDR_POSTS}/events`, event).catch((err: AxiosError) => {
+      console.log("POSTS", err.code, err.cause);
+    });
 
     axios
       .post(`http://localhost:${PORT_COMMENTS}/events`, event)
