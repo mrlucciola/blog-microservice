@@ -9,13 +9,13 @@
   "scripts": {
     "build": "tsc -b",
     "start": "nodemon --exec ts-node ./src/index.ts",
-    "tag": "echo",
-    "k:img": "NAME=mrlucciola/posts:1.0.0; docker build -t $NAME ../.. --file Dockerfile",
-    "k:run": "NAME=mrlucciola/posts:1.0.0; kubectl apply -f ../../infra/k8s/posts-depl.yaml",
+    "d:img": "IMG_NAME=mrlucciola/posts:1.0.0; docker build -t $IMG_NAME ../.. --file Dockerfile",
+    "k:run": "kubectl apply -f ../../infra/k8s/posts-depl.yaml",
+    "k:srv": "kubectl apply -f ../../infra/k8s/posts-srv.yaml",
     "k:exec": "NAME=mrlucciola/posts:1.0.0; sh -c 'kubectl exec -it ${0} sh'",
-    "k:up": "yarn k:img && yarn k:run",
+    "k:up": "yarn k:run",
     "k:restart": "DEPL_NAME=posts-depl; kubectl rollout restart deployment $DEPL_NAME",
-    "k:reup": "yarn k:rm; yarn k:up",
+    "k:reup": "yarn k:rm; yarn d:img; yarn k:up",
     "k:rm": "IMG_NAME=mrlucciola/posts:1.0.0; DEPL_NAME=posts-depl; kubectl delete deployment $DEPL_NAME; docker image rm $IMG_NAME"
   },
   "dependencies": {
