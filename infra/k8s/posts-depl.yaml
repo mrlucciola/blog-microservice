@@ -5,7 +5,7 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels:
+    labels:
       app: posts
   template:
     metadata:
@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
         - name: posts
-          image: mrlucciola/posts:latest
+          image: mrlucciola/posts

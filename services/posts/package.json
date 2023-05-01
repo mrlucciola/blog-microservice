@@ -14,6 +14,7 @@
     "k:run": "NAME=mrlucciola/posts:1.0.0; kubectl apply -f ../../infra/k8s/posts-depl.yaml",
     "k:exec": "NAME=mrlucciola/posts:1.0.0; sh -c 'kubectl exec -it ${0} sh'",
     "k:up": "yarn k:img && yarn k:run",
+    "k:restart": "DEPL_NAME=posts-depl; kubectl rollout restart deployment $DEPL_NAME",
     "k:reup": "yarn k:rm; yarn k:up",
     "k:rm": "IMG_NAME=mrlucciola/posts:1.0.0; DEPL_NAME=posts-depl; kubectl delete deployment $DEPL_NAME; docker image rm $IMG_NAME"
   },
