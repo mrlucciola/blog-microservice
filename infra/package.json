@@ -3,7 +3,8 @@
     "create": "kubectl apply -f k8s/",
     "delete": "kubectl delete -f k8s/",
     "delete:posts": "kubectl delete -f k8s/posts.yaml",
-    "list": "kubectl get pods",
+    "list:pods": "kubectl get pods",
+    "list:deployments": "kubectl get deployments",
     "exec:posts": "kubectl exec -it posts sh",
     "describe:posts": "kubectl describe pod posts"
   }
