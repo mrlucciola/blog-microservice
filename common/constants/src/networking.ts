@@ -16,8 +16,10 @@ export const HOSTNAMES = {
     internal: "http://comments-srv",
   },
   eventBus: { internal: "http://event-bus-srv" },
+  moderation: { internal: "http://moderation-srv" },
 };
 
+export const HOST_ADDR_MODERATION = `${HOSTNAMES.moderation.internal}:${PORTS.moderation}`;
 export const HOST_ADDR_EVENT_BUS = `${HOSTNAMES.eventBus.internal}:${PORTS.eventBus}`;
 export const HOST_ADDR_POSTS_EXTERNAL = `${HOSTNAMES.posts.external}:${PORTS.posts}`;
 export const HOST_ADDR_POSTS_INTERNAL = `${HOSTNAMES.posts.internal}:${PORTS.posts}`;
