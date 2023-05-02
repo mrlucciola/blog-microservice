@@ -6,6 +6,8 @@
   "scripts": {
     "build": "tsc -b tsconfig.json",
     "build:watch": "tsc -b tsconfig.json --watch",
+    "k:up": "kubectl apply -R -f 'services/*/k8s/*.yaml'",
+    "k:down": "kubectl delete -R -f 'services/*/k8s/*.yaml'",
     "rebuild:full": "yarn remove:all; yarn",
     "rebuild:ts": "yarn remove:ts; yarn build",
     "remove:ts": "yarn rm-common; yarn rm-services:ts",
