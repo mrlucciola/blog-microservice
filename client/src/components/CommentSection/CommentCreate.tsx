@@ -7,7 +7,7 @@ import { useAppState } from "../../mobx/context/hooks";
 import { Button, Divider, Stack, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 // common
-import { PORT_COMMENTS } from "@blog/constants";
+import { HOST_ADDR_COMMENTS_EXTERNAL } from "@blog/constants";
 import { Comment } from "@blog/interfaces";
 
 const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
@@ -27,7 +27,7 @@ const CommentCreate: FC<{ postId: string }> = ({ postId }) => {
     const commentPayload = { text: commentText };
     try {
       const res = await axios.post<Comment>(
-        `http://localhost:${PORT_COMMENTS}/posts/${postId}/comments`,
+        `${HOST_ADDR_COMMENTS_EXTERNAL}/posts/${postId}/comments`,
         commentPayload
       );
 

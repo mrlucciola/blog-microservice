@@ -3,7 +3,7 @@ import axios from "axios";
 import { makeAutoObservable } from "mobx";
 import { RootStore } from "./rootStore";
 // common
-import { PORT_QUERY } from "@blog/constants";
+import { HOST_ADDR_QUERY_EXTERNAL } from "@blog/constants";
 import { Post } from "@blog/interfaces";
 
 class ResPostList {}
@@ -53,7 +53,7 @@ export class PostsStore {
    */
   postsFetch = async () => {
     const res = await axios.get<ResPostList>(
-      `http://localhost:${PORT_QUERY}/posts`
+      `${HOST_ADDR_QUERY_EXTERNAL}/posts`
     );
     if (res.data) this.setPosts(Object.values(res.data));
   };

@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 // common
-import { PORT_POSTS, HOST_ADDR_POSTS } from "@blog/constants";
+import { PORT_POSTS, HOSTNAMES } from "@blog/constants";
 import { ServiceNames } from "@blog/interfaces";
 import { addRoutes } from "@blog/utils";
 
@@ -20,5 +20,7 @@ app.use("/", addRoutes());
 
 // start server
 app.listen(PORT_POSTS, () => {
-  console.log(`"Posts" Server listening at ${HOST_ADDR_POSTS}`);
+  console.log(
+    `"Posts" Server listening on port ${PORT_POSTS} at:\ninternal: ${HOSTNAMES.posts.internal}\nexternal: ${HOSTNAMES.posts.external}`
+  );
 });
