@@ -21,7 +21,7 @@
     "k:exec": "sh -c 'kubectl exec -it ${0} sh'",
     "k:restart": "kubectl rollout restart deployment $npm_package_env_srv_name-depl",
     "k:reup": "yarn k:rm; yarn d:img; yarn k:run",
-    "k:rm": "kubectl delete deployment $npm_package_env_srv_name-depl",
+    "k:rm": "kubectl delete deployment $npm_package_env_srv_name-depl; kubectl delete service $npm_package_env_srv_name-srv",
     "k:rm-img": "docker image rm $npm_package_env_author/$npm_package_env_srv_name:$npm_package_version"
   },
   "dependencies": {

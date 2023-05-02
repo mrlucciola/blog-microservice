@@ -4,7 +4,6 @@
   "private": true,
   "main": "dist",
   "types": "dist",
-  "authorFull": "",
   "author": "mrlucciola (Rocco Lucciola)",
   "license": "MIT",
   "env": {
