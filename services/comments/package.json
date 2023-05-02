@@ -6,15 +6,23 @@
   "types": "dist",
   "author": "mrlucciola (Rocco Lucciola)",
   "license": "MIT",
+  "env": {
+    "srv_name": "comments",
+    "author": "mrlucciola"
+  },
   "scripts": {
     "build": "tsc -b",
     "start": "nodemon --exec ts-node ./src/index.ts",
-    "d:img": "NAME=comments; docker build -t $NAME ../.. --file Dockerfile",
-    "d:run": "NAME=comments; docker run -itd --name $NAME $NAME",
-    "d:exec": "NAME=comments; docker exec -it $NAME sh",
-    "d:up": "yarn d:img && yarn d:run",
-    "d:reup": "yarn d:rm; yarn d:up",
-    "d:rm": "NAME=comments; docker stop $NAME; docker rm $NAME; docker image rm $NAME"
+    "d:img": "docker build -t $npm_package_env_author/$npm_package_env_srv_name:$npm_package_version ../.. --file Dockerfile",
+    "d:push": "docker push $npm_package_env_author/$npm_package_env_srv_name:$npm_package_version",
+    "d:imgp": "yarn d:img; yarn d:push",
+    "k:run": "kubectl apply -f ../../infra/k8s/$npm_package_env_srv_name-depl.yaml",
+    "k:srv": "kubectl apply -f ../../infra/k8s/$npm_package_env_srv_name-srv.yaml",
+    "k:exec": "sh -c 'kubectl exec -it ${0} sh'",
+    "k:restart": "kubectl rollout restart deployment $npm_package_env_srv_name-depl",
+    "k:reup": "yarn k:rm; yarn d:img; yarn k:run",
+    "k:rm": "kubectl delete deployment $npm_package_env_srv_name-depl",
+    "k:rm-img": "docker image rm $npm_package_env_author/$npm_package_env_srv_name:$npm_package_version"
   },
   "dependencies": {
     "@blog/utils": "1.0.0",
