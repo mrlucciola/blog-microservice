@@ -3,7 +3,7 @@ import axios from "axios";
 import bodyParser from "body-parser";
 import cors from "cors";
 // common
-import { PORT_EVENT_BUS, PORT_QUERY } from "@blog/constants";
+import { HOST_ADDR_EVENT_BUS, PORT_QUERY } from "@blog/constants";
 import { EventMsg, ServiceNames } from "@blog/interfaces";
 import { addRoutes } from "@blog/utils";
 // local
@@ -27,9 +27,7 @@ app.use("/", addRoutes());
 app.listen(PORT_QUERY, async () => {
   console.log(`"Query" Server listening at http://localhost:${PORT_QUERY}`);
 
-  const res = await axios.get<EventMsg[]>(
-    `http://localhost:${PORT_EVENT_BUS}/events`
-  );
+  const res = await axios.get<EventMsg[]>(`${HOST_ADDR_EVENT_BUS}/events`);
 
   res.data.forEach((event) => {
     // @todo add validation

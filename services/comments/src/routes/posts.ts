@@ -2,7 +2,7 @@ import { Request, Router } from "express";
 import axios, { AxiosResponse } from "axios";
 import { randomBytes } from "crypto";
 // common
-import { PORT_EVENT_BUS } from "@blog/constants";
+import { HOST_ADDR_EVENT_BUS } from "@blog/constants";
 import { Comment, EventCommentCreated } from "@blog/interfaces";
 // local
 import { CommentsMap, comments } from "../seed";
@@ -59,7 +59,7 @@ router
       // emit event
       try {
         await axios.post<any, AxiosResponse<null, any>, EventCommentCreated>(
-          `http://localhost:${PORT_EVENT_BUS}/events`,
+          `${HOST_ADDR_EVENT_BUS}/events`,
           new EventCommentCreated(newComment)
         );
         // send response
