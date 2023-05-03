@@ -6,6 +6,9 @@
   "scripts": {
     "build": "tsc -b tsconfig.json",
     "build:watch": "tsc -b tsconfig.json --watch",
+    "d:img": "concurrently \"cd ./services/comments && yarn d:img\" \"./servicecd s/event-bus && yarn d:img\" \"cd ./services/moderation && yarn d:img\" \"cd ./services/posts && yarn d:img\" \"cd ./services/query && yarn d:img\"",
+    "d:push": "concurrently \"cd ./services/comments && yarn d:push\" \"./servicecd s/event-bus && yarn d:push\" \"cd ./services/moderation && yarn d:push\" \"cd ./services/posts && yarn d:push\" \"cd ./services/query && yarn d:push\"",
+    "d:imgp": "yarn d:img; yarn d:push",
     "k:up": "kubectl apply -R -f 'services/*/k8s/*.yaml'",
     "k:down": "kubectl delete -R -f 'services/*/k8s/*.yaml'",
     "k:restart": "kubectl rollout restart -R -f 'services/*/k8s/*.yaml'",
@@ -26,11 +29,13 @@
     "tslib": "^2.5.0"
   },
   "devDependencies": {
+    "concurrently": "^8.0.1",
     "typescript": "^5.0.3"
   },
   "workspaces": [
     "services/*",
     "common/*",
     "client"
-  ]
+  ],
+  "packageManager": "^yarn@1.22.19"
 }

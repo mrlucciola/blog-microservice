@@ -1,6 +1,7 @@
 {
   "name": "@blog-service/comments",
   "version": "1.0.0",
+  "private": true,
   "main": "dist",
   "types": "dist",
   "author": "mrlucciola (Rocco Lucciola)",
@@ -12,8 +13,8 @@
   "scripts": {
     "build": "tsc -b",
     "start": "nodemon --exec ts-node ./src/index.ts",
-    "d:img": "docker build -t $npm_package_env_author/$npm_package_env_srv_name:latest -t $npm_package_env_author/$npm_package_env_srv_name:$npm_package_version ../.. --file Dockerfile",
-    "d:push": "docker push $npm_package_env_author/$npm_package_env_srv_name -a",
+    "d:img": "docker build -t $npm_package_config_author/$npm_package_config_srv_name:latest -t $npm_package_config_author/$npm_package_config_srv_name:$npm_package_version ../.. --file Dockerfile",
+    "d:push": "docker push $npm_package_config_author/$npm_package_config_srv_name -a",
     "d:imgp": "yarn d:img; yarn d:push",
     "k:up": "kubectl apply -f k8s/*.yaml",
     "k:down": "kubectl delete -f k8s/*.yaml",
