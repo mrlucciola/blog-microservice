@@ -1,5 +1,5 @@
 # MUST BE RUN FROM PROJECT ROOT:
-# i.e. docker build -t mrlucciola/client:latest -t mrlucciola/client:1.0.0 ../.. --file Dockerfile
+# i.e. docker build -t mrlucciola/client:latest -t mrlucciola/client:0.1.0 ../.. --file Dockerfile
 
 FROM node:alpine
 
@@ -22,7 +22,12 @@ COPY ./common ./common
 RUN rm -rf common/*/dist*
 
 # install packages
-RUN yarn install --pure-lockfile
+# RUN yarn install --pure-lockfile
+
+# experimental - add node_modules
+COPY ./node_modules ./node_modules
+COPY ./yarn.lock ./yarn.lock
+COPY ./client/node_modules ./client/node_modules
 
 WORKDIR /app/client
 
