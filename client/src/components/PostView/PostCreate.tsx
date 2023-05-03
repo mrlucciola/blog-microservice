@@ -26,7 +26,7 @@ const PostCreate: FC = () => {
     const postPayload = { title: postTitle };
     try {
       const res = await axios.post<Post>(
-        `${HOST_ADDR_POSTS_EXTERNAL}/posts`,
+        `${HOST_ADDR_POSTS_EXTERNAL}/posts/create`,
         postPayload
       );
       const newPost = new Post(res.data.id, res.data.title, []);
