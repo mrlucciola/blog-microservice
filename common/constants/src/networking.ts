@@ -8,7 +8,7 @@ export const PORTS = {
 
 export const HOSTNAMES = {
   posts: {
-    external: "http://posts-clusterip-srv",
+    external: "http://posts.docker",
     internal: "http://posts-srv",
   },
   comments: {
