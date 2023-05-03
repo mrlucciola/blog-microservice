@@ -2,10 +2,11 @@ import { Response, Router } from "express";
 import axios, { AxiosError } from "axios";
 // common
 import {
-  HOST_ADDR_COMMENTS_INTERNAL,
-  HOST_ADDR_MODERATION,
-  HOST_ADDR_POSTS_INTERNAL,
-  HOST_ADDR_QUERY_INTERNAL,
+  HOSTNAMES,
+  PORT_COMMENTS,
+  PORT_MODERATION,
+  PORT_POSTS,
+  PORT_QUERY,
 } from "@blog/constants";
 import { EventMsg, EventReq } from "@blog/interfaces";
 // local
@@ -26,25 +27,25 @@ router
 
     // send requests
     axios
-      .post(`${HOST_ADDR_POSTS_INTERNAL}/events`, event)
+      .post(`${HOSTNAMES.posts.internal}:${PORT_POSTS}/events`, event)
       .catch((err: AxiosError) => {
         console.log("POSTS", err.code, err.cause);
       });
 
     axios
-      .post(`${HOST_ADDR_COMMENTS_INTERNAL}/events`, event)
+      .post(`${HOSTNAMES.comments.internal}:${PORT_COMMENTS}/events`, event)
       .catch((err: AxiosError) => {
         console.log("COMMENTS", err.code, err.cause);
       });
 
     axios
-      .post(`${HOST_ADDR_MODERATION}/events`, event)
+      .post(`${HOSTNAMES.moderation.internal}:${PORT_MODERATION}/events`, event)
       .catch((err: AxiosError) => {
         console.log("MODERATION", err.code, err.cause);
       });
 
     axios
-      .post(`${HOST_ADDR_QUERY_INTERNAL}/events`, event)
+      .post(`${HOSTNAMES.query.internal}:${PORT_QUERY}/events`, event)
       .catch((err: AxiosError) => {
         console.log("QUERY", err.code, err.cause);
       });

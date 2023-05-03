@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 // common
-import { PORT_COMMENTS } from "@blog/constants";
+import { HOSTNAMES, PORT_COMMENTS } from "@blog/constants";
 import { ServiceNames } from "@blog/interfaces";
 import { addRoutes } from "@blog/utils";
 
@@ -20,5 +20,7 @@ app.use("/", addRoutes());
 
 // start server
 app.listen(PORT_COMMENTS, () => {
-  console.log(`Server listening at http://localhost:${PORT_COMMENTS}`);
+  console.log(
+    `Server listening at ${HOSTNAMES.comments.internal}:${PORT_COMMENTS}`
+  );
 });

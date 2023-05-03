@@ -2,7 +2,7 @@ import { Router } from "express";
 import axios from "axios";
 // common
 import { Comment, EventCommentUpdated, EventReq, Post } from "@blog/interfaces";
-import { HOST_ADDR_EVENT_BUS } from "@blog/constants";
+import { HOSTNAMES, PORT_EVENT_BUS } from "@blog/constants";
 // local
 import { comments } from "../seed";
 import { serviceName } from "..";
@@ -34,7 +34,7 @@ router.route("/").post(async (req: EventReq, res, next) => {
     // @todo create event method for event msg type
     // event.emit();
     await axios.post<EventCommentUpdated>(
-      `${HOST_ADDR_EVENT_BUS}/events`,
+      `${HOSTNAMES.eventBus.internal}:${PORT_EVENT_BUS}/events`,
       event
     );
 

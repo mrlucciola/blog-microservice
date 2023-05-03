@@ -2,7 +2,7 @@ import { NextFunction, Request, Response, Router } from "express";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { randomBytes } from "crypto";
 // common
-import { HOST_ADDR_EVENT_BUS } from "@blog/constants";
+import { HOSTNAMES, PORTS } from "@blog/constants";
 import { Post, EventPostCreated } from "@blog/interfaces";
 // local
 import { posts } from "../seed";
@@ -40,7 +40,7 @@ router.post(
 
     try {
       await axios.post<any, AxiosResponse<null, any>, EventPostCreated>(
-        `${HOST_ADDR_EVENT_BUS}/events`,
+        `${HOSTNAMES.eventBus.internal}:${PORTS.eventBus}/events`,
         postReq
       );
 

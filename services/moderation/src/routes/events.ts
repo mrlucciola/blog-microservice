@@ -1,7 +1,7 @@
 import { Router } from "express";
 import axios, { AxiosResponse } from "axios";
 // common
-import { HOST_ADDR_EVENT_BUS } from "@blog/constants";
+import { HOSTNAMES, PORTS } from "@blog/constants";
 import { Comment, EventCommentModerated, EventReq } from "@blog/interfaces";
 // local
 import { serviceName } from "..";
@@ -25,7 +25,7 @@ router.route("/").post(async (req: EventReq, res, next) => {
     // emit event "CommentModerated"
     // @todo handle connection errors
     await axios.post<any, AxiosResponse<null, any>, EventCommentModerated>(
-      `${HOST_ADDR_EVENT_BUS}/events`,
+      `${HOSTNAMES.eventBus.internal}:${PORTS.eventBus}/events`,
       new EventCommentModerated(comment)
     );
 

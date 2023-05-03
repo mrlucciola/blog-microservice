@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 // common
-import { HOST_ADDR_MODERATION, PORT_MODERATION } from "@blog/constants";
+import { HOSTNAMES, PORTS } from "@blog/constants";
 import { ServiceNames } from "@blog/interfaces";
 import { addRoutes } from "@blog/utils";
 
@@ -17,6 +17,8 @@ app.use(bodyParser.json());
 app.use("/", addRoutes());
 
 // start server
-app.listen(PORT_MODERATION, () => {
-  console.log(`"Moderation" Server listening at ${HOST_ADDR_MODERATION}`);
+app.listen(PORTS.moderation, () => {
+  console.log(
+    `"Moderation" Server listening at:\ninternal:${HOSTNAMES.moderation.internal}:${PORTS.moderation}`
+  );
 });
