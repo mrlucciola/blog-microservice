@@ -22,12 +22,7 @@ COPY ./common ./common
 RUN rm -rf common/*/dist*
 
 # install packages
-# RUN yarn install --pure-lockfile
-
-# experimental - add node_modules
-COPY ./node_modules ./node_modules
-COPY ./yarn.lock ./yarn.lock
-COPY ./client/node_modules ./client/node_modules
+RUN yarn install --pure-lockfile
 
 WORKDIR /app/client
 
