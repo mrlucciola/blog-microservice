@@ -1,5 +1,6 @@
 {
   "references": [{ "path": "../common" }],
+  "extends": "../tsconfig.shared.json",
 
   "compilerOptions": {
     "target": "es5",
