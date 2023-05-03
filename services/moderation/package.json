@@ -1,5 +1,5 @@
 {
-  "name": "@blog/moderation",
+  "name": "@blog-service/moderation",
   "version": "1.0.0",
   "private": true,
   "main": "dist",
@@ -24,9 +24,9 @@
     "k:rm-img": "docker image rm $npm_package_env_author/$npm_package_env_srv_name:$npm_package_version"
   },
   "dependencies": {
-    "@blog/utils": "1.0.0",
     "@blog/constants": "1.0.0",
     "@blog/interfaces": "1.0.0",
+    "@blog/utils": "1.0.0",
     "axios": "^1.3.4",
     "body-parser": "^1.20.2",
     "express": "^4.18.2"
