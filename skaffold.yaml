@@ -2,59 +2,60 @@ apiVersion: skaffold/v4beta4
 kind: Config
 build:
   artifacts:
-    - image: mrlucciola/client
-      context: ./services/client
-      sync:
-        manual:
-          - src: src/**/*.ts
-            dest: .
-      docker:
-        dockerfile: Dockerfile
+    # - image: mrlucciola/client
+    #   context: ./
+    #   sync:
+    #     manual:
+    #       - src: ./client/src/**/*.ts
+    #         dest: .
+    #   docker:
+    #     dockerfile: ./client/Dockerfile
     - image: mrlucciola/comments
-      context: ./services/comments
+      context: ./
       sync:
         manual:
-          - src: src/**/*.ts
+          - src: ./services/comments/src/**/*.ts
             dest: .
       docker:
-        dockerfile: Dockerfile
+        dockerfile: ./services/comments/Dockerfile
     - image: mrlucciola/event-bus
-      context: ./services/event-bus
+      context: ./
       sync:
         manual:
-          - src: src/**/*.ts
+          - src: ./services/event-bus/src/**/*.ts
             dest: .
       docker:
-        dockerfile: Dockerfile
+        dockerfile: ./services/event-bus/Dockerfile
     - image: mrlucciola/moderation
-      context: ./services/moderation
+      context: ./
       sync:
         manual:
-          - src: src/**/*.ts
+          - src: ./services/moderation/src/**/*.ts
             dest: .
       docker:
-        dockerfile: Dockerfile
+        dockerfile: ./services/moderation/Dockerfile
     - image: mrlucciola/posts
-      context: ./services/posts
+      context: ./
       sync:
         manual:
-          - src: src/**/*.ts
+          - src: ./services/posts/src/**/*.ts
             dest: .
       docker:
-        dockerfile: Dockerfile
+        dockerfile: ./services/posts/Dockerfile
     - image: mrlucciola/query
-      context: ./services/query
+      context: ./
       sync:
         manual:
-          - src: src/**/*.ts
+          - src: ./services/query/src/**/*.ts
             dest: .
       docker:
-        dockerfile: Dockerfile
+        dockerfile: ./services/query/Dockerfile
   local:
     push: false
 manifests:
   rawYaml:
     - ./k8s/*
+    - ./client/k8s/*
     - ./services/*/k8s/*
 deploy:
   kubectl: {}

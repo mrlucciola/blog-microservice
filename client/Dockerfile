@@ -13,8 +13,8 @@ WORKDIR /app
 COPY *.json ./
 
 # add app source & config
-COPY ./client/*.json ./client/
 COPY ./client/src ./client/src
+COPY ./client/*.json ./client/
 COPY ./client/public ./client/public
 
 # add common source & config
