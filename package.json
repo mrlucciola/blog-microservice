@@ -19,7 +19,8 @@
     "rm-base": "rm -rf node_modules; rm yarn.lock",
     "rm-services": "rm -rf services/*/node_modules",
     "rm-common": "cd common && rm -rf */dist*/",
-    "rm-services:ts": "cd services && rm -rf */dist*/"
+    "rm-services:ts": "cd services && rm -rf */dist*/",
+    "skaffold:start": "skaffold dev"
   },
   "keywords": [],
   "author": "mrlucciola (Rocco Lucciola)",

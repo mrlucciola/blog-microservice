@@ -1,0 +1,60 @@
+apiVersion: skaffold/v4beta4
+kind: Config
+build:
+  artifacts:
+    - image: mrlucciola/client
+      context: ./services/client
+      sync:
+        manual:
+          - src: src/**/*.ts
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: mrlucciola/comments
+      context: ./services/comments
+      sync:
+        manual:
+          - src: src/**/*.ts
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: mrlucciola/event-bus
+      context: ./services/event-bus
+      sync:
+        manual:
+          - src: src/**/*.ts
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: mrlucciola/moderation
+      context: ./services/moderation
+      sync:
+        manual:
+          - src: src/**/*.ts
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: mrlucciola/posts
+      context: ./services/posts
+      sync:
+        manual:
+          - src: src/**/*.ts
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+    - image: mrlucciola/query
+      context: ./services/query
+      sync:
+        manual:
+          - src: src/**/*.ts
+            dest: .
+      docker:
+        dockerfile: Dockerfile
+  local:
+    push: false
+manifests:
+  rawYaml:
+    - ./k8s/*
+    - ./services/*/k8s/*
+deploy:
+  kubectl: {}
